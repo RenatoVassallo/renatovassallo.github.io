@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Economics on Renato Vassallo</title>
+    <link>https://renatovassallo.github.io/economics/</link>
+    <description>Recent content in Economics on Renato Vassallo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://renatovassallo.github.io/economics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Poverty and Inequality Assessment: The case of Malawi</title>
+      <link>https://renatovassallo.github.io/economics/p1_malawi_poverty/</link>
+      <pubDate>Wed, 01 Mar 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/economics/p1_malawi_poverty/</guid>
+      <description>Working with data from World Bank&amp;rsquo;s Integrated Households Surveys (IHS), we undertake an analysis of Malawi&amp;rsquo;s poverty and inequality indicators with the goal of aiding policymakers in the country design strategies to overcome the most critical challenges.
+Main findings Poverty has remained intractable, despite some improvement. For example, since 2010 the percent of people living below the poverty line has fallen from 50% to 47%.
+We show that the nature of poverty is different depending on the setting – though poverty is less prevalent in urban areas, there is significantly greater inequality than in rural areas.</description>
+    </item>
+    
+    <item>
+      <title>Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries</title>
+      <link>https://renatovassallo.github.io/economics/p2_external_shocks/</link>
+      <pubDate>Tue, 15 Mar 2022 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/economics/p2_external_shocks/</guid>
+      <description>Given Pacific Alliance (PA) countries’ significant dependence on the external sector amidst volatile global financial conditions and increased trade openness, it is important to understand the time-varying impact of external shocks on these economies to assess their resilience. We use data for 1994-2019 to study the heterogeneity of responses to financial, real, and nominal external shocks in PA countries over time.
+Highlights Despite higher dependence on the external sector, PA economies countries remain stable.</description>
+    </item>
+    
+  </channel>
+</rss>

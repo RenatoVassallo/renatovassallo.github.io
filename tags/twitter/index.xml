@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Twitter on Renato Vassallo</title>
+    <link>https://renatovassallo.github.io/tags/twitter/</link>
+    <description>Recent content in Twitter on Renato Vassallo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Feb 2023 10:58:08 -0400</lastBuildDate><atom:link href="https://renatovassallo.github.io/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tracking Twitter Conversations on the COVID-19 Pandemic</title>
+      <link>https://renatovassallo.github.io/datascience/twitter_canada/</link>
+      <pubDate>Sun, 12 Feb 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/datascience/twitter_canada/</guid>
+      <description>The objective of this Technical Note is to understand how the conversation on Twitter about COVID-19 evolved during the beginning of the pandemic. In particular, we are interested in tracking only Canadian medical doctor users. To do this, the first step was to collect a large-scale dataset of COVID-19-specific geotagged tweets using the Twarc library, then filter and clean the tweets to obtain some descriptive statistics that could serve as input for further research.</description>
+    </item>
+    
+  </channel>
+</rss>

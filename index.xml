@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science &amp; Economics on Renato Vassallo</title>
+    <link>https://renatovassallo.github.io/</link>
+    <description>Recent content in Data Science &amp; Economics on Renato Vassallo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Mar 2023 10:58:08 -0400</lastBuildDate><atom:link href="https://renatovassallo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sentiment Analysis for Monetary Policy Predictions</title>
+      <link>https://renatovassallo.github.io/datascience/sentimentanalysis/</link>
+      <pubDate>Fri, 03 Mar 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/datascience/sentimentanalysis/</guid>
+      <description>This project highlights the scope for using text data from central bank statements to improve predictions about policy rates. The problem is constructed as a classification into three potential outcomes: the rate in the next period goes up, goes down, or stays the same. We test our approach with data from the central banks of Australia, Chile and Peru.
+Main findings We find that a Random Forest Classifier trained only on economic data (e.</description>
+    </item>
+    
+    <item>
+      <title>Poverty and Inequality Assessment: The case of Malawi</title>
+      <link>https://renatovassallo.github.io/economics/p1_malawi_poverty/</link>
+      <pubDate>Wed, 01 Mar 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/economics/p1_malawi_poverty/</guid>
+      <description>Working with data from World Bank&amp;rsquo;s Integrated Households Surveys (IHS), we undertake an analysis of Malawi&amp;rsquo;s poverty and inequality indicators with the goal of aiding policymakers in the country design strategies to overcome the most critical challenges.
+Main findings Poverty has remained intractable, despite some improvement. For example, since 2010 the percent of people living below the poverty line has fallen from 50% to 47%.
+We show that the nature of poverty is different depending on the setting – though poverty is less prevalent in urban areas, there is significantly greater inequality than in rural areas.</description>
+    </item>
+    
+    <item>
+      <title>Spatial interpolation of apartment prices using Airbnb web scraped dataset</title>
+      <link>https://renatovassallo.github.io/datascience/spatialanalysis/</link>
+      <pubDate>Wed, 15 Feb 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/datascience/spatialanalysis/</guid>
+      <description>The purpose of this article is to to compare the results of several interpolation methods for spatial data of Airbnb apartment prices in Barcelona. Applying text mining techniques, an Airbnb web scraped dataset from 2022 is developed, and different interpolation methods are applied, including Voronoi approach, Nearest Neighbors (NN), Inverse Distance Weighting (IDW), and ensemble methods.
+Main findings Based on the RMSE value, the NN interpolation method with n = 5 yields much more accurate prediction values than the Voronoi or IDW methods.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Twitter Conversations on the COVID-19 Pandemic</title>
+      <link>https://renatovassallo.github.io/datascience/twitter_canada/</link>
+      <pubDate>Sun, 12 Feb 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/datascience/twitter_canada/</guid>
+      <description>The objective of this Technical Note is to understand how the conversation on Twitter about COVID-19 evolved during the beginning of the pandemic. In particular, we are interested in tracking only Canadian medical doctor users. To do this, the first step was to collect a large-scale dataset of COVID-19-specific geotagged tweets using the Twarc library, then filter and clean the tweets to obtain some descriptive statistics that could serve as input for further research.</description>
+    </item>
+    
+    <item>
+      <title>Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries</title>
+      <link>https://renatovassallo.github.io/economics/p2_external_shocks/</link>
+      <pubDate>Tue, 15 Mar 2022 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/economics/p2_external_shocks/</guid>
+      <description>Given Pacific Alliance (PA) countries’ significant dependence on the external sector amidst volatile global financial conditions and increased trade openness, it is important to understand the time-varying impact of external shocks on these economies to assess their resilience. We use data for 1994-2019 to study the heterogeneity of responses to financial, real, and nominal external shocks in PA countries over time.
+Highlights Despite higher dependence on the external sector, PA economies countries remain stable.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://renatovassallo.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://renatovassallo.github.io/about/</guid>
+      <description>Data Science and Economics are my passions. My name is Renato Vassallo, I am Peruvian, and I have been working in the quantitative field processing large amounts of data and evaluating traditional and more complex models for the last 6 years. I have held Economist positions in the government sector of Peru in the fields of Monetary and Fiscal policy. I transitioned into Data Science because I’m very passionate about learning new techniques and tools that can let me take substantial advantage of the large volume of information that is available today and thus enrich analytical models for a more efficient problem solving in almost every environment.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://renatovassallo.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://renatovassallo.github.io/contact/</guid>
+      <description>You can contact me through my email: renato.vassallo@bse.eu
+Follow me on these social media platforms.
+Platform URL GitHub: https://github.com/RenatoVassallo LinkedIn: https://www.linkedin.com/in/renatovassallo Twitter: https://twitter.com/VassalloSarango </description>
+    </item>
+    
+  </channel>
+</rss>

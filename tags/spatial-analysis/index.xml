@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spatial Analysis on Renato Vassallo</title>
+    <link>https://renatovassallo.github.io/tags/spatial-analysis/</link>
+    <description>Recent content in Spatial Analysis on Renato Vassallo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Feb 2023 10:58:08 -0400</lastBuildDate><atom:link href="https://renatovassallo.github.io/tags/spatial-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spatial interpolation of apartment prices using Airbnb web scraped dataset</title>
+      <link>https://renatovassallo.github.io/datascience/spatialanalysis/</link>
+      <pubDate>Wed, 15 Feb 2023 10:58:08 -0400</pubDate>
+      
+      <guid>https://renatovassallo.github.io/datascience/spatialanalysis/</guid>
+      <description>The purpose of this article is to to compare the results of several interpolation methods for spatial data of Airbnb apartment prices in Barcelona. Applying text mining techniques, an Airbnb web scraped dataset from 2022 is developed, and different interpolation methods are applied, including Voronoi approach, Nearest Neighbors (NN), Inverse Distance Weighting (IDW), and ensemble methods.
+Main findings Based on the RMSE value, the NN interpolation method with n = 5 yields much more accurate prediction values than the Voronoi or IDW methods.</description>
+    </item>
+    
+  </channel>
+</rss>
