@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/mnt/c/Users/rvs88/iCloudDrive/Omega/Work/website/renatowebsite",
+	"sourceRoot": "/home/renatovassallo/Omega/Work/website/renatowebsite",
 	"sources": [
 		"ananke/css/main.css"
 	],
