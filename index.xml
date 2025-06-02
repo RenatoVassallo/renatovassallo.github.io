@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Renato Vassallo</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Renato Vassallo</description>
+    <generator>Hugo -- 0.147.7</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Home</title>
+      <link>http://localhost:1313/home/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/home/</guid>
+      <description>&lt;p&gt;I am a data scientist and economist working at the intersection of AI and Economics.&lt;/p&gt;
+&lt;p&gt;My research interests lie in macroeconometrics, Bayesian methods, forecasting, and policy evaluation.&lt;/p&gt;
+&lt;p&gt;I am currently pursuing a PhD in Economics, after earning two master’s degrees and publishing peer-reviewed papers and tutorials for the economics and data science community.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-recent-updates&#34;&gt;📌 Recent Updates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;📄 Working on a new paper about conditional forecasting in BVARs.&lt;/li&gt;
+&lt;li&gt;🧰 Released the first version of &lt;a href=&#34;https://github.com/renatovassallo/MacroPy&#34;&gt;MacroPy&lt;/a&gt;, a Python toolbox for Bayesian macro.&lt;/li&gt;
+&lt;li&gt;📝 Started a blog series on macro + machine learning.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>http://localhost:1313/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/research/</guid>
+      <description>&lt;h2 id=&#34;-journal-articles&#34;&gt;📄 Journal Articles&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries&lt;/strong&gt;&lt;br&gt;
+with Gabriel Rodríguez and Paul Castillo&lt;br&gt;
+&lt;em&gt;Economic Modelling, July 2023&lt;/em&gt;&lt;br&gt;
+&lt;a href=&#34;https://doi.org/10.1016/j.econmod.2023.106302&#34;&gt;Published Paper&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-working-papers&#34;&gt;🧪 Working Papers&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data&lt;/strong&gt;&lt;br&gt;
+with Daniela de los Santos and Eric Frey&lt;br&gt;
+&lt;em&gt;Universitat Pompeu Fabra, August 2023&lt;/em&gt;&lt;br&gt;
+&lt;a href=&#34;https://repositori.upf.edu/handle/10230/58359&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Measuring Potential Output after COVID-19: An Extended Multivariate Filter&lt;/strong&gt;&lt;br&gt;
+with William Sánchez&lt;br&gt;
+&lt;em&gt;Fiscal Council of Peru, August 2023&lt;/em&gt;&lt;br&gt;
+&lt;a href=&#34;https://cf.gob.pe/documentos/documento-de-investigacion-n-003-2023-midiendo-el-pbi-potencial-peruano-tras-la-pandemia-del-covid-19-un-filtro-multivariado-extendido/&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
