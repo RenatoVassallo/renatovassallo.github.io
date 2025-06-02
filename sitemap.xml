@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://renatovassallo.github.io/</loc>
+    <lastmod>2025-06-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/software/</loc>
+    <lastmod>2025-06-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://renatovassallo.github.io/categories/</loc>
   </url><url>
     <loc>https://renatovassallo.github.io/home/</loc>
-  </url><url>
-    <loc>https://renatovassallo.github.io/</loc>
   </url><url>
     <loc>https://renatovassallo.github.io/research/</loc>
   </url><url>

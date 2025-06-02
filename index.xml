@@ -6,7 +6,34 @@
     <description>Recent content on Renato Vassallo</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://renatovassallo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software</title>
+      <link>https://renatovassallo.github.io/software/</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://renatovassallo.github.io/software/</guid>
+      <description>&lt;h2 id=&#34;-macropy&#34;&gt;📈 MacroPy&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;A Bayesian Toolbox for Macroeconometrics in Python&lt;/em&gt;&lt;br&gt;
+Key features: impulse response functions (IRFs), forecast fan charts, variance decompositions, conditional forecasting, and posterior diagnostics.&lt;br&gt;
+📘 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/tutorial_cvar.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
+💻 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
+📦 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-fewshotx&#34;&gt;🧠 FewShotX&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;A Python package for zero-shot and few-shot learning using transformer models&lt;/em&gt;&lt;br&gt;
+Designed for NLI and text classification. Includes Scikit-learn compatible API and multi-language support.&lt;br&gt;
+📘 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX/blob/main/tutorials/ZeroShot_Tutorial.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
+💻 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
+📦 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-midas&#34;&gt;⏱️ MIDAS&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;A generalized and extensible Python package for MIDAS regressions&lt;/em&gt;&lt;br&gt;
+Supports both nowcasting and forecasting with mixed-frequency data. Modular and compatible with scikit-learn pipelines.&lt;br&gt;
+📘 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS/blob/main/tutorial/MIDAS_Tutorial.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
+💻 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
+📦 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Home</title>
       <link>https://renatovassallo.github.io/home/</link>
@@ -30,19 +57,16 @@
       <guid>https://renatovassallo.github.io/research/</guid>
       <description>&lt;h2 id=&#34;-journal-articles&#34;&gt;📄 Journal Articles&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries&lt;/strong&gt;&lt;br&gt;
-with Gabriel Rodríguez and Paul Castillo&lt;br&gt;
-&lt;em&gt;Economic Modelling, July 2023&lt;/em&gt;&lt;br&gt;
+with Gabriel Rodríguez and Paul Castillo. &lt;em&gt;Economic Modelling, July 2023&lt;/em&gt;&lt;br&gt;
 &lt;a href=&#34;https://doi.org/10.1016/j.econmod.2023.106302&#34;&gt;Published Paper&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;-working-papers&#34;&gt;🧪 Working Papers&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data&lt;/strong&gt;&lt;br&gt;
-with Daniela de los Santos and Eric Frey&lt;br&gt;
-&lt;em&gt;Universitat Pompeu Fabra, August 2023&lt;/em&gt;&lt;br&gt;
+with Daniela de los Santos and Eric Frey. &lt;em&gt;Universitat Pompeu Fabra, August 2023&lt;/em&gt;&lt;br&gt;
 &lt;a href=&#34;https://repositori.upf.edu/handle/10230/58359&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Measuring Potential Output after COVID-19: An Extended Multivariate Filter&lt;/strong&gt;&lt;br&gt;
-with William Sánchez&lt;br&gt;
-&lt;em&gt;Fiscal Council of Peru, August 2023&lt;/em&gt;&lt;br&gt;
+with William Sánchez. &lt;em&gt;Fiscal Council of Peru, August 2023&lt;/em&gt;&lt;br&gt;
 &lt;a href=&#34;https://cf.gob.pe/documentos/documento-de-investigacion-n-003-2023-midiendo-el-pbi-potencial-peruano-tras-la-pandemia-del-covid-19-un-filtro-multivariado-extendido/&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
