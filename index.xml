@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Renato Vassallo</title>
-    <link>http://localhost:1313/</link>
+    <link>https://renatovassallo.github.io/</link>
     <description>Recent content on Renato Vassallo</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://renatovassallo.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Home</title>
-      <link>http://localhost:1313/home/</link>
+      <link>https://renatovassallo.github.io/home/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/home/</guid>
+      <guid>https://renatovassallo.github.io/home/</guid>
       <description>&lt;p&gt;I am a data scientist and economist working at the intersection of AI and Economics.&lt;/p&gt;
 &lt;p&gt;My research interests lie in macroeconometrics, Bayesian methods, forecasting, and policy evaluation.&lt;/p&gt;
 &lt;p&gt;I am currently pursuing a PhD in Economics, after earning two master’s degrees and publishing peer-reviewed papers and tutorials for the economics and data science community.&lt;/p&gt;
@@ -25,9 +25,9 @@
     </item>
     <item>
       <title>Research</title>
-      <link>http://localhost:1313/research/</link>
+      <link>https://renatovassallo.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/research/</guid>
+      <guid>https://renatovassallo.github.io/research/</guid>
       <description>&lt;h2 id=&#34;-journal-articles&#34;&gt;📄 Journal Articles&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries&lt;/strong&gt;&lt;br&gt;
 with Gabriel Rodríguez and Paul Castillo&lt;br&gt;
