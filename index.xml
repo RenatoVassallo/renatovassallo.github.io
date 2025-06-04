@@ -6,49 +6,35 @@
     <description>Recent content on Renato Vassallo</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://renatovassallo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Turning Text into Data</title>
+      <link>https://renatovassallo.github.io/posts/text_as_data/</link>
+      <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://renatovassallo.github.io/posts/text_as_data/</guid>
+      <description>3 Approaches from Simple to Smart</description>
+    </item>
     <item>
       <title>Software</title>
       <link>https://renatovassallo.github.io/software/</link>
       <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://renatovassallo.github.io/software/</guid>
-      <description>&lt;h2 id=&#34;-macropy&#34;&gt;📈 MacroPy&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;A Bayesian Toolbox for Macroeconometrics in Python&lt;/em&gt;&lt;br&gt;
-Key features: impulse response functions (IRFs), forecast fan charts, variance decompositions, conditional forecasting, and posterior diagnostics.&lt;br&gt;
-📘 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/tutorial_cvar.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
-💻 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
-📦 &lt;a href=&#34;https://github.com/RenatoVassallo/MacroPy/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-fewshotx&#34;&gt;🧠 FewShotX&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;-fewshotx&#34;&gt;🧠 FewShotX&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;A Python package for zero-shot and few-shot learning using transformer models&lt;/em&gt;&lt;br&gt;
-Designed for NLI and text classification. Includes Scikit-learn compatible API and multi-language support.&lt;br&gt;
+Designed for fast experimentation in low-data or domain-specific NLP tasks.&lt;br&gt;
 📘 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX/blob/main/tutorials/ZeroShot_Tutorial.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
 💻 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
-📦 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-midas&#34;&gt;⏱️ MIDAS&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;A generalized and extensible Python package for MIDAS regressions&lt;/em&gt;&lt;br&gt;
-Supports both nowcasting and forecasting with mixed-frequency data. Modular and compatible with scikit-learn pipelines.&lt;br&gt;
-📘 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS/blob/main/tutorial/MIDAS_Tutorial.ipynb&#34;&gt;Tutorial&lt;/a&gt;&lt;br&gt;
-💻 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS&#34;&gt;GitHub&lt;/a&gt;&lt;br&gt;
-📦 &lt;a href=&#34;https://github.com/RenatoVassallo/MIDAS/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;</description>
+📦 &lt;a href=&#34;https://github.com/RenatoVassallo/FewShotX/releases&#34;&gt;Download (.whl)&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Home</title>
       <link>https://renatovassallo.github.io/home/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://renatovassallo.github.io/home/</guid>
-      <description>&lt;p&gt;I am a data scientist and economist working at the intersection of AI and Economics.&lt;/p&gt;
-&lt;p&gt;My research interests lie in macroeconometrics, Bayesian methods, forecasting, and policy evaluation.&lt;/p&gt;
-&lt;p&gt;I am currently pursuing a PhD in Economics, after earning two master’s degrees and publishing peer-reviewed papers and tutorials for the economics and data science community.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-recent-updates&#34;&gt;📌 Recent Updates&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;📄 Working on a new paper about conditional forecasting in BVARs.&lt;/li&gt;
-&lt;li&gt;🧰 Released the first version of &lt;a href=&#34;https://github.com/renatovassallo/MacroPy&#34;&gt;MacroPy&lt;/a&gt;, a Python toolbox for Bayesian macro.&lt;/li&gt;
-&lt;li&gt;📝 Started a blog series on macro + machine learning.&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;p&gt;I am passionate about applying machine learning and econometrics to understand complex social dynamics and improve policy decisions.&lt;/p&gt;
+&lt;p&gt;Before transitioning into data science, I worked as a macroeconomic specialist in Peru 🇵🇪, focusing on macro modeling, forecasting and scenario analysis — experience I continue to build on today as an external consultant.&lt;/p&gt;
+&lt;p&gt;My work bridges economics, statistical modeling, and AI — with a strong focus on making research reproducible, interpretable, and impactful. I&amp;rsquo;m also a strong advocate of open-source tools and active knowledge sharing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Research</title>
