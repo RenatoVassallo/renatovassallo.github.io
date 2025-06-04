@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Turning Text into Data | Renato Vassallo</title>
+<meta name="keywords" content="NLP, machine learning, LLMs, few-shot learning">
+<meta name="description" content="3 Approaches from Simple to Smart">
+<meta name="author" content="Renato Vassallo">
+<link rel="canonical" href="http://localhost:1313/en/posts/text_as_data/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/en/posts/text_as_data/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ]
+    });
+  });
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+
+<meta property="og:url" content="http://localhost:1313/en/posts/text_as_data/">
+  <meta property="og:site_name" content="Renato Vassallo">
+  <meta property="og:title" content="Turning Text into Data">
+  <meta property="og:description" content="3 Approaches from Simple to Smart">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="en">
+    <meta property="article:published_time" content="2025-06-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-04T00:00:00+00:00">
+    <meta property="article:tag" content="NLP">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="LLMs">
+    <meta property="article:tag" content="Few-Shot Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Turning Text into Data">
+<meta name="twitter:description" content="3 Approaches from Simple to Smart">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Turning Text into Data",
+      "item": "http://localhost:1313/en/posts/text_as_data/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Turning Text into Data",
+  "name": "Turning Text into Data",
+  "description": "3 Approaches from Simple to Smart",
+  "keywords": [
+    "NLP", "machine learning", "LLMs", "few-shot learning"
+  ],
+  "articleBody": "We will explore three methods to generate text-based variables, ranging from simple dictionary approaches to more complex, fine-tuned few-shot learning models using pre-trained LLMs.\nAll examples in this post are implemented using FewShotX, a Python package\nfor dictionary scoring, zero-shot, and few-shot learning in text classification.\nExplore the documentation and tutorials for hands-on notebooks.\n1. Dictionary Methods Dictionary methods have been widely used in economics to transform textual data into quantitative indicators. A notable example is the Economic Policy Uncertainty (EPU) index developed by Baker, Bloom, and Davis (2016), where the frequency of specific terms in newspaper articles is used to capture policy-related uncertainty over time.\nThese methods remain popular due to their transparency and simplicity, and continue to appear in high-impact economic research such as:\nAzqueta-Gavaldón (2017), Economic Modelling: Developing news-based sentiment indicators using a dictionary approach Barrero et al. (2020), NBER WP: COVID-19 Is Also a Reallocation Shock Timoshenko (2022), Journal of Monetary Economics: News and uncertainty shocks 🧰 Example: EPU-style Dictionary Scoring from FewShotX import DictionaryScorer # Define an EPU-style dictionary epu_dict = { \"uncertainty\": [\"uncertainty\", \"uncertain\"], \"economic\": [\"economic\", \"economy\"], \"policy\": [\"congress\", \"deficit\", \"federal reserve\", \"legislation\", \"regulation\", \"white house\"] } # Initialize scorer scorer = DictionaryScorer(dictionaries=epu_dict, model_name=\"en_core_web_sm\") # Apply scoring to a dataframe of headlines/articles df_dict = scorer.score_df(df_corpus, text_col=\"headline\") df_dict.head() This example scores each text based on the presence of terms related to uncertainty, economics, and policy. You can extend this by:\nWeighting the categories Creating composite indices (e.g., requiring all three categories to appear) Normalizing by total word count or news volume 2. Zero-Shot Learning Zero-shot learning (ZSL) enables document classification without any labeled training data. Instead of relying on predefined word lists or trained classifiers, ZSL leverages large pre-trained language models (LLMs) to evaluate the semantic similarity between a document and a set of label descriptions.\nA common use case is identifying whether a piece of text (e.g., a news article) relates to a specific economic concept, such as “finance” or “inflation”, even if the system has never seen labeled examples of those concepts before.\nThe classification process can be summarized as:\nGiven a query document $ q $, and a set of candidate labels $ \\mathcal{L} $, Encode both the query and labels into a shared embedding space, Select the label $ \\ell \\in \\mathcal{L} $ that is most semantically similar to the query. The predicted label $ \\hat{\\ell} $ is obtained by: $$ \\hat{\\ell}_{\\text{ZSL}} = \\arg \\underset{\\ell \\in \\mathcal{L}}{\\max} \\quad \\cos \\left( \\mathbf{E}(q), \\mathbf{E}(\\ell) \\right) $$\n🧪 Code Example from FewShotX import Embeddings, ZeroShotLearner # Generate embeddings embedding_model = Embeddings(model_name='all-MiniLM-L6-v2') df_embed = embedding_model.embed_df(df_corpus, text_col='headline') # Define your target label labels = [\"economic policy uncertainty\"] # Instantiate the learner zs = ZeroShotLearner(embedding_model.model, similarity='cosine') # Score similarity between texts and label df_scored = zs.score_df( df=df_embed.copy(), text_embedding_cols=[f\"emb_{i}\" for i in range(embedding_model.embedding_dim)], labels=labels, label_names=[\"is_epu\"] ) df_scored.head() This approach is especially useful when:\nLabels are abstract (e.g., “risk”, “policy uncertainty”) You lack labeled data You want to prototype classification tasks quickly using LLMs Zero-shot learning builds on the generalization power of transformer-based encoders like BERT, RoBERTa, or SentenceTransformers. It’s ideal for early exploration before moving to supervised or few-shot approaches.\n3. Few-Shot Learning Few-shot learning bridges the gap between traditional supervised learning and zero-shot methods by using just a few labeled examples to make accurate predictions on unseen data.\nGoal: learn a mapping from support examples to labels that generalizes to new queries — without the need for large labeled datasets.\n🔧 Method Overview FewShotX implements a two-stage pipeline:\nTraining\nA linear model with L2 regularization is trained on the support set (labeled examples). The optimization objective balances prediction error and regularization to prevent overfitting: $$ \\mathbf{W}^{\\star} = \\arg \\min_{\\mathbf{W}} \\left( | \\mathbf{X}^\\top \\mathbf{W} - \\mathbf{Y} |^2 + \\lambda | \\mathbf{W} - \\mathbb{I} |^2 \\right) $$\nPrediction\nNew documents (query set) are classified by projecting their embeddings using the learned mapping $\\mathbf{W}^{\\star}$, and selecting the label that maximizes cosine similarity: $$ \\hat{\\ell}_{\\text{FSL}} = \\arg \\underset{\\ell \\in \\mathcal{L}}{\\max} \\quad \\cos \\left( \\mathbf{E}(q) \\mathbf{W}^{\\star}, \\mathbf{E}(\\ell) \\mathbf{W}^{\\star} \\right) $$\n🧪 Code Example from FewShotX import Embeddings, FewShotLearner # Instantiate the Embeddings class embedding_model = Embeddings(model_name='all-MiniLM-L6-v2') # Train our learner with the support set learner = FewShotLearner( support_set, text_col='text', label_col='label', embedding_model=embedding_model ) learner.fit(val_split=0.2, lam=0.1, lr=0.1, epochs=20, early_stop=5, verbose=True) # Compute predictions on the query set predictions, acc = learner.predict(query_set, k=3, return_accuracy=True) predictions 🧠 Notes This method is ideal for economic applications where labeled data is scarce. Overfitting is common with few examples, so tuning lambda, learning rate, and early stopping is critical. Supports any encoder (e.g. SBERT, OpenAI models, etc.) and can be extended to regression or ranking tasks. Beyond These Methods While dictionary, zero-shot, and few-shot learning provide scalable ways to turn text into data, other complementary approaches are also common in empirical research:\nTopic Modeling (e.g., LDA): Unsupervised methods for identifying latent themes across large corpora (Blei et al., 2003). For example, Mueller \u0026 Rauh (2022) use dynamic LDA to extract 15 evolving news topics that help forecast global armed conflict. All examples in this post are implemented using FewShotX, a Python package\nfor dictionary scoring, zero-shot, and few-shot learning in text classification.\nExplore the documentation and tutorials for hands-on notebooks.\n",
+  "wordCount" : "861",
+  "inLanguage": "en",
+  "datePublished": "2025-06-04T00:00:00Z",
+  "dateModified": "2025-06-04T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Renato Vassallo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/en/posts/text_as_data/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Renato Vassallo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Renato Vassallo (Alt + H)">Renato Vassallo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/home/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/pdf/cv_jun25.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/software/" title="Software">
+                    <span>Software</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Turning Text into Data
+    </h1>
+    <div class="post-description">
+      3 Approaches from Simple to Smart
+    </div>
+    <div class="post-meta"><span title='2025-06-04 00:00:00 +0000 UTC'>June 4, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Renato Vassallo
+
+</div>
+  </header> 
+  <div class="post-content"><p>We will explore three methods to generate text-based variables, ranging from simple dictionary approaches to more complex, fine-tuned few-shot learning models using pre-trained LLMs.</p>
+<p><img alt="Overview" loading="lazy" src="/images/posts/text_as_data/xyplot.png"></p>
+<blockquote>
+<p>All examples in this post are implemented using <a href="https://github.com/RenatoVassallo/FewShotX">FewShotX</a>, a Python package<br>
+for dictionary scoring, zero-shot, and few-shot learning in text classification.<br>
+Explore the <a href="https://github.com/RenatoVassallo/FewShotX/tree/main/tutorials">documentation and tutorials</a> for hands-on notebooks.</p></blockquote>
+<h2 id="1-dictionary-methods">1. Dictionary Methods<a hidden class="anchor" aria-hidden="true" href="#1-dictionary-methods">#</a></h2>
+<p>Dictionary methods have been widely used in economics to transform textual data into quantitative indicators. A notable example is the <strong>Economic Policy Uncertainty (EPU)</strong> index developed by <a href="https://www.policyuncertainty.com/media/BakerBloomDavis.pdf">Baker, Bloom, and Davis (2016)</a>, where the frequency of specific terms in newspaper articles is used to capture policy-related uncertainty over time.</p>
+<p>These methods remain popular due to their transparency and simplicity, and continue to appear in high-impact economic research such as:</p>
+<ul>
+<li>Azqueta-Gavaldón (2017), <em>Economic Modelling</em>: <em>Developing news-based sentiment indicators using a dictionary approach</em></li>
+<li>Barrero et al. (2020), <em>NBER WP</em>: <em>COVID-19 Is Also a Reallocation Shock</em></li>
+<li>Timoshenko (2022), <em>Journal of Monetary Economics</em>: <em>News and uncertainty shocks</em></li>
+</ul>
+<hr>
+<h3 id="-example-epu-style-dictionary-scoring">🧰 Example: EPU-style Dictionary Scoring<a hidden class="anchor" aria-hidden="true" href="#-example-epu-style-dictionary-scoring">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> FewShotX <span style="color:#f92672">import</span> DictionaryScorer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define an EPU-style dictionary</span>
+</span></span><span style="display:flex;"><span>epu_dict <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;uncertainty&#34;</span>: [<span style="color:#e6db74">&#34;uncertainty&#34;</span>, <span style="color:#e6db74">&#34;uncertain&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;economic&#34;</span>: [<span style="color:#e6db74">&#34;economic&#34;</span>, <span style="color:#e6db74">&#34;economy&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;policy&#34;</span>: [<span style="color:#e6db74">&#34;congress&#34;</span>, <span style="color:#e6db74">&#34;deficit&#34;</span>, <span style="color:#e6db74">&#34;federal reserve&#34;</span>, <span style="color:#e6db74">&#34;legislation&#34;</span>, <span style="color:#e6db74">&#34;regulation&#34;</span>, <span style="color:#e6db74">&#34;white house&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize scorer</span>
+</span></span><span style="display:flex;"><span>scorer <span style="color:#f92672">=</span> DictionaryScorer(dictionaries<span style="color:#f92672">=</span>epu_dict, model_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en_core_web_sm&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Apply scoring to a dataframe of headlines/articles</span>
+</span></span><span style="display:flex;"><span>df_dict <span style="color:#f92672">=</span> scorer<span style="color:#f92672">.</span>score_df(df_corpus, text_col<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;headline&#34;</span>)
+</span></span><span style="display:flex;"><span>df_dict<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p>This example scores each text based on the presence of terms related to <strong>uncertainty</strong>, <strong>economics</strong>, and <strong>policy</strong>. You can extend this by:</p>
+<ul>
+<li>Weighting the categories</li>
+<li>Creating composite indices (e.g., requiring all three categories to appear)</li>
+<li>Normalizing by total word count or news volume</li>
+</ul>
+<hr>
+<h2 id="2-zero-shot-learning">2. Zero-Shot Learning<a hidden class="anchor" aria-hidden="true" href="#2-zero-shot-learning">#</a></h2>
+<p>Zero-shot learning (ZSL) enables document classification without any labeled training data. Instead of relying on predefined word lists or trained classifiers, ZSL leverages large pre-trained language models (LLMs) to evaluate the semantic similarity between a document and a set of label descriptions.</p>
+<p>A common use case is identifying whether a piece of text (e.g., a news article) relates to a specific economic concept, such as &ldquo;finance&rdquo; or &ldquo;inflation&rdquo;, even if the system has never seen labeled examples of those concepts before.</p>
+<p>The classification process can be summarized as:</p>
+<ul>
+<li>Given a query document $ q $, and a set of candidate labels $ \mathcal{L} $,</li>
+<li>Encode both the query and labels into a shared embedding space,</li>
+<li>Select the label $ \ell \in \mathcal{L} $ that is most semantically similar to the query.</li>
+</ul>
+<p>The predicted label $ \hat{\ell} $ is obtained by:
+$$
+\hat{\ell}_{\text{ZSL}} = \arg \underset{\ell \in \mathcal{L}}{\max} \quad \cos \left( \mathbf{E}(q), \mathbf{E}(\ell) \right)
+$$</p>
+<hr>
+<h3 id="-code-example">🧪 Code Example<a hidden class="anchor" aria-hidden="true" href="#-code-example">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> FewShotX <span style="color:#f92672">import</span> Embeddings, ZeroShotLearner
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate embeddings</span>
+</span></span><span style="display:flex;"><span>embedding_model <span style="color:#f92672">=</span> Embeddings(model_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;all-MiniLM-L6-v2&#39;</span>)
+</span></span><span style="display:flex;"><span>df_embed <span style="color:#f92672">=</span> embedding_model<span style="color:#f92672">.</span>embed_df(df_corpus, text_col<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;headline&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define your target label</span>
+</span></span><span style="display:flex;"><span>labels <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;economic policy uncertainty&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Instantiate the learner</span>
+</span></span><span style="display:flex;"><span>zs <span style="color:#f92672">=</span> ZeroShotLearner(embedding_model<span style="color:#f92672">.</span>model, similarity<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cosine&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Score similarity between texts and label</span>
+</span></span><span style="display:flex;"><span>df_scored <span style="color:#f92672">=</span> zs<span style="color:#f92672">.</span>score_df(
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">=</span>df_embed<span style="color:#f92672">.</span>copy(),
+</span></span><span style="display:flex;"><span>    text_embedding_cols<span style="color:#f92672">=</span>[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;emb_</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(embedding_model<span style="color:#f92672">.</span>embedding_dim)],
+</span></span><span style="display:flex;"><span>    labels<span style="color:#f92672">=</span>labels,
+</span></span><span style="display:flex;"><span>    label_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;is_epu&#34;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df_scored<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p>This approach is especially useful when:</p>
+<ul>
+<li>Labels are abstract (e.g., “risk”, “policy uncertainty”)</li>
+<li>You lack labeled data</li>
+<li>You want to prototype classification tasks quickly using LLMs</li>
+</ul>
+<p>Zero-shot learning builds on the generalization power of transformer-based encoders like <strong>BERT</strong>, <strong>RoBERTa</strong>, or <strong>SentenceTransformers</strong>. It’s ideal for early exploration before moving to supervised or few-shot approaches.</p>
+<hr>
+<h2 id="3-few-shot-learning">3. Few-Shot Learning<a hidden class="anchor" aria-hidden="true" href="#3-few-shot-learning">#</a></h2>
+<p>Few-shot learning bridges the gap between traditional supervised learning and zero-shot methods by using <strong>just a few labeled examples</strong> to make accurate predictions on unseen data.</p>
+<p><strong>Goal</strong>: learn a mapping from support examples to labels that generalizes to new queries — without the need for large labeled datasets.</p>
+<hr>
+<h3 id="-method-overview">🔧 Method Overview<a hidden class="anchor" aria-hidden="true" href="#-method-overview">#</a></h3>
+<p>FewShotX implements a two-stage pipeline:</p>
+<ol>
+<li><strong>Training</strong><br>
+A <strong>linear model</strong> with L2 regularization is trained on the <em>support set</em> (labeled examples). The optimization objective balances prediction error and regularization to prevent overfitting:</li>
+</ol>
+<p>$$
+\mathbf{W}^{\star} = \arg \min_{\mathbf{W}} \left( | \mathbf{X}^\top \mathbf{W} - \mathbf{Y} |^2 + \lambda | \mathbf{W} - \mathbb{I} |^2 \right)
+$$</p>
+<ol start="2">
+<li><strong>Prediction</strong><br>
+New documents (<em>query set</em>) are classified by projecting their embeddings using the learned mapping $\mathbf{W}^{\star}$, and selecting the label that maximizes cosine similarity:</li>
+</ol>
+<p>$$
+\hat{\ell}_{\text{FSL}} = \arg \underset{\ell \in \mathcal{L}}{\max} \quad \cos \left( \mathbf{E}(q) \mathbf{W}^{\star}, \mathbf{E}(\ell) \mathbf{W}^{\star} \right)
+$$</p>
+<hr>
+<h3 id="-code-example-1">🧪 Code Example<a hidden class="anchor" aria-hidden="true" href="#-code-example-1">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> FewShotX <span style="color:#f92672">import</span> Embeddings, FewShotLearner
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Instantiate the Embeddings class</span>
+</span></span><span style="display:flex;"><span>embedding_model <span style="color:#f92672">=</span> Embeddings(model_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;all-MiniLM-L6-v2&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train our learner with the support set</span>
+</span></span><span style="display:flex;"><span>learner <span style="color:#f92672">=</span> FewShotLearner(
+</span></span><span style="display:flex;"><span>    support_set, 
+</span></span><span style="display:flex;"><span>    text_col<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;text&#39;</span>, 
+</span></span><span style="display:flex;"><span>    label_col<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;label&#39;</span>, 
+</span></span><span style="display:flex;"><span>    embedding_model<span style="color:#f92672">=</span>embedding_model
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>learner<span style="color:#f92672">.</span>fit(val_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, lam<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, early_stop<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compute predictions on the query set</span>
+</span></span><span style="display:flex;"><span>predictions, acc <span style="color:#f92672">=</span> learner<span style="color:#f92672">.</span>predict(query_set, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, return_accuracy<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>predictions
+</span></span></code></pre></div><hr>
+<h3 id="-notes">🧠 Notes<a hidden class="anchor" aria-hidden="true" href="#-notes">#</a></h3>
+<ul>
+<li>This method is ideal for economic applications where labeled data is scarce.</li>
+<li>Overfitting is common with few examples, so tuning <code>lambda</code>, <code>learning rate</code>, and <code>early stopping</code> is critical.</li>
+<li>Supports any encoder (e.g. SBERT, OpenAI models, etc.) and can be extended to regression or ranking tasks.</li>
+</ul>
+<hr>
+<h2 id="beyond-these-methods">Beyond These Methods<a hidden class="anchor" aria-hidden="true" href="#beyond-these-methods">#</a></h2>
+<p>While dictionary, zero-shot, and few-shot learning provide scalable ways to turn text into data, other complementary approaches are also common in empirical research:</p>
+<ul>
+<li><strong>Topic Modeling (e.g., LDA):</strong> Unsupervised methods for identifying latent themes across large corpora (Blei et al., 2003).
+For example, <a href="https://academic.oup.com/jeea/article/20/6/2440/6574413">Mueller &amp; Rauh (2022)</a> use dynamic LDA to extract 15 evolving news topics that help forecast global armed conflict.</li>
+</ul>
+<hr>
+<blockquote>
+<p>All examples in this post are implemented using <a href="https://github.com/RenatoVassallo/FewShotX">FewShotX</a>, a Python package<br>
+for dictionary scoring, zero-shot, and few-shot learning in text classification.<br>
+Explore the <a href="https://github.com/RenatoVassallo/FewShotX/tree/main/tutorials">documentation and tutorials</a> for hands-on notebooks.</p></blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/nlp/">NLP</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/llms/">LLMs</a></li>
+      <li><a href="http://localhost:1313/tags/few-shot-learning/">Few-Shot Learning</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Renato Vassallo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
