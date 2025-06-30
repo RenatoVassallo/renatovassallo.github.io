@@ -2,10 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://renatovassallo.github.io/categories/ai--economics/</loc>
-    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
+    <loc>https://renatovassallo.github.io/posts/bvar_tutorial/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://renatovassallo.github.io/categories/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/tags/impulse-response-functions/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/categories/macroeconometrics/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/tags/macroeconometrics/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/posts/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/tags/structural-analysis/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/tags/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/tags/time-series/</loc>
+    <lastmod>2025-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://renatovassallo.github.io/categories/ai--economics/</loc>
     <lastmod>2025-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://renatovassallo.github.io/tags/few-shot-learning/</loc>
@@ -18,15 +45,6 @@
     <lastmod>2025-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://renatovassallo.github.io/tags/nlp/</loc>
-    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://renatovassallo.github.io/posts/</loc>
-    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://renatovassallo.github.io/</loc>
-    <lastmod>2025-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://renatovassallo.github.io/tags/</loc>
     <lastmod>2025-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://renatovassallo.github.io/posts/text_as_data/</loc>

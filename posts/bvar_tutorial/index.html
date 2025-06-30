@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bayesian VARs in Python | Renato Vassallo</title>
+<meta name="keywords" content="Macroeconometrics, Time Series, Impulse Response Functions, Structural Analysis">
+<meta name="description" content="A Step-by-step Guide">
+<meta name="author" content="Renato Vassallo">
+<link rel="canonical" href="https://renatovassallo.github.io/posts/bvar_tutorial/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://renatovassallo.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://renatovassallo.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://renatovassallo.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://renatovassallo.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://renatovassallo.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://renatovassallo.github.io/posts/bvar_tutorial/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ]
+    });
+  });
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+
+<meta property="og:url" content="https://renatovassallo.github.io/posts/bvar_tutorial/">
+  <meta property="og:site_name" content="Renato Vassallo">
+  <meta property="og:title" content="Bayesian VARs in Python">
+  <meta property="og:description" content="A Step-by-step Guide">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-30T00:00:00+00:00">
+    <meta property="article:tag" content="Macroeconometrics">
+    <meta property="article:tag" content="Time Series">
+    <meta property="article:tag" content="Impulse Response Functions">
+    <meta property="article:tag" content="Structural Analysis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bayesian VARs in Python">
+<meta name="twitter:description" content="A Step-by-step Guide">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://renatovassallo.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bayesian VARs in Python",
+      "item": "https://renatovassallo.github.io/posts/bvar_tutorial/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bayesian VARs in Python",
+  "name": "Bayesian VARs in Python",
+  "description": "A Step-by-step Guide",
+  "keywords": [
+    "Macroeconometrics", "Time Series", "Impulse Response Functions", "Structural Analysis"
+  ],
+  "articleBody": "We will explore step by step how to estimate a Bayesian Vector Autoregression (BVAR) in Python, covering the theory and implementation from scratch:\n📊 Data preparation 📏 Prior distributions and initial values 🧮 Gibbs sampling for posterior simulation 🔁 Structural identification and impulse response estimation Finally, we’ll show how this process becomes much simpler using MacroPy, an early-stage Python package that could be a great fit if you’re into macroeconometrics.\n📚 Explore the documentation and tutorials for hands-on notebooks.\n1. Empirical Application: Peruvian Data We’ll start with quarterly growth data for the Export Price Index Growth ($xpi_{t}$) and Real GDP Growth ($gdp_{t}$) in Peru, two variables closely connected in commodity-exporting economies. Export prices affect revenues and investment, ultimately influencing economic activity.\nimport pandas as pd # Make sure the index is parsed as a datetime format csv_file = 'https://raw.githubusercontent.com/RenatoVassallo/MacroPy/main/datasets/Peru_Data.csv' df = pd.read_csv(csv_file, index_col=0, parse_dates=True) df.rename(columns={'g_ipx': 'xpi', 'g_pbi': 'gdp'}, inplace=True) df = df[['xpi', 'gdp']] df.head() Date XPI GDP 1997-03-01 0.6727 5.1796 1997-06-01 0.3943 8.2306 1997-09-01 8.8660 6.4047 1997-12-01 -1.2809 5.9818 1998-03-01 -6.4383 2.2278 … … … We estimate a bivariate VAR(1) model:\n$$ xpi_{t} = c_{1} + b_{11}xpi_{t-1} + b_{12}gdp_{t-1} + \\varepsilon_{t}^{xpi} $$\n$$ gdp_{t} = c_{2} + b_{21}xpi_{t-1} + b_{22}gdp_{t-1} + \\varepsilon_{t}^{gdp} $$\nOr in matrix form:\n$$y_{t} = c + \\Phi y_{t-1} + \\epsilon_{t}, \\qquad \\varepsilon_{t} \\sim \\mathcal{N}(0, \\Sigma)$$\nAnd in compact notation:\n$$ Y = XB + E $$\nThis compact form enables fast and efficient estimation using matrix algebra. It’s the structure adopted by the prepare_data() function in MacroPy.\n2. Data Preparation and OLS Estimation We convert the DataFrame to NumPy arrays and prepare the lagged structure:\nfrom MacroPy import prepare_data y = df.to_numpy() lags = 1 constant = True yy, XX = prepare_data(y, lags, constant) Then, it’s easy to estimate by OLS:\n$$ \\hat{B} = (X^{\\prime}X)^{-1} X^{\\prime}Y $$\nOr its vectorized version $ \\hat{\\boldsymbol{\\beta}} = vec(\\hat{B}) $, especially useful in BVARs, because we stack all coefficients into a single vector and write the likelihood in multivariate normal form.\nimport numpy as np # Parameters T, n_endo = yy.shape K = XX.shape[1] # OLS Estimation B_OLS = np.linalg.inv(XX.T @ XX) @ XX.T @ yy b_ols = B_OLS.flatten(order='F') residuals = yy - XX @ B_OLS Sigma_ols = (residuals.T @ residuals) / (T - K) 3. Prior Specification We use a Minnesota prior, a widely adopted choice in BVAR estimation due to its interpretability and shrinkage properties. The prior assumes:\nThe VAR coefficients $\\boldsymbol{\\beta}$ follow a multivariate normal distribution: $$ P(\\boldsymbol{\\beta}) \\sim \\mathcal{N}(\\boldsymbol{b}_0, H) $$ While the original Minnesota prior treats the covariance matrix $\\Sigma$ as known and fixed (often diagonal), it is common practice to combine it with an Inverse-Wishart prior for $\\Sigma$ to allow for posterior sampling: $$ P(\\Sigma) \\sim \\mathcal{IW}(\\alpha_0, S_0) $$ from MacroPy import NormalWishartPrior ncoeff_eq = n_endo * lags + 1 # Number of coefficients per equation (lags + constant) prior = NormalWishartPrior(yy, XX, lags, ncoeff_eq) # Extract prior components b_prior = prior[\"b0\"] # Prior mean for beta H_prior = prior[\"H\"] # Prior variance of beta alpha0 = prior[\"alpha0\"] # Prior degrees of freedom Scale0 = prior[\"Scale0\"] # Prior scale matrix for Sigma This creates prior matrices for the VAR coefficients and covariance.\n4. Gibbs Sampling (Posterior Simulation) First we set MCMC parameters and initial values\npost_draws = 1000 # Total number of Gibbs iterations burnin = 500 # Number of draws to discard (burn-in period) Sigma = Sigma_ols.copy() # Start from the OLS estimate of the covariance matrix Then we simulate the posterior distribution using a Gibbs sampler:\nDefine priors for $\\beta$ and $\\Sigma$. Choose an initial value for $\\Sigma$ (e.g., from OLS estimation). Simulate $\\beta^{(m)}$ from posterior $H(\\beta \\mid \\Sigma, Y_t)$ Simulate $\\Sigma^{(m)}$ from posterior $H(\\Sigma \\mid \\beta, Y_t)$ Repeat steps 2 and 3 for M iterations to obtain: $\\beta^{1}, \\ldots, \\beta^{M}$ and $\\Sigma^{(1)}, \\ldots, \\Sigma^{(M)}$ Note: These are the draws of the model parameters (after burn-in).\nfrom numpy.linalg import inv, eigvals from numpy.random import multivariate_normal from scipy.stats import invwishart from tqdm import tqdm # Lists to store posterior draws beta_draws = [] Sigma_draws = [] # Pre-compute some quantities XtX = XX.T @ XX invH = inv(H_prior) # Gibbs sampling loop for _ in tqdm(range(post_draws), desc=\"Sampling Posterior\"): Sigma_inv = inv(Sigma) # Draw β | Σ, Y from Normal V_post = inv(invH + np.kron(Sigma_inv, XtX)) # Posterior covariance M_post = V_post @ (invH @ b_prior + np.kron(Sigma_inv, XtX) @ b_ols) # Posterior mean # Ensure VAR stability: check eigenvalues of companion matrix while True: beta_vec = multivariate_normal(mean=M_post, cov=V_post) # Draw from posterior B = beta_vec.reshape((ncoeff_eq, n_endo), order='F') # Build companion matrix Bcomp = np.zeros((n_endo * lags, n_endo * lags)) Bcomp[:n_endo, :] = B[:-1, :].T if lags \u003e 1: Bcomp[n_endo:, :-n_endo] = np.eye(n_endo * (lags - 1)) if np.all(np.abs(eigvals(Bcomp)) \u003c 1): # Check for stability break # Draw Σ | β, Y from Inverse-Wishart resid = yy - XX @ B Scale1 = resid.T @ resid + Scale0 alpha1 = alpha0 + yy.shape[0] Sigma = invwishart.rvs(df=alpha1, scale=Scale1) # Store current draw beta_draws.append(beta_vec) Sigma_draws.append(Sigma) # Discard burn-in samples beta_draws = np.array(beta_draws[burnin:]) Sigma_draws = np.array(Sigma_draws[burnin:]) As a result, we can visualize the marginal posterior distributions for each VAR coefficient. One key advantage of the Bayesian approach is that it provides not just point estimates, but full probability distributions. This allows us to quantify the uncertainty surrounding each parameter and assess the credibility of different values, rather than relying solely on confidence intervals or asymptotic theory.\n5. Impulse Response Functions (IRFs) Once we have posterior draws of $\\beta$ and $\\Sigma$, we can compute Impulse Response Functions for each draw using the Cholesky decomposition of the covariance matrix. This assumes a recursive (triangular) identification scheme, which imposes contemporaneous zero restrictions.\nH = 20 # Horizon for IRFs n_draws = len(beta_draws) ir_draws = [] for d in tqdm(range(n_draws), desc=\"Computing IRFs\"): # Reshape beta vector into coefficient matrix B = beta_draws[d].reshape((ncoeff_eq, n_endo), order='F') Sigma = Sigma_draws[d] # Build companion matrix Bcomp = np.zeros((n_endo * lags, n_endo * lags)) Bcomp[:n_endo, :] = B[:-1, :].T # exclude last row (constant) if lags \u003e 1: Bcomp[n_endo:, :-n_endo] = np.eye(n_endo * (lags - 1)) # Structural shock matrix from Cholesky decomposition S = np.linalg.cholesky(Sigma) # Initialize IRF storage for current draw irf = np.zeros((H, n_endo, n_endo)) for m in range(n_endo): # Loop over each structural shock impulse = np.zeros((n_endo, 1)) impulse[m, 0] = 1 # 1 s.d. shock in variable m # IRF at horizon 0 irf[0, :, m] = (S @ impulse).flatten() # IRFs for horizons \u003e 0 for h in range(1, H): Bcomp_h = np.linalg.matrix_power(Bcomp, h) irf[h, :, m] = (Bcomp_h[:n_endo, :n_endo] @ S @ impulse).flatten() ir_draws.append(irf) # Final array: [draws, horizon, variable, shock] ir_draws = np.array(ir_draws) This gives you a full distribution of IRFs for each shock and variable. You can now compute credible intervals and median responses for policy analysis or forecasting.\nEstimating a BVAR using MacroPy 🐍 Instead of coding every step from scratch, you can estimate the same Bayesian VAR model using the built-in functions in MacroPy.\nHere’s how to do it in just a few lines:\nfrom MacroPy import BayesianVAR # Initialize the Bayesian VAR model with default prior (Minnesota) bvar = BayesianVAR(df) # Print a summary of the model setup bvar.model_summary() # Run posterior sampling and visualize coefficients bvar.sample_posterior(plot_coefficients=True) # Compute impulse responses with 68% credible intervals irfs = bvar.compute_irfs(plot_irfs=True) 🚀 What’s Next? If you’re still with me at this point, you’re clearly serious about Bayesian VARs. And that’s great, because there’s a lot more you can do with MacroPy.\nFrom this solid foundation, you can easily extend your analysis to include:\n📉 Forecast Error Variance Decomposition (FEVD) 🔮 Unconditional forecasts with fan charts 🎯 Conditional forecasts à la Waggoner \u0026 Zha (1999) 🧱 Block exogeneity restrictions 🎛️ Custom prior configurations 📊 And much more! 👉 Dive into a real-world case with this hands-on tutorial notebook, where we estimate and interpret a small macro-fiscal BVAR model.\n",
+  "wordCount" : "1311",
+  "inLanguage": "en",
+  "datePublished": "2025-06-30T00:00:00Z",
+  "dateModified": "2025-06-30T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Renato Vassallo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://renatovassallo.github.io/posts/bvar_tutorial/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Renato Vassallo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://renatovassallo.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL0E6SK2D7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LL0E6SK2D7');
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://renatovassallo.github.io/" accesskey="h" title="Renato Vassallo (Alt + H)">Renato Vassallo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://renatovassallo.github.io/home/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://renatovassallo.github.io/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://renatovassallo.github.io/pdf/cv_jun25.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://renatovassallo.github.io/software/" title="Software">
+                    <span>Software</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://renatovassallo.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bayesian VARs in Python
+    </h1>
+    <div class="post-description">
+      A Step-by-step Guide
+    </div>
+    <div class="post-meta"><span title='2025-06-30 00:00:00 +0000 UTC'>June 30, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Renato Vassallo
+
+</div>
+  </header> 
+  <div class="post-content"><p>We will explore step by step how to estimate a <strong>Bayesian Vector Autoregression (BVAR)</strong> in Python, covering the theory and implementation from scratch:</p>
+<ul>
+<li>📊 Data preparation</li>
+<li>📏 Prior distributions and initial values</li>
+<li>🧮 Gibbs sampling for posterior simulation</li>
+<li>🔁 Structural identification and impulse response estimation</li>
+</ul>
+<p>Finally, we’ll show how this process becomes much simpler using <a href="https://github.com/RenatoVassallo/MacroPy"><code>MacroPy</code></a>, an early-stage Python package that could be a great fit if you’re into macroeconometrics.</p>
+<p><img alt="Overview" loading="lazy" src="/images/posts/bvar_tutorial/macropy_logo.png"></p>
+<blockquote>
+<p>📚 Explore the <a href="https://github.com/RenatoVassallo/MacroPy/tree/main/tutorials">documentation and tutorials</a> for hands-on notebooks.</p></blockquote>
+<hr>
+<h2 id="1-empirical-application-peruvian-data">1. Empirical Application: Peruvian Data<a hidden class="anchor" aria-hidden="true" href="#1-empirical-application-peruvian-data">#</a></h2>
+<p>We’ll start with quarterly growth data for the <strong>Export Price Index Growth ($xpi_{t}$)</strong> and <strong>Real GDP Growth ($gdp_{t}$)</strong> in Peru, two variables closely connected in commodity-exporting economies. Export prices affect revenues and investment, ultimately influencing economic activity.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make sure the index is parsed as a datetime format</span>
+</span></span><span style="display:flex;"><span>csv_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://raw.githubusercontent.com/RenatoVassallo/MacroPy/main/datasets/Peru_Data.csv&#39;</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(csv_file, index_col<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, parse_dates<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;g_ipx&#39;</span>: <span style="color:#e6db74">&#39;xpi&#39;</span>, <span style="color:#e6db74">&#39;g_pbi&#39;</span>: <span style="color:#e6db74">&#39;gdp&#39;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> df[[<span style="color:#e6db74">&#39;xpi&#39;</span>, <span style="color:#e6db74">&#39;gdp&#39;</span>]]
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Date</th>
+          <th>XPI</th>
+          <th>GDP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1997-03-01</td>
+          <td>0.6727</td>
+          <td>5.1796</td>
+      </tr>
+      <tr>
+          <td>1997-06-01</td>
+          <td>0.3943</td>
+          <td>8.2306</td>
+      </tr>
+      <tr>
+          <td>1997-09-01</td>
+          <td>8.8660</td>
+          <td>6.4047</td>
+      </tr>
+      <tr>
+          <td>1997-12-01</td>
+          <td>-1.2809</td>
+          <td>5.9818</td>
+      </tr>
+      <tr>
+          <td>1998-03-01</td>
+          <td>-6.4383</td>
+          <td>2.2278</td>
+      </tr>
+      <tr>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+      </tr>
+  </tbody>
+</table>
+<p><img alt="Model Variables" loading="lazy" src="/images/posts/bvar_tutorial/variables.png"></p>
+<p>We estimate a <strong>bivariate VAR(1)</strong> model:</p>
+<p>$$ xpi_{t} = c_{1} + b_{11}xpi_{t-1} + b_{12}gdp_{t-1} + \varepsilon_{t}^{xpi} $$</p>
+<p>$$ gdp_{t} = c_{2} + b_{21}xpi_{t-1} + b_{22}gdp_{t-1} + \varepsilon_{t}^{gdp} $$</p>
+<p>Or in matrix form:</p>
+<p>$$y_{t} = c + \Phi y_{t-1} + \epsilon_{t}, \qquad \varepsilon_{t} \sim \mathcal{N}(0, \Sigma)$$</p>
+<p>And in compact notation:</p>
+<p>$$
+Y = XB + E
+$$</p>
+<p>This compact form enables fast and efficient estimation using matrix algebra. It’s the structure adopted by the <code>prepare_data()</code> function in <code>MacroPy</code>.</p>
+<hr>
+<h2 id="2-data-preparation-and-ols-estimation">2. Data Preparation and OLS Estimation<a hidden class="anchor" aria-hidden="true" href="#2-data-preparation-and-ols-estimation">#</a></h2>
+<p>We convert the <code>DataFrame</code> to NumPy arrays and prepare the lagged structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> MacroPy <span style="color:#f92672">import</span> prepare_data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>to_numpy()
+</span></span><span style="display:flex;"><span>lags <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>constant <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>yy, XX <span style="color:#f92672">=</span> prepare_data(y, lags, constant)
+</span></span></code></pre></div><p>Then, it&rsquo;s easy to estimate by OLS:</p>
+<p>$$ \hat{B} = (X^{\prime}X)^{-1} X^{\prime}Y $$</p>
+<p>Or its vectorized version $ \hat{\boldsymbol{\beta}} = vec(\hat{B}) $, especially useful in BVARs, because we stack all coefficients into a single vector and write the likelihood in multivariate normal form.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Parameters</span>
+</span></span><span style="display:flex;"><span>T, n_endo <span style="color:#f92672">=</span> yy<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>K <span style="color:#f92672">=</span> XX<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># OLS Estimation </span>
+</span></span><span style="display:flex;"><span>B_OLS <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>inv(XX<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> XX) <span style="color:#f92672">@</span> XX<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> yy  
+</span></span><span style="display:flex;"><span>b_ols <span style="color:#f92672">=</span> B_OLS<span style="color:#f92672">.</span>flatten(order<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;F&#39;</span>)
+</span></span><span style="display:flex;"><span>residuals <span style="color:#f92672">=</span> yy <span style="color:#f92672">-</span> XX <span style="color:#f92672">@</span> B_OLS 
+</span></span><span style="display:flex;"><span>Sigma_ols <span style="color:#f92672">=</span> (residuals<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> residuals) <span style="color:#f92672">/</span> (T <span style="color:#f92672">-</span> K)
+</span></span></code></pre></div><hr>
+<h2 id="3-prior-specification">3. Prior Specification<a hidden class="anchor" aria-hidden="true" href="#3-prior-specification">#</a></h2>
+<p>We use a Minnesota prior, a widely adopted choice in BVAR estimation due to its interpretability and shrinkage properties.  The prior assumes:</p>
+<ul>
+<li>The VAR coefficients $\boldsymbol{\beta}$ follow a <strong>multivariate normal distribution</strong>:
+$$
+P(\boldsymbol{\beta}) \sim \mathcal{N}(\boldsymbol{b}_0, H)
+$$</li>
+<li>While the original Minnesota prior treats the covariance matrix $\Sigma$ as known and fixed (often diagonal), it is common practice to combine it with an <strong>Inverse-Wishart prior</strong> for $\Sigma$ to allow for posterior sampling:
+$$
+P(\Sigma) \sim \mathcal{IW}(\alpha_0, S_0)
+$$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> MacroPy <span style="color:#f92672">import</span> NormalWishartPrior
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ncoeff_eq <span style="color:#f92672">=</span> n_endo <span style="color:#f92672">*</span> lags <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># Number of coefficients per equation (lags + constant)</span>
+</span></span><span style="display:flex;"><span>prior <span style="color:#f92672">=</span> NormalWishartPrior(yy, XX, lags, ncoeff_eq)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract prior components</span>
+</span></span><span style="display:flex;"><span>b_prior <span style="color:#f92672">=</span> prior[<span style="color:#e6db74">&#34;b0&#34;</span>]       <span style="color:#75715e"># Prior mean for beta</span>
+</span></span><span style="display:flex;"><span>H_prior <span style="color:#f92672">=</span> prior[<span style="color:#e6db74">&#34;H&#34;</span>]        <span style="color:#75715e"># Prior variance of beta</span>
+</span></span><span style="display:flex;"><span>alpha0 <span style="color:#f92672">=</span> prior[<span style="color:#e6db74">&#34;alpha0&#34;</span>]    <span style="color:#75715e"># Prior degrees of freedom</span>
+</span></span><span style="display:flex;"><span>Scale0 <span style="color:#f92672">=</span> prior[<span style="color:#e6db74">&#34;Scale0&#34;</span>]    <span style="color:#75715e"># Prior scale matrix for Sigma</span>
+</span></span></code></pre></div><p>This creates prior matrices for the VAR coefficients and covariance.</p>
+<hr>
+<h2 id="4-gibbs-sampling-posterior-simulation">4. Gibbs Sampling (Posterior Simulation)<a hidden class="anchor" aria-hidden="true" href="#4-gibbs-sampling-posterior-simulation">#</a></h2>
+<p>First we set MCMC parameters and initial values</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>post_draws <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>  <span style="color:#75715e"># Total number of Gibbs iterations</span>
+</span></span><span style="display:flex;"><span>burnin <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>       <span style="color:#75715e"># Number of draws to discard (burn-in period)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Sigma <span style="color:#f92672">=</span> Sigma_ols<span style="color:#f92672">.</span>copy()  <span style="color:#75715e"># Start from the OLS estimate of the covariance matrix</span>
+</span></span></code></pre></div><p>Then we simulate the posterior distribution using a <strong>Gibbs sampler</strong>:</p>
+<ol>
+<li>Define priors for $\beta$ and $\Sigma$. Choose an initial value for $\Sigma$ (e.g., from OLS estimation).</li>
+<li>Simulate $\beta^{(m)}$ from posterior $H(\beta \mid \Sigma, Y_t)$</li>
+<li>Simulate $\Sigma^{(m)}$ from posterior $H(\Sigma \mid \beta, Y_t)$</li>
+<li>Repeat steps 2 and 3 for <strong>M</strong> iterations to obtain:
+$\beta^{1}, \ldots, \beta^{M}$ and $\Sigma^{(1)}, \ldots, \Sigma^{(M)}$</li>
+</ol>
+<blockquote>
+<p>Note: These are the <strong>draws</strong> of the model parameters (after burn-in).</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> inv, eigvals
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy.random <span style="color:#f92672">import</span> multivariate_normal
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> invwishart
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lists to store posterior draws</span>
+</span></span><span style="display:flex;"><span>beta_draws <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>Sigma_draws <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pre-compute some quantities</span>
+</span></span><span style="display:flex;"><span>XtX <span style="color:#f92672">=</span> XX<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> XX
+</span></span><span style="display:flex;"><span>invH <span style="color:#f92672">=</span> inv(H_prior)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Gibbs sampling loop</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> tqdm(range(post_draws), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sampling Posterior&#34;</span>):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Sigma_inv <span style="color:#f92672">=</span> inv(Sigma)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Draw β | Σ, Y from Normal</span>
+</span></span><span style="display:flex;"><span>    V_post <span style="color:#f92672">=</span> inv(invH <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>kron(Sigma_inv, XtX))  <span style="color:#75715e"># Posterior covariance</span>
+</span></span><span style="display:flex;"><span>    M_post <span style="color:#f92672">=</span> V_post <span style="color:#f92672">@</span> (invH <span style="color:#f92672">@</span> b_prior <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>kron(Sigma_inv, XtX) <span style="color:#f92672">@</span> b_ols)  <span style="color:#75715e"># Posterior mean</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Ensure VAR stability: check eigenvalues of companion matrix</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        beta_vec <span style="color:#f92672">=</span> multivariate_normal(mean<span style="color:#f92672">=</span>M_post, cov<span style="color:#f92672">=</span>V_post) <span style="color:#75715e"># Draw from posterior</span>
+</span></span><span style="display:flex;"><span>        B <span style="color:#f92672">=</span> beta_vec<span style="color:#f92672">.</span>reshape((ncoeff_eq, n_endo), order<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;F&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Build companion matrix</span>
+</span></span><span style="display:flex;"><span>        Bcomp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((n_endo <span style="color:#f92672">*</span> lags, n_endo <span style="color:#f92672">*</span> lags))
+</span></span><span style="display:flex;"><span>        Bcomp[:n_endo, :] <span style="color:#f92672">=</span> B[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, :]<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> lags <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            Bcomp[n_endo:, :<span style="color:#f92672">-</span>n_endo] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>eye(n_endo <span style="color:#f92672">*</span> (lags <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>abs(eigvals(Bcomp)) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>):  <span style="color:#75715e"># Check for stability</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Draw Σ | β, Y from Inverse-Wishart</span>
+</span></span><span style="display:flex;"><span>    resid <span style="color:#f92672">=</span> yy <span style="color:#f92672">-</span> XX <span style="color:#f92672">@</span> B
+</span></span><span style="display:flex;"><span>    Scale1 <span style="color:#f92672">=</span> resid<span style="color:#f92672">.</span>T <span style="color:#f92672">@</span> resid <span style="color:#f92672">+</span> Scale0
+</span></span><span style="display:flex;"><span>    alpha1 <span style="color:#f92672">=</span> alpha0 <span style="color:#f92672">+</span> yy<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    Sigma <span style="color:#f92672">=</span> invwishart<span style="color:#f92672">.</span>rvs(df<span style="color:#f92672">=</span>alpha1, scale<span style="color:#f92672">=</span>Scale1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Store current draw</span>
+</span></span><span style="display:flex;"><span>    beta_draws<span style="color:#f92672">.</span>append(beta_vec)
+</span></span><span style="display:flex;"><span>    Sigma_draws<span style="color:#f92672">.</span>append(Sigma)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Discard burn-in samples</span>
+</span></span><span style="display:flex;"><span>beta_draws <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(beta_draws[burnin:])
+</span></span><span style="display:flex;"><span>Sigma_draws <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(Sigma_draws[burnin:])
+</span></span></code></pre></div><p>As a result, we can visualize the <strong>marginal posterior distributions</strong> for each VAR coefficient. One key advantage of the Bayesian approach is that it provides not just point estimates, but full probability distributions. This allows us to <strong>quantify the uncertainty</strong> surrounding each parameter and assess the credibility of different values, rather than relying solely on confidence intervals or asymptotic theory.</p>
+<p><img alt="Marginal Posterior Distributions" loading="lazy" src="/images/posts/bvar_tutorial/post_dist.png"></p>
+<hr>
+<h2 id="5-impulse-response-functions-irfs">5. Impulse Response Functions (IRFs)<a hidden class="anchor" aria-hidden="true" href="#5-impulse-response-functions-irfs">#</a></h2>
+<p>Once we have posterior draws of $\beta$ and $\Sigma$, we can compute <strong>Impulse Response Functions</strong> for each draw using the <strong>Cholesky decomposition</strong> of the covariance matrix. This assumes a recursive (triangular) identification scheme, which imposes contemporaneous zero restrictions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>H <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>  <span style="color:#75715e"># Horizon for IRFs</span>
+</span></span><span style="display:flex;"><span>n_draws <span style="color:#f92672">=</span> len(beta_draws)
+</span></span><span style="display:flex;"><span>ir_draws <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> tqdm(range(n_draws), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Computing IRFs&#34;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Reshape beta vector into coefficient matrix</span>
+</span></span><span style="display:flex;"><span>    B <span style="color:#f92672">=</span> beta_draws[d]<span style="color:#f92672">.</span>reshape((ncoeff_eq, n_endo), order<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;F&#39;</span>)
+</span></span><span style="display:flex;"><span>    Sigma <span style="color:#f92672">=</span> Sigma_draws[d]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Build companion matrix</span>
+</span></span><span style="display:flex;"><span>    Bcomp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((n_endo <span style="color:#f92672">*</span> lags, n_endo <span style="color:#f92672">*</span> lags))
+</span></span><span style="display:flex;"><span>    Bcomp[:n_endo, :] <span style="color:#f92672">=</span> B[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, :]<span style="color:#f92672">.</span>T  <span style="color:#75715e"># exclude last row (constant)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> lags <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        Bcomp[n_endo:, :<span style="color:#f92672">-</span>n_endo] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>eye(n_endo <span style="color:#f92672">*</span> (lags <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Structural shock matrix from Cholesky decomposition</span>
+</span></span><span style="display:flex;"><span>    S <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>cholesky(Sigma)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialize IRF storage for current draw</span>
+</span></span><span style="display:flex;"><span>    irf <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((H, n_endo, n_endo))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> m <span style="color:#f92672">in</span> range(n_endo):  <span style="color:#75715e"># Loop over each structural shock</span>
+</span></span><span style="display:flex;"><span>        impulse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((n_endo, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        impulse[m, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 1 s.d. shock in variable m</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># IRF at horizon 0</span>
+</span></span><span style="display:flex;"><span>        irf[<span style="color:#ae81ff">0</span>, :, m] <span style="color:#f92672">=</span> (S <span style="color:#f92672">@</span> impulse)<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># IRFs for horizons &gt; 0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, H):
+</span></span><span style="display:flex;"><span>            Bcomp_h <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>matrix_power(Bcomp, h)
+</span></span><span style="display:flex;"><span>            irf[h, :, m] <span style="color:#f92672">=</span> (Bcomp_h[:n_endo, :n_endo] <span style="color:#f92672">@</span> S <span style="color:#f92672">@</span> impulse)<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ir_draws<span style="color:#f92672">.</span>append(irf)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Final array: [draws, horizon, variable, shock]</span>
+</span></span><span style="display:flex;"><span>ir_draws <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(ir_draws)
+</span></span></code></pre></div><p>This gives you a full distribution of IRFs for each shock and variable. You can now compute credible intervals and median responses for policy analysis or forecasting.</p>
+<p><img alt="Impulse Responses" loading="lazy" src="/images/posts/bvar_tutorial/irfs.png"></p>
+<hr>
+<h2 id="estimating-a-bvar-using-macropy-">Estimating a BVAR using MacroPy 🐍<a hidden class="anchor" aria-hidden="true" href="#estimating-a-bvar-using-macropy-">#</a></h2>
+<p>Instead of coding every step from scratch, you can estimate the same <strong>Bayesian VAR model</strong> using the built-in functions in <code>MacroPy</code>.</p>
+<p>Here’s how to do it in just a few lines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> MacroPy <span style="color:#f92672">import</span> BayesianVAR
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize the Bayesian VAR model with default prior (Minnesota)</span>
+</span></span><span style="display:flex;"><span>bvar <span style="color:#f92672">=</span> BayesianVAR(df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print a summary of the model setup</span>
+</span></span><span style="display:flex;"><span>bvar<span style="color:#f92672">.</span>model_summary()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run posterior sampling and visualize coefficients</span>
+</span></span><span style="display:flex;"><span>bvar<span style="color:#f92672">.</span>sample_posterior(plot_coefficients<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compute impulse responses with 68% credible intervals</span>
+</span></span><span style="display:flex;"><span>irfs <span style="color:#f92672">=</span> bvar<span style="color:#f92672">.</span>compute_irfs(plot_irfs<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-whats-next">🚀 What’s Next?<a hidden class="anchor" aria-hidden="true" href="#-whats-next">#</a></h2>
+<p>If you’re still with me at this point, you’re clearly serious about Bayesian VARs. And that’s great, because there’s <strong>a lot more you can do with <code>MacroPy</code></strong>.</p>
+<p>From this solid foundation, you can easily extend your analysis to include:</p>
+<ul>
+<li>📉 Forecast Error Variance Decomposition (FEVD)</li>
+<li>🔮 Unconditional forecasts with fan charts</li>
+<li>🎯 Conditional forecasts à la Waggoner &amp; Zha (1999)</li>
+<li>🧱 Block exogeneity restrictions</li>
+<li>🎛️ Custom prior configurations</li>
+<li>📊 And much more!</li>
+</ul>
+<p>👉 Dive into a real-world case with <a href="https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/tutorial_bvar.ipynb">this hands-on tutorial notebook</a>, where we estimate and interpret a <strong>small macro-fiscal BVAR model</strong>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://renatovassallo.github.io/tags/macroeconometrics/">Macroeconometrics</a></li>
+      <li><a href="https://renatovassallo.github.io/tags/time-series/">Time Series</a></li>
+      <li><a href="https://renatovassallo.github.io/tags/impulse-response-functions/">Impulse Response Functions</a></li>
+      <li><a href="https://renatovassallo.github.io/tags/structural-analysis/">Structural Analysis</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://renatovassallo.github.io/">Renato Vassallo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

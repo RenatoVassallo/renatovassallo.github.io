@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Renato Vassallo</title>
-    <link>https://renatovassallo.github.io/posts/</link>
-    <description>Recent content in Posts on Renato Vassallo</description>
+    <title>Macroeconometrics on Renato Vassallo</title>
+    <link>https://renatovassallo.github.io/tags/macroeconometrics/</link>
+    <description>Recent content in Macroeconometrics on Renato Vassallo</description>
     <generator>Hugo -- 0.147.9</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://renatovassallo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://renatovassallo.github.io/tags/macroeconometrics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bayesian VARs in Python</title>
       <link>https://renatovassallo.github.io/posts/bvar_tutorial/</link>
       <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://renatovassallo.github.io/posts/bvar_tutorial/</guid>
       <description>A Step-by-step Guide</description>
-    </item>
-    <item>
-      <title>Turning Text into Data</title>
-      <link>https://renatovassallo.github.io/posts/text_as_data/</link>
-      <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://renatovassallo.github.io/posts/text_as_data/</guid>
-      <description>3 Approaches from Simple to Smart</description>
     </item>
   </channel>
 </rss>
