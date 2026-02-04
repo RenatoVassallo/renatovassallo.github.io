@@ -46,9 +46,8 @@ Key features: impulse responses and variance decompositions, conditional forecas
       <link>https://renatovassallo.github.io/home/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://renatovassallo.github.io/home/</guid>
-      <description>&lt;p&gt;I am passionate about applying machine learning and econometrics to understand complex social dynamics and improve policy decisions.&lt;/p&gt;
-&lt;p&gt;Before transitioning into data science, I worked as a macroeconomic specialist in Peru 🇵🇪, focusing on macro modeling, forecasting and scenario analysis, experience I continue to build on today as an external consultant.&lt;/p&gt;
-&lt;p&gt;My work bridges economics, statistical modeling, and AI, with a strong focus on making research reproducible, interpretable, and impactful. I&amp;rsquo;m also a strong advocate of open-source tools and active knowledge sharing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;My research combines economics, econometrics, and machine learning to understand social phenomena, anticipate crises, and inform policy decisions. Recently, I have developed data-driven forecasting tools and applied causal methods in panel data to study economic dynamics in real-world settings.&lt;/p&gt;
+&lt;p&gt;Earlier, I worked as a macroeconomic specialist in Peru 🇵🇪, focusing on macro modeling, forecasting, and scenario analysis. I continue to collaborate on applied projects, which keeps my work grounded in practical policy questions.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Research</title>
@@ -57,17 +56,20 @@ Key features: impulse responses and variance decompositions, conditional forecas
       <guid>https://renatovassallo.github.io/research/</guid>
       <description>&lt;h2 id=&#34;-journal-articles&#34;&gt;📄 Journal Articles&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries&lt;/strong&gt;&lt;br&gt;
-with Gabriel Rodríguez and Paul Castillo. &lt;em&gt;Economic Modelling, July 2023&lt;/em&gt;&lt;br&gt;
+with Gabriel Rodríguez and Paul Castillo.&lt;br&gt;
+&lt;em&gt;Economic Modelling, July 2023&lt;/em&gt;&lt;br&gt;
 &lt;a href=&#34;https://doi.org/10.1016/j.econmod.2023.106302&#34;&gt;Published Paper&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;-working-papers&#34;&gt;🧪 Working Papers&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data&lt;/strong&gt;&lt;br&gt;
-with Daniela de los Santos and Eric Frey. &lt;em&gt;Universitat Pompeu Fabra, August 2023&lt;/em&gt;&lt;br&gt;
-&lt;a href=&#34;https://repositori.upf.edu/handle/10230/58359&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Semantic Similarity Measures in Newspaper Text for Detecting and Predicting Disruptive Institutional Events&lt;/strong&gt;&lt;br&gt;
+with Laura Mayoral, Hannes Mueller, Christopher Rauh, and Margherita Phillip.&lt;br&gt;
+&lt;em&gt;Institut d&amp;rsquo;Anàlisi Econòmica (IAE-CSIC), February 2026&lt;/em&gt;&lt;br&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1uxZmjgEM4E4g5NFa8pjaKpFHbOpP6CUr/view?usp=drivesdk&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Measuring Potential Output after COVID-19: An Extended Multivariate Filter&lt;/strong&gt;&lt;br&gt;
-with William Sánchez. &lt;em&gt;Fiscal Council of Peru, August 2023&lt;/em&gt;&lt;br&gt;
-&lt;a href=&#34;https://cf.gob.pe/documentos/documento-de-investigacion-n-003-2023-midiendo-el-pbi-potencial-peruano-tras-la-pandemia-del-covid-19-un-filtro-multivariado-extendido/&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data&lt;/strong&gt;&lt;br&gt;
+with Daniela de los Santos and Eric Frey.&lt;br&gt;
+&lt;em&gt;Universitat Pompeu Fabra, August 2023&lt;/em&gt;&lt;br&gt;
+&lt;a href=&#34;https://repositori.upf.edu/handle/10230/58359&#34;&gt;Working Paper&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
