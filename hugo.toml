@@ -30,12 +30,15 @@ theme = "PaperMod"
       url = "https://linkedin.com/in/renatovassallo"
       icon = "linkedin"
 
+  [params.academic]
+    sidebarBio = ["Economics", "Econometrics", "Machine Learning"]
+
 
 [menu]
   [[menu.main]]
     identifier = "home"
     name = "Home"
-    url = "/home/"
+    url = "/"
     weight = 1
 
   [[menu.main]]

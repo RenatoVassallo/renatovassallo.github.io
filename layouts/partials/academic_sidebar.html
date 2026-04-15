@@ -1,0 +1,49 @@
+{{- $profile := site.Params.profileMode -}}
+{{- $academic := site.Params.academic -}}
+{{- $imageURL := $profile.imageUrl | default "" -}}
+
+<aside class="academic-sidebar" aria-label="Profile">
+    <div class="academic-sidebar-inner" itemscope itemtype="https://schema.org/Person">
+        {{- with $imageURL }}
+        {{- $parsed := urls.Parse . -}}
+        {{- $src := cond $parsed.IsAbs . (. | relURL) -}}
+        {{- $imageWidth := $profile.imageWidth | default 160 -}}
+        {{- $imageHeight := $profile.imageHeight | default $imageWidth -}}
+        <div class="academic-avatar">
+            <img src="{{ $src }}" alt="{{ $profile.imageTitle | default site.Title }}" width="{{ $imageWidth }}" height="{{ $imageHeight }}" itemprop="image">
+        </div>
+        {{- end }}
+
+        <div class="academic-author">
+            <h1 class="academic-author-name" itemprop="name">{{ $profile.title | default site.Title | markdownify }}</h1>
+            {{- with $academic.sidebarBio }}
+            <p class="academic-author-bio">
+                {{- range . }}
+                <span>{{ . | markdownify }}</span>
+                {{- end }}
+            </p>
+            {{- else }}
+            {{- with $profile.subtitle }}
+            <div class="academic-author-bio" itemprop="description">{{ . | markdownify }}</div>
+            {{- end }}
+            {{- end }}
+        </div>
+
+        {{- with $profile.buttons }}
+        <nav class="academic-follow" aria-label="Profile links">
+            <h2 class="academic-follow-title">Follow</h2>
+            <ul class="academic-social-links">
+                {{- range . }}
+                {{- $iconName := .icon | default .name -}}
+                <li>
+                    <a href="{{ .url | safeURL }}" rel="noopener noreferrer me" target="_blank">
+                        <span class="academic-social-icon" aria-hidden="true">{{ partial "svg.html" (dict "name" $iconName) }}</span>
+                        <span>{{ .name }}</span>
+                    </a>
+                </li>
+                {{- end }}
+            </ul>
+        </nav>
+        {{- end }}
+    </div>
+</aside>
