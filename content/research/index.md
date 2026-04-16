@@ -10,7 +10,7 @@ description: "Macroeconometrics, machine learning, and policy-oriented empirical
 
 With Laura Mayoral, Hannes Mueller, Christopher Rauh, and Margherita Phillip.\
 _Institut d'Anàlisi Econòmica (IAE-CSIC), February 2026_\
-[Working Paper](https://drive.google.com/file/d/1uxZmjgEM4E4g5NFa8pjaKpFHbOpP6CUr/view?usp=drivesdk)
+[Working Paper](https://bse.eu/research/working-papers/semantic-similarity-measures-in-newspaper-text-for-detecting-and-predicting-disruptive-institutional-events)
 
 ### Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data
 
