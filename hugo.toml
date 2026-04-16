@@ -2,6 +2,7 @@ baseURL = "https://renatovassallo.github.io/"
 languageCode = "en-us"
 title = "Renato Vassallo"
 theme = "PaperMod"
+copyright = "&copy; 2026 Renato Vassallo"
 
 [services]
   [services.googleAnalytics]
@@ -11,6 +12,8 @@ theme = "PaperMod"
   math = true
   env = "production"
   ShowReadingTime = true
+  defaultTheme = "light"
+  disableThemeToggle = true
 
   [params.profileMode]
   enabled = true
@@ -19,6 +22,11 @@ theme = "PaperMod"
     imageUrl = "images/photo_bse.png"  # relative to /static
     imageTitle = "Renato Vassallo"
     imageWidth = 150
+
+    [[params.profileMode.buttons]]
+      name = "Email"
+      url = "mailto:renato.vassallo@bse.eu"
+      icon = "email"
 
     [[params.profileMode.buttons]]
       name = "GitHub"
@@ -48,17 +56,25 @@ theme = "PaperMod"
     weight = 2
 
   [[menu.main]]
+    identifier = "teaching"
+    name = "Teaching"
+    url = "/teaching/"
+    weight = 3
+
+  [[menu.main]]
     name = "CV"
     url = "pdf/cv_feb26.pdf"
-    weight = 3
+    weight = 4
+    [menu.main.params]
+      newTab = true
 
   [[menu.main]]
     name = "Software"
     url = "/software/"
-    weight = 4
+    weight = 5
 
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
     url = "/posts/"
-    weight = 5
+    weight = 6

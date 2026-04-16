@@ -11,16 +11,16 @@ math: true
 
 We will explore step by step how to estimate a **Bayesian Vector Autoregression (BVAR)** in Python, covering the theory and implementation from scratch:
 
-- 📊 Data preparation  
-- 📏 Prior distributions and initial values
-- 🧮 Gibbs sampling for posterior simulation  
-- 🔁 Structural identification and impulse response estimation
+- Data preparation
+- Prior distributions and initial values
+- Gibbs sampling for posterior simulation
+- Structural identification and impulse response estimation
 
 Finally, we’ll show how this process becomes much simpler using [`MacroPy`](https://github.com/RenatoVassallo/MacroPy), an early-stage Python package that could be a great fit if you’re into macroeconometrics.
 
 ![Overview](/images/posts/bvar_tutorial/macropy_logo.png)
 
-> 📚 Explore the [documentation and tutorials](https://github.com/RenatoVassallo/MacroPy/tree/main/tutorials) for hands-on notebooks.
+> Explore the [documentation and tutorials](https://github.com/RenatoVassallo/MacroPy/tree/main/tutorials) for hands-on notebooks.
 
 ---
 
@@ -265,7 +265,7 @@ This gives you a full distribution of IRFs for each shock and variable. You can 
 
 ---
 
-## Estimating a BVAR using MacroPy 🐍
+## Estimating a BVAR using MacroPy
 
 Instead of coding every step from scratch, you can estimate the same **Bayesian VAR model** using the built-in functions in `MacroPy`.
 
@@ -289,16 +289,16 @@ irfs = bvar.compute_irfs(plot_irfs=True)
 
 ---
 
-## 🚀 What’s Next?
+## What’s Next?
 
 If you’re still with me at this point, you’re clearly serious about Bayesian VARs. And that’s great, because there’s **a lot more you can do with `MacroPy`**.
 
 From this solid foundation, you can easily extend your analysis to include:
-* 📉 Forecast Error Variance Decomposition (FEVD)
-* 🔮 Unconditional forecasts with fan charts
-* 🎯 Conditional forecasts à la Waggoner & Zha (1999)
-* 🧱 Block exogeneity restrictions
-* 🎛️ Custom prior configurations
-* 📊 And much more!
+* Forecast Error Variance Decomposition (FEVD)
+* Unconditional forecasts with fan charts
+* Conditional forecasts à la Waggoner & Zha (1999)
+* Block exogeneity restrictions
+* Custom prior configurations
+* And much more
 
-👉 Dive into a real-world case with [this hands-on tutorial notebook](https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/tutorial_bvar.ipynb), where we estimate and interpret a **small macro-fiscal BVAR model**.
+Dive into a real-world case with [this hands-on tutorial notebook](https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/tutorial_bvar.ipynb), where we estimate and interpret a **small macro-fiscal BVAR model**.

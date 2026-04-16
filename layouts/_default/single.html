@@ -47,7 +47,7 @@
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}
-      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>
     {{- if (.Param "ShowPostNavLinks") }}
@@ -64,6 +64,7 @@
 </article>
 {{- else }}
 <article class="post-single academic-text-page">
+  {{- partial "academic_section_header.html" . -}}
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}

@@ -1,0 +1,58 @@
+{{- define "main" }}
+<article class="post-single academic-text-page teaching-page">
+    {{- partial "academic_section_header.html" . -}}
+
+    {{- with .Params.courses }}
+    <div class="teaching-course-list">
+        {{- range . }}
+        {{- if ne .enabled false }}
+        <section class="teaching-course">
+            <div class="teaching-course-header">
+                <p class="academic-kicker">
+                    {{- with .institution }}{{ . }}{{ end -}}
+                    {{- if and .institution .term }} · {{ end -}}
+                    {{- with .term }}{{ . }}{{ end -}}
+                </p>
+                <h2>{{ .title }}</h2>
+                {{- with .description }}
+                <p>{{ . }}</p>
+                {{- end }}
+            </div>
+
+            {{- with .sessions }}
+            <div class="teaching-session-list">
+                {{- range . }}
+                {{- if ne .enabled false }}
+                <article class="teaching-session">
+                    <div class="teaching-session-copy">
+                        <h3>{{ .title }}</h3>
+                        {{- with .description }}
+                        <p>{{ . }}</p>
+                        {{- end }}
+                    </div>
+                    {{- if or .slides .code }}
+                    <div class="teaching-session-links">
+                        {{- with .slides }}
+                        {{- $url := . -}}
+                        {{- $parsed := urls.Parse $url -}}
+                        <a href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">Slides</a>
+                        {{- end }}
+                        {{- with .code }}
+                        {{- $url := . -}}
+                        {{- $parsed := urls.Parse $url -}}
+                        <a href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">Code</a>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+                </article>
+                {{- end }}
+                {{- end }}
+            </div>
+            {{- end }}
+        </section>
+        {{- end }}
+        {{- end }}
+    </div>
+    {{- end }}
+</article>
+{{- end }}

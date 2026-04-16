@@ -31,7 +31,7 @@ These methods remain popular due to their transparency and simplicity, and conti
 
 ---
 
-### 🧰 Example: EPU-style Dictionary Scoring
+### Example: EPU-style Dictionary Scoring
 
 ```python
 from FewShotX import DictionaryScorer
@@ -77,7 +77,7 @@ $$
 
 ---
 
-### 🧪 Code Example
+### Code Example
 
 ```python
 from FewShotX import Embeddings, ZeroShotLearner
@@ -126,7 +126,7 @@ Examples include:
 
 ---
 
-### 🔧 Method Overview
+### Method Overview
 
 [FewShotX](https://github.com/RenatoVassallo/FewShotX) implements a two-stage pipeline:
 
@@ -146,7 +146,7 @@ $$
 
 ---
 
-### 🧪 Code Example
+### Code Example
 
 ```python
 from FewShotX import Embeddings, FewShotLearner
@@ -170,7 +170,7 @@ predictions
 
 ---
 
-### 🧠 Notes
+### Notes
 
 - This method is ideal for applications where labeled data is scarce.
 - Overfitting is common with few examples, so tuning `lambda`, `learning rate`, and `early stopping` is critical.
@@ -190,4 +190,3 @@ While dictionary, zero-shot, and few-shot learning provide scalable ways to turn
 > All examples in this post are implemented using [FewShotX](https://github.com/RenatoVassallo/FewShotX), a Python package  
 > for dictionary scoring, zero-shot, and few-shot learning in text classification.  
 > Explore the [documentation and tutorials](https://github.com/RenatoVassallo/FewShotX/tree/main/tutorials) for hands-on notebooks.
-

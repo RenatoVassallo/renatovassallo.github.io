@@ -1,0 +1,40 @@
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            {{- $labelText := site.Params.label.text | default site.Title -}}
+            {{- if site.Title }}
+            <a href="{{ "/" | relLangURL }}" accesskey="h" title="{{ $labelText }} (Alt + H)">
+                {{- $labelText -}}
+            </a>
+            {{- end }}
+        </div>
+
+        {{- $currentPage := . -}}
+        <ul id="menu">
+            {{- range site.Menus.main }}
+            {{- $rawURL := .URL -}}
+            {{- $parsedURL := urls.Parse $rawURL -}}
+            {{- $isExternal := $parsedURL.IsAbs -}}
+            {{- $urlLower := lower $rawURL -}}
+            {{- $isPDF := strings.HasSuffix $urlLower ".pdf" -}}
+            {{- $newTab := or (or .Params.newTab .Params.targetBlank) $isPDF -}}
+            {{- $href := cond $isExternal $rawURL ($rawURL | relLangURL) -}}
+            {{- $menuItemURL := "" -}}
+            {{- if not $isExternal -}}
+                {{- $menuItemURL = (cond (or (strings.HasSuffix $rawURL "/") $isPDF) $rawURL (printf "%s/" $rawURL)) | relLangURL -}}
+            {{- end -}}
+            {{- $pageURL := $currentPage.RelPermalink -}}
+            <li>
+                <a href="{{ $href }}" title="{{ .Title | default .Name }}"
+                    {{- if $newTab }} target="_blank" rel="noopener noreferrer"{{- end }}>
+                    <span {{- if and (not $isExternal) (eq $menuItemURL $pageURL) }} class="active" {{- end }}>
+                        {{- .Pre -}}
+                        {{- .Name -}}
+                        {{- .Post -}}
+                    </span>
+                </a>
+            </li>
+            {{- end }}
+        </ul>
+    </nav>
+</header>
