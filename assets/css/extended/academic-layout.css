@@ -90,19 +90,29 @@ a {
 
 #menu {
     align-items: center;
+    display: flex;
     flex: 1 1 auto;
     flex-wrap: wrap;
     gap: 28px;
     justify-content: flex-end;
+    list-style: none;
     margin: 0 var(--gap) 0 auto;
     min-width: 0;
+    overflow: visible;
     overflow-x: visible;
+    overflow-y: visible;
+    padding: 0 0 2px;
     scrollbar-width: none;
     white-space: normal;
+    word-break: normal;
 }
 
 #menu::-webkit-scrollbar {
     display: none;
+}
+
+#menu li {
+    flex: 0 0 auto;
 }
 
 #menu li + li {
@@ -531,9 +541,12 @@ a {
         justify-content: flex-start;
         margin: 0 var(--gap);
         overflow-x: auto;
+        overflow-y: hidden;
         padding-top: 12px;
+        padding-bottom: 2px;
         white-space: nowrap;
         width: calc(100% - var(--gap) * 2);
+        -webkit-overflow-scrolling: touch;
     }
 }
 
