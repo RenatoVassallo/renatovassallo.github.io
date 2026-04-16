@@ -80,7 +80,7 @@ a {
     font-family: var(--academic-serif);
     font-size: 22px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0;
 }
 
@@ -155,7 +155,7 @@ a {
     color: var(--primary);
     font-family: var(--academic-serif);
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0;
     line-height: 1.18;
 }
