@@ -9,7 +9,7 @@ description: "Macroeconometrics, machine learning, and policy-oriented empirical
 ### Semantic Similarity Measures in Newspaper Text for Detecting and Predicting Disruptive Institutional Events
 
 With Laura Mayoral, Hannes Mueller, Christopher Rauh, and Margherita Phillip.\
-_Institut d'Anàlisi Econòmica (IAE-CSIC), February 2026_\
+_BSE Working Paper, January 2026_\
 [Working Paper](https://bse.eu/research/working-papers/semantic-similarity-measures-in-newspaper-text-for-detecting-and-predicting-disruptive-institutional-events)
 
 ### Forecasting Global Refugee Flows: A Machine Learning Approach Using Non-Conventional Data
