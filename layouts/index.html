@@ -1,9 +1,6 @@
 {{- define "main" }}
 {{- $home := site.GetPage "/home" -}}
 <article class="post-single academic-home-page">
-    {{- with $home }}
-        {{- partial "academic_section_header.html" . -}}
-    {{- end }}
     <div class="post-content academic-home-content">
         {{- with $home }}
             {{- if not (.Param "disableAnchoredHeadings") }}
