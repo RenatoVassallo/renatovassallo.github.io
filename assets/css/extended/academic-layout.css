@@ -68,11 +68,11 @@ a {
     align-items: center;
     line-height: 1;
     min-height: var(--header-height);
+    row-gap: 12px;
 }
 
-.logo,
-#menu {
-    margin: auto var(--gap);
+.logo {
+    margin: auto 0 auto var(--gap);
 }
 
 .logo a {
@@ -89,7 +89,20 @@ a {
 }
 
 #menu {
+    align-items: center;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
     gap: 28px;
+    justify-content: flex-end;
+    margin: 0 var(--gap) 0 auto;
+    min-width: 0;
+    overflow-x: visible;
+    scrollbar-width: none;
+    white-space: normal;
+}
+
+#menu::-webkit-scrollbar {
+    display: none;
 }
 
 #menu li + li {
@@ -504,16 +517,23 @@ a {
     .nav {
         min-height: auto;
         padding: 14px 0 10px;
+        row-gap: 0;
     }
 
-    .logo,
-    #menu {
+    .logo {
         margin: 0 var(--gap);
     }
 
     #menu {
+        flex: 1 1 100%;
+        flex-wrap: nowrap;
         gap: 20px;
+        justify-content: flex-start;
+        margin: 0 var(--gap);
+        overflow-x: auto;
         padding-top: 12px;
+        white-space: nowrap;
+        width: calc(100% - var(--gap) * 2);
     }
 }
 
