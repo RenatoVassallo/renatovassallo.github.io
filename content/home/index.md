@@ -4,17 +4,21 @@ layout: "home"
 description: "Economics, econometrics, and machine learning for forecasting and policy analysis."
 ---
 
-My research combines economics, econometrics, and machine learning to understand social phenomena, anticipate crises, and inform policy decisions. Recently, I have developed data-driven forecasting tools and applied causal methods in panel data to study economic dynamics in real-world settings.
+I am a PhD-track student in the [International Doctorate in Economic Analysis - IDEA Program](https://www.uabidea.eu/home) at the Universitat Autònoma de Barcelona and the Barcelona School of Economics, and a researcher at the [Institute for Economic Analysis (IAE-CSIC)](https://www.iae.csic.es/). As part of the MOMENTUM Program (CSIC), I work on applying Artificial Intelligence to prediction and policy-relevant problems.
 
-Earlier, I worked as a macroeconomic specialist in Peru, focusing on macro modeling, forecasting, and scenario analysis. I continue to collaborate on applied projects, which keeps my work grounded in practical policy questions.
+My research combines economics, econometrics, and machine learning to better understand social dynamics, anticipate crises, and inform decision-making. As part of the [EconAI](https://econai.org) team, my recent work focuses on developing NLP applications and early-warning systems for international institutions such as the German Foreign Office, the United Nations, and the International Monetary Fund.
 
-I care about transparent and reproducible research and enjoy sharing tools and code whenever possible.
+More broadly, I am interested in how data-driven methods can be used to improve forecasting, identify risks, and support policy design in complex environments.
+
+Previously, I worked as a macroeconomic specialist at Peru’s Fiscal Council, where I focused on macroeconomic modeling, forecasting, and scenario analysis. This experience continues to shape my interest in applied, policy-oriented research.
+
+I value transparent and reproducible research and enjoy building tools and pipelines that can be easily understood, replicated, and extended.
 
 ---
 
 ### Recent Updates
 
-[New] [Applied Macroeconometrics 2026 - Workshop](/pdf/MA_Workshop_2026.pdf)
+<!--[New] [Applied Macroeconometrics 2026 - Workshop](/pdf/MA_Workshop_2026.pdf) -->
 - New working paper: _Semantic Similarity Measures in Newspaper Text for Detecting and Predicting Disruptive Institutional Events_, with L. Mayoral, H. Mueller, C. Rauh, and M. Phillip. [Working Paper](https://drive.google.com/file/d/1uxZmjgEM4E4g5NFa8pjaKpFHbOpP6CUr/view?usp=drivesdk).
 - Released a pre-publication version of [MacroPy](https://github.com/RenatoVassallo/MacroPy), a toolbox for macroeconometric analysis in Python. Install via .whl [here](https://github.com/RenatoVassallo/MacroPy/releases).
 - New blog post: [Bayesian VARs in Python](../posts/bvar_tutorial/). A step-by-step tutorial on Bayesian VARs, from scratch and with `MacroPy`.
