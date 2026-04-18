@@ -63,7 +63,7 @@ copyright = "&copy; 2026 Renato Vassallo"
 
   [[menu.main]]
     name = "CV"
-    url = "pdf/cv_feb26.pdf"
+    url = "pdf/cv_apr26.pdf"
     weight = 4
     [menu.main.params]
       newTab = true
