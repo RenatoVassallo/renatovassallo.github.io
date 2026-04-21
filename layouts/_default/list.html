@@ -52,6 +52,8 @@
 {{- end }}
 
 {{- $term := .Data.Term }}
+{{- $listClass := cond (eq .Type "posts") "academic-post-list" "" -}}
+<div{{ with $listClass }} class="{{ . }}"{{ end }}>
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -92,6 +94,7 @@
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
 </article>
 {{- end }}
+</div>
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">

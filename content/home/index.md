@@ -2,6 +2,35 @@
 title: "Home"
 layout: "home"
 description: "Economics, econometrics, and machine learning for forecasting and policy analysis."
+affiliations_title: "Affiliations & Collaborations"
+affiliations:
+  - name: "IAE-CSIC"
+    url: "https://www.iae.csic.es/"
+    logo: "/images/logos/iae.png"
+  - name: "MOMENTUM"
+    url: "https://momentum.csic.es"
+    logo: "/images/logos/momentum.png"
+  #- name: "CSIC"
+  #  url: "https://www.csic.es/es"
+  #  logo: "/images/logos/csic.png"
+  - name: "IDEA"
+    url: "https://www.uabidea.eu/home"
+    logo: "/images/logos/idea.png"
+  - name: "BSE"
+    url: "https://bse.eu/"
+    logo: "/images/logos/bse_logo.png"
+  - name: "EconAI"
+    url: "https://econai.org/"
+    logo: "/images/logos/econai.png"
+  - name: "IMF"
+    url: "https://www.imf.org/en/Home"
+    logo: "/images/logos/imf_logo.png"
+  - name: "GFFO"
+    url: "https://www.auswaertiges-amt.de/en"
+    logo: "/images/logos/gffo.png"
+  - name: "UNHCR"
+    url: "https://www.unhcr.org/"
+    logo: "/images/logos/unhcr.png"
 ---
 
 I am a PhD-track student in the [International Doctorate in Economic Analysis - IDEA Program](https://www.uabidea.eu/home) at the Universitat Autònoma de Barcelona and the Barcelona School of Economics, and a researcher at the [Institute for Economic Analysis (IAE-CSIC)](https://www.iae.csic.es/). As part of the MOMENTUM Program (CSIC), I work on applying Artificial Intelligence to prediction and policy-relevant problems.
@@ -13,6 +42,8 @@ More broadly, I am interested in how data-driven methods can be used to improve 
 Previously, I worked as a macroeconomic specialist at Peru’s Fiscal Council, where I focused on macroeconomic modeling, forecasting, and scenario analysis. This experience continues to shape my interest in applied, policy-oriented research.
 
 I value transparent and reproducible research and enjoy building tools and pipelines that can be easily understood, replicated, and extended.
+
+{{< affiliations >}}
 
 ---
 

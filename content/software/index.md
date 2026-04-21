@@ -1,30 +1,29 @@
 ---
 title: "Software"
+layout: "software"
 date: 2025-06-02
 description: "Open-source tools for applied macroeconometrics and text-as-data workflows."
+sections:
+  - title: "Projects"
+    entries:
+      - title: "FewShotX"
+        summary: "A Python package for zero-shot and few-shot learning using transformer models."
+        description: "Designed for fast experimentation in low-data or domain-specific NLP tasks."
+        links:
+          - label: "Tutorial"
+            url: "https://github.com/RenatoVassallo/FewShotX/blob/main/tutorials/ZeroShot_Tutorial.ipynb"
+          - label: "GitHub"
+            url: "https://github.com/RenatoVassallo/FewShotX"
+          - label: "Download (.whl)"
+            url: "https://github.com/RenatoVassallo/FewShotX/releases"
+      - title: "MacroPy"
+        summary: "A toolbox for macroeconometric analysis in Python."
+        description: "Impulse responses, variance decompositions, conditional forecasting, and smooth local projections for applied macroeconometric work."
+        links:
+          - label: "Tutorials"
+            url: "https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/"
+          - label: "GitHub"
+            url: "https://github.com/RenatoVassallo/MacroPy"
+          - label: "Download (.whl)"
+            url: "https://github.com/RenatoVassallo/MacroPy/releases"
 ---
-
-## FewShotX
-*A Python package for zero-shot and few-shot learning using transformer models*.  
-Designed for fast experimentation in low-data or domain-specific NLP tasks.  
-- [Tutorial](https://github.com/RenatoVassallo/FewShotX/blob/main/tutorials/ZeroShot_Tutorial.ipynb)
-- [GitHub](https://github.com/RenatoVassallo/FewShotX)
-- [Download (.whl)](https://github.com/RenatoVassallo/FewShotX/releases)
-
----
-## MacroPy
-*A Toolbox for Macroeconometric Analysis in Python*  
-Key features: impulse responses and variance decompositions, conditional forecasting, smooth local projections.  
-- [Tutorials](https://github.com/RenatoVassallo/MacroPy/blob/main/tutorials/)
-- [GitHub](https://github.com/RenatoVassallo/MacroPy)
-- [Download (.whl)](https://github.com/RenatoVassallo/MacroPy/releases)
-
-<!--
----
-## MIDAS
-*A generalized and extensible Python package for MIDAS regressions*  
-Supports both nowcasting and forecasting with mixed-frequency data. Modular and compatible with scikit-learn pipelines.  
-- [Tutorial](https://github.com/RenatoVassallo/MIDAS/blob/main/tutorial/MIDAS_Tutorial.ipynb)
-- [GitHub](https://github.com/RenatoVassallo/MIDAS)
-- [Download (.whl)](https://github.com/RenatoVassallo/MIDAS/releases)
--->

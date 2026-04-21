@@ -1,0 +1,28 @@
+{{- $title := .Page.Params.affiliations_title -}}
+{{- $items := .Page.Params.affiliations -}}
+{{- if $items }}
+<section class="affiliations-strip" aria-label="{{ $title | default `Affiliations & Collaborations` }}">
+    {{- with $title }}
+    <p class="academic-kicker">{{ . }}</p>
+    {{- end }}
+    <div class="affiliations-strip-grid">
+        {{- range $items }}
+        {{- $name := .name -}}
+        {{- $url := .url -}}
+        {{- $logos := .logos -}}
+        {{- $logo := .logo -}}
+        <a class="affiliations-strip-item" href="{{ $url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $name }}">
+            {{- with $logos }}
+                {{- range . }}
+                <img src="{{ . | relURL }}" alt="" loading="lazy">
+                {{- end }}
+            {{- else }}
+                {{- with $logo }}
+                <img src="{{ . | relURL }}" alt="" loading="lazy">
+                {{- end }}
+            {{- end }}
+        </a>
+        {{- end }}
+    </div>
+</section>
+{{- end }}
