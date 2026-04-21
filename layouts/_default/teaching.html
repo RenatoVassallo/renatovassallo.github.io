@@ -2,7 +2,42 @@
 <article class="post-single academic-text-page teaching-page">
     {{- partial "academic_section_header.html" . -}}
 
+    {{- with .Params.teaching_experience }}
+    <section class="teaching-block teaching-block-experience">
+        <header class="teaching-block-header">
+            <h2>Recent Teaching Experience</h2>
+        </header>
+        {{- range . }}
+        <div class="teaching-experience-group">
+            <p class="academic-kicker">{{ .title }}</p>
+            {{- with .entries }}
+            <div class="teaching-experience-list">
+                {{- range . }}
+                <article class="teaching-experience-item">
+                    <h3>{{ .course }}</h3>
+                    {{- with .faculty }}
+                    <p>Faculty: {{ . }}</p>
+                    {{- end }}
+                    {{- with .program }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                    {{- with .periods }}
+                    <p class="teaching-experience-periods">{{ delimit . " · " }}</p>
+                    {{- end }}
+                </article>
+                {{- end }}
+            </div>
+            {{- end }}
+        </div>
+        {{- end }}
+    </section>
+    {{- end }}
+
     {{- with .Params.courses }}
+    <section class="teaching-block teaching-block-materials">
+        <header class="teaching-block-header">
+            <h2>Teaching Material</h2>
+        </header>
     <div class="teaching-course-list">
         {{- range . }}
         {{- if ne .enabled false }}
@@ -13,7 +48,7 @@
                     {{- if and .institution .term }} · {{ end -}}
                     {{- with .term }}{{ . }}{{ end -}}
                 </p>
-                <h2>{{ .title }}</h2>
+                <h3>{{ .title }}</h3>
                 {{- with .description }}
                 <p>{{ . }}</p>
                 {{- end }}
@@ -53,6 +88,7 @@
         {{- end }}
         {{- end }}
     </div>
+    </section>
     {{- end }}
 </article>
 {{- end }}

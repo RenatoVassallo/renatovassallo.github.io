@@ -1,0 +1,39 @@
+{{- define "main" }}
+<article class="post-single academic-text-page academic-section-page research-page">
+    {{- partial "academic_section_header.html" . -}}
+
+    {{- with .Params.sections }}
+    <div class="academic-section-stack">
+        {{- range . }}
+        <section class="academic-section-block">
+            <header class="academic-section-block-header">
+                <h2>{{ .title }}</h2>
+            </header>
+            {{- with .entries }}
+            <div class="academic-entry-list">
+                {{- range . }}
+                <article class="academic-entry-card">
+                    <h3>{{ .title }}</h3>
+                    {{- with .authors }}
+                    <p class="academic-entry-authors">{{ . }}</p>
+                    {{- end }}
+                    {{- with .meta }}
+                    <p class="academic-entry-meta">{{ . }}</p>
+                    {{- end }}
+                    {{- with .links }}
+                    <div class="academic-entry-links">
+                        {{- range . }}
+                        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }}</a>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+                </article>
+                {{- end }}
+            </div>
+            {{- end }}
+        </section>
+        {{- end }}
+    </div>
+    {{- end }}
+</article>
+{{- end }}

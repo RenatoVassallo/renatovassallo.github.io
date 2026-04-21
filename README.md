@@ -53,6 +53,30 @@ hugo --minify --cleanDestinationDir --printPathWarnings --printI18nWarnings
 
 The generated site appears in `public/`. Do not commit `public/`.
 
+## Home Affiliations Strip
+
+The affiliations logo strip on the Home page is configured in `content/home/index.md` under:
+
+- `affiliations_title`
+- `affiliations`
+
+Each item can use either:
+
+- `logo` for a single image
+- `logos` for a grouped row of images under one linked institution
+
+Logos should live in `static/images/logos/`.
+
+The visual size is controlled in `assets/css/extended/academic-layout.css`:
+
+- desktop: `.affiliations-strip-item img`
+- mobile: the same selector inside the `@media (max-width: 640px)` block
+
+If you want bigger or smaller logos later, edit:
+
+- `max-width`
+- `max-height`
+
 ## Teaching Section
 
 The Teaching page is driven by the front matter in `content/teaching/index.md`.
