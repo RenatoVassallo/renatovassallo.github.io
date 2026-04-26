@@ -132,7 +132,7 @@ For a shareable course page, create a folder in `content/teaching/` and place an
 
 - a folder name that becomes the URL, for example `forecasting_bse/index.md` -> `/teaching/forecasting_bse/`
 - `layout: "teaching-course"` in the front matter
-- structured front matter such as `class_schedule`, `outline_blocks`, `materials`, and `assignment`
+- structured front matter such as `class_schedule`, `sessions`, and `assignment`
 
 Then connect it from `content/teaching/_index.md` with:
 
@@ -141,6 +141,12 @@ detail_page: "/teaching/forecasting_bse"
 ```
 
 This makes the course title in `Teaching Material` clickable from the main Teaching page.
+
+Inside a dedicated course page, each `sessions` item can hold:
+
+- `title`
+- `topics`
+- `materials`
 
 ## Adding Files
 

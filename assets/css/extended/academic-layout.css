@@ -148,6 +148,15 @@ a {
     padding-bottom: clamp(72px, 8vw, 112px);
 }
 
+.layout-teaching-course .academic-layout.main {
+    display: block;
+    max-width: calc(940px + var(--gap) * 2);
+}
+
+.layout-teaching-course .academic-sidebar {
+    display: none;
+}
+
 .academic-sidebar {
     position: sticky;
     top: calc(var(--header-height) + var(--gap));
@@ -742,8 +751,18 @@ a {
     margin-top: 8px;
 }
 
-.teaching-course-material-item .academic-entry-links {
+.teaching-course-session-item .academic-entry-links {
     align-items: center;
+    margin-top: 18px;
+}
+
+.teaching-course-material-placeholder {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.82;
+    text-transform: uppercase;
 }
 
 .teaching-course-material-pending {

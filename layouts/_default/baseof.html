@@ -16,10 +16,15 @@
 {{- if eq site.Params.defaultTheme `dark` -}}
 {{- print " dark" }}
 {{- end -}}
+{{- with .Layout -}}
+{{- print " layout-" . -}}
+{{- end -}}
 " id="top">
     {{- partialCached "header.html" . .Page -}}
     <main class="main academic-layout">
+        {{- if ne .Layout `teaching-course` }}
         {{- partial "academic_sidebar.html" . -}}
+        {{- end }}
         <div class="academic-primary">
             {{- block "main" . }}{{ end }}
         </div>
