@@ -398,6 +398,15 @@ a {
     margin: 0;
 }
 
+.academic-section-block-header p,
+.teaching-block-header p {
+    max-width: 720px;
+    margin: 10px 0 0;
+    color: var(--academic-muted);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
 .academic-entry-list {
     display: grid;
     gap: 18px;
@@ -572,11 +581,26 @@ a {
     line-height: 1.3;
 }
 
+.teaching-course-header h3 a,
+.teaching-course-backlink {
+    color: inherit;
+    box-shadow: none;
+}
+
+.teaching-course-header h3 a:hover,
+.teaching-course-backlink:hover {
+    color: var(--academic-link-hover);
+}
+
 .teaching-course-header p:not(.academic-kicker) {
     max-width: 720px;
     color: var(--academic-muted);
     font-size: 16px;
     line-height: 1.65;
+}
+
+.teaching-course-detail-link {
+    margin-top: 14px;
 }
 
 .teaching-session-list {
@@ -659,6 +683,75 @@ a {
     margin-top: 16px;
     color: var(--secondary);
     font-size: 13px;
+}
+
+.teaching-course-hero {
+    margin-bottom: 40px;
+}
+
+.teaching-course-hero .academic-kicker {
+    margin-bottom: 18px;
+}
+
+.teaching-course-hero-meta,
+.teaching-course-hero-period {
+    margin: 0;
+    color: var(--academic-muted);
+}
+
+.teaching-course-hero-meta {
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+.teaching-course-hero-period {
+    margin-top: 6px;
+    color: var(--secondary);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.teaching-course-intro {
+    margin-top: 22px;
+}
+
+.teaching-course-intro p {
+    max-width: 760px;
+}
+
+.teaching-course-detail {
+    gap: 42px;
+}
+
+.teaching-course-schedule-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.teaching-course-schedule-item p + p {
+    margin-top: 4px;
+}
+
+.teaching-course-bullet-list {
+    margin: 14px 0 0;
+    padding-left: 20px;
+    color: var(--academic-muted);
+}
+
+.teaching-course-bullet-list li + li {
+    margin-top: 8px;
+}
+
+.teaching-course-material-item .academic-entry-links {
+    align-items: center;
+}
+
+.teaching-course-material-pending {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .footer {

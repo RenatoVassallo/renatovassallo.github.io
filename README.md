@@ -22,7 +22,7 @@ Useful source locations:
 
 - Home page: `content/home/index.md`
 - Research page: `content/research/index.md`
-- Teaching page and course structure: `content/teaching/index.md`
+- Teaching page and course structure: `content/teaching/_index.md`
 - Software page: `content/software/index.md`
 - Posts: `content/posts/`
 - Site-wide menu, buttons, theme options, analytics: `hugo.toml`
@@ -79,7 +79,7 @@ If you want bigger or smaller logos later, edit:
 
 ## Teaching Section
 
-The Teaching page is driven by the front matter in `content/teaching/index.md`.
+The Teaching page is driven by the front matter in `content/teaching/_index.md`.
 
 Each course has:
 
@@ -88,6 +88,7 @@ Each course has:
 - `institution`
 - `term`
 - `description`
+- `detail_page` (optional)
 - `sessions`
 
 Each session can have:
@@ -123,6 +124,23 @@ Notes:
 - Put local PDFs in `static/pdf/`.
 - `code` can be a GitHub repository, notebook, or any external URL.
 - Leave `slides` or `code` empty if you do not want the link to appear yet.
+- `detail_page` can point to a dedicated course page such as `/teaching/forecasting_bse`.
+
+### Dedicated Course Pages
+
+For a shareable course page, create a folder in `content/teaching/` and place an `index.md` file inside it:
+
+- a folder name that becomes the URL, for example `forecasting_bse/index.md` -> `/teaching/forecasting_bse/`
+- `layout: "teaching-course"` in the front matter
+- structured front matter such as `class_schedule`, `outline_blocks`, `materials`, and `assignment`
+
+Then connect it from `content/teaching/_index.md` with:
+
+```yaml
+detail_page: "/teaching/forecasting_bse"
+```
+
+This makes the course title in `Teaching Material` clickable from the main Teaching page.
 
 ## Adding Files
 
