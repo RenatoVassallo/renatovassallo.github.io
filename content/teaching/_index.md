@@ -42,16 +42,8 @@ courses:
         code: ""
   - title: "Forecasting and Nowcasting with Text as Data"
     enabled: true
-    institution: "Barcelona School of Economics"
-    term: "2026"
+    institution: "BSE"
+    term: "2025-2026"
     description: "A practical course on transforming unstructured text into forecasting and nowcasting signals."
-    sessions:
-      - title: "Session 1 - Title"
-        enabled: true
-        slides: ""
-        code: ""
-      - title: "Session 2 - Title"
-        enabled: false
-        slides: ""
-        code: ""
+    detail_page: "/teaching/forecasting_bse"
 ---

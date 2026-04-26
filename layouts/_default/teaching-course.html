@@ -1,0 +1,141 @@
+{{- define "main" }}
+<article class="post-single academic-text-page teaching-course-page">
+    <header class="academic-section-header teaching-course-hero">
+        <p class="academic-kicker"><a class="teaching-course-backlink" href="{{ "/teaching/" | relURL }}">Teaching</a></p>
+        <h1>{{ .Title }}</h1>
+        {{- if or .Params.program .Params.institution }}
+        <p class="teaching-course-hero-meta">
+            {{- with .Params.program }}{{ . }}{{ end -}}
+            {{- if and .Params.program .Params.institution }} - {{ end -}}
+            {{- with .Params.institution }}{{ . }}{{ end -}}
+        </p>
+        {{- end }}
+        {{- with .Params.period }}
+        <p class="teaching-course-hero-period">{{ . }}</p>
+        {{- end }}
+        {{- if .Content }}
+        <div class="post-content teaching-course-intro">
+            {{- if not (.Param "disableAnchoredHeadings") }}
+            {{- partial "anchored_headings.html" .Content -}}
+            {{- else }}{{ .Content }}{{ end }}
+        </div>
+        {{- end }}
+    </header>
+
+    <div class="academic-section-stack teaching-course-detail">
+        {{- with .Params.class_schedule }}
+        <section class="academic-section-block">
+            <header class="academic-section-block-header">
+                <h2>Class Schedule</h2>
+                {{- with $.Params.office_hours }}
+                <p>Office hours: {{ . }}</p>
+                {{- end }}
+            </header>
+            <div class="academic-entry-list teaching-course-schedule-list">
+                {{- range . }}
+                <article class="academic-entry-card teaching-course-schedule-item">
+                    <h3>{{ .title }}</h3>
+                    {{- with .date }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                    {{- with .time }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                    {{- with .room }}
+                    <p>Room {{ . }}</p>
+                    {{- end }}
+                </article>
+                {{- end }}
+            </div>
+        </section>
+        {{- end }}
+
+        {{- with .Params.outline_blocks }}
+        <section class="academic-section-block">
+            <header class="academic-section-block-header">
+                <h2>Course Outline</h2>
+            </header>
+            <div class="academic-entry-list">
+                {{- range . }}
+                <article class="academic-entry-card">
+                    <h3>{{ .title }}</h3>
+                    {{- with .topics }}
+                    <ul class="teaching-course-bullet-list">
+                        {{- range . }}
+                        <li>{{ . }}</li>
+                        {{- end }}
+                    </ul>
+                    {{- end }}
+                </article>
+                {{- end }}
+            </div>
+        </section>
+        {{- end }}
+
+        {{- with .Params.materials }}
+        <section class="academic-section-block">
+            <header class="academic-section-block-header">
+                <h2>Materials</h2>
+                {{- with $.Params.materials_note }}
+                <p>{{ . }}</p>
+                {{- end }}
+            </header>
+            <div class="academic-entry-list">
+                {{- range . }}
+                <article class="academic-entry-card teaching-course-material-item">
+                    <h3>{{ .title }}</h3>
+                    {{- with .description }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                    {{- with .links }}
+                    <div class="academic-entry-links">
+                        {{- $hasLinks := false -}}
+                        {{- range . }}
+                        {{- $label := .label -}}
+                        {{- with .url }}
+                            {{- $hasLinks = true -}}
+                            {{- $url := . -}}
+                            {{- $parsed := urls.Parse $url -}}
+                            <a href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">{{ $label }}</a>
+                        {{- end }}
+                        {{- end }}
+                        {{- if not $hasLinks }}
+                        <span class="teaching-course-material-pending">Materials coming soon</span>
+                        {{- end }}
+                    </div>
+                    {{- else }}
+                    <div class="academic-entry-links">
+                        <span class="teaching-course-material-pending">Materials coming soon</span>
+                    </div>
+                    {{- end }}
+                </article>
+                {{- end }}
+            </div>
+        </section>
+        {{- end }}
+
+        {{- with .Params.assignment }}
+        <section class="academic-section-block">
+            <header class="academic-section-block-header">
+                <h2>{{ .title }}</h2>
+                {{- with .weight }}
+                <p>{{ . }}</p>
+                {{- end }}
+            </header>
+            <article class="academic-entry-card">
+                {{- with .date }}
+                <p class="academic-entry-meta">Date: {{ . }}</p>
+                {{- end }}
+                {{- with .details }}
+                <ul class="teaching-course-bullet-list">
+                    {{- range . }}
+                    <li>{{ . }}</li>
+                    {{- end }}
+                </ul>
+                {{- end }}
+            </article>
+        </section>
+        {{- end }}
+    </div>
+</article>
+{{- end }}

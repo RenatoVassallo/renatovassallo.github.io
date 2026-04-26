@@ -41,6 +41,11 @@
     <div class="teaching-course-list">
         {{- range . }}
         {{- if ne .enabled false }}
+        {{- $courseTitle := .title -}}
+        {{- $coursePage := false -}}
+        {{- with .detail_page }}
+            {{- $coursePage = site.GetPage . -}}
+        {{- end }}
         <section class="teaching-course">
             <div class="teaching-course-header">
                 <p class="academic-kicker">
@@ -48,9 +53,20 @@
                     {{- if and .institution .term }} · {{ end -}}
                     {{- with .term }}{{ . }}{{ end -}}
                 </p>
-                <h3>{{ .title }}</h3>
+                <h3>
+                    {{- with $coursePage }}
+                    <a href="{{ .RelPermalink }}">{{ $courseTitle }}</a>
+                    {{- else }}
+                    {{ $courseTitle }}
+                    {{- end }}
+                </h3>
                 {{- with .description }}
                 <p>{{ . }}</p>
+                {{- end }}
+                {{- with $coursePage }}
+                <div class="academic-entry-links teaching-course-detail-link">
+                    <a href="{{ .RelPermalink }}">Open Course Page</a>
+                </div>
                 {{- end }}
             </div>
 
