@@ -33,8 +33,8 @@ courses:
     description: "A hands-on course on macroeconometric tools for empirical research, forecasting, and policy analysis."
     sessions:
       - title: "Workshop April 2026"
-        enabled: true
-        slides: "pdf/MA_Workshop_2026.pdf"
+        enabled: false
+        slides: "pdf/teaching/MA_Workshop_2026.pdf"
         code: ""
       - title: "Session 2 - Title"
         enabled: false

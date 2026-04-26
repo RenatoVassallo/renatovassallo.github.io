@@ -10,11 +10,11 @@ class_schedule:
   - title: "Session 1"
     date: "Thursday 30 April"
     time: "15:00-17:00"
-    room: "24.009"
+    room: "24.009 (Ciutadella)"
   - title: "Session 2"
     date: "Wednesday 06 May"
     time: "08:30-12:30"
-    room: "24.112"
+    room: "24.112 (Ciutadella)"
   - title: "Session 3"
     date: "TBC"
 sessions_note: "Slides, code, and additional resources will be posted below as the course progresses."
@@ -25,7 +25,7 @@ sessions:
       - "Learning with limited supervision: zero and few-shot learning"
     materials:
       - label: "Introduction Slides"
-        url: ""
+        url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Introduction.pdf"
       - label: "Slides"
         url: ""
       - label: "Data"
@@ -60,4 +60,4 @@ assignment:
 ---
 This course provides an applied introduction to text as data for forecasting and nowcasting, with a strong emphasis on practical decision-making workflows.
 
-Students will learn how to turn unstructured text into usable signals, evaluate models in applied settings, and connect those tools to questions in macroeconomics and political economy.
+Students will learn how to transform unstructured text into usable signals, evaluate models in applied settings, and connect these tools to questions in the social sciences.

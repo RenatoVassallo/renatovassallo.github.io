@@ -157,7 +157,7 @@ Inside a dedicated course page, each `sessions` item can hold:
 Files in `static/` are published at the site root. For example:
 
 ```text
-static/pdf/cv_feb26.pdf -> https://renatovassallo.github.io/pdf/cv_feb26.pdf
+static/pdf/cv_feb26.pdf -> https://renatovassallo.github.io/pdf/cv/cv_feb26.pdf
 ```
 
 ## Updating the CV
