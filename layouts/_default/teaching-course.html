@@ -50,14 +50,17 @@
         </section>
         {{- end }}
 
-        {{- with .Params.outline_blocks }}
+        {{- with .Params.sessions }}
         <section class="academic-section-block">
             <header class="academic-section-block-header">
-                <h2>Course Outline</h2>
+                <h2>Sessions</h2>
+                {{- with $.Params.sessions_note }}
+                <p>{{ . }}</p>
+                {{- end }}
             </header>
             <div class="academic-entry-list">
                 {{- range . }}
-                <article class="academic-entry-card">
+                <article class="academic-entry-card teaching-course-session-item">
                     <h3>{{ .title }}</h3>
                     {{- with .topics }}
                     <ul class="teaching-course-bullet-list">
@@ -66,41 +69,17 @@
                         {{- end }}
                     </ul>
                     {{- end }}
-                </article>
-                {{- end }}
-            </div>
-        </section>
-        {{- end }}
-
-        {{- with .Params.materials }}
-        <section class="academic-section-block">
-            <header class="academic-section-block-header">
-                <h2>Materials</h2>
-                {{- with $.Params.materials_note }}
-                <p>{{ . }}</p>
-                {{- end }}
-            </header>
-            <div class="academic-entry-list">
-                {{- range . }}
-                <article class="academic-entry-card teaching-course-material-item">
-                    <h3>{{ .title }}</h3>
-                    {{- with .description }}
-                    <p>{{ . }}</p>
-                    {{- end }}
-                    {{- with .links }}
+                    {{- with .materials }}
                     <div class="academic-entry-links">
-                        {{- $hasLinks := false -}}
                         {{- range . }}
                         {{- $label := .label -}}
                         {{- with .url }}
-                            {{- $hasLinks = true -}}
                             {{- $url := . -}}
                             {{- $parsed := urls.Parse $url -}}
                             <a href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">{{ $label }}</a>
+                        {{- else }}
+                            <span class="teaching-course-material-placeholder">{{ $label }}</span>
                         {{- end }}
-                        {{- end }}
-                        {{- if not $hasLinks }}
-                        <span class="teaching-course-material-pending">Materials coming soon</span>
                         {{- end }}
                     </div>
                     {{- else }}
