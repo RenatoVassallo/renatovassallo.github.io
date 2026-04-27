@@ -1,7 +1,7 @@
 ---
 title: "Forecasting and Nowcasting with Text as Data"
 layout: "teaching-course"
-description: "An applied introduction to turning unstructured language into measurable signals, and signals into decisions in macroeconomics and political science."
+description: ""
 program: "Master's in Data Science for Decision Making"
 institution: "Barcelona School of Economics"
 period: "2025-2026"
@@ -30,7 +30,6 @@ sessions_note: "Slides, code, and additional resources will be posted below as t
 sessions:
   - title: "Session 1: From text to signals"
     topics:
-      - "Embeddings and similarity"
       - "Learning with limited supervision: zero and few-shot learning"
     materials:
       - label: "Introduction Slides"
@@ -42,7 +41,6 @@ sessions:
   - title: "Session 2: From signals to decisions"
     topics:
       - "Fine-tuning and policy-oriented evaluation"
-      - "In-class assignment"
     materials:
       - label: "Slides"
         url: ""
@@ -51,7 +49,6 @@ sessions:
   - title: "Session 3: Mixed-frequency methods"
     topics:
       - "Classic MIDAS and machine learning extensions"
-      - "Applications using EPU"
     materials:
       - label: "Slides"
         url: ""
@@ -70,4 +67,10 @@ assignment:
     #- Discussion of limitations, metrics, and extensions is encouraged.
     #- High-quality questions or comments to other groups may receive bonus points.
 ---
-Students will learn how to transform unstructured text into usable signals, evaluate models in applied settings, and connect these tools to questions in the social sciences.
+We will learn how to transform unstructured text into usable signals, evaluate models in applied settings, and connect these tools to questions in the social sciences and policy.
+
+The course covers a range of methods—from simple dictionary-based approaches to supervised models and modern LLM-based techniques—highlighting their strengths, limitations, and trade-offs. A central focus is on building text-based indicators to nowcast real-world events and forecast risks in applied contexts.
+
+Particular emphasis is placed on fine-tuning, model evaluation, and threshold selection, with decisions guided by policy-relevant trade-offs (e.g., false positives vs. missed events). We also discuss why frequency mismatches in data matter, and introduce mixed-frequency methods to better integrate information from different sources.
+
+By the end of the course, students will be able to construct text-based indicators using state-of-the-art methods that capture semantic and contextual information, and deploy them in decision-oriented applications.
