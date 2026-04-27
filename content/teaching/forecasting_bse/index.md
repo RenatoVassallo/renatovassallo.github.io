@@ -23,7 +23,9 @@ class_schedule:
     time: "08:30-12:30"
     room: "24.112 (Ciutadella)"
   - title: "Session 3"
-    date: "TBC"
+    date: "Friday 08 May"
+    time: "12:30-14:30"
+    room: "24.009 (Ciutadella)"
 sessions_note: "Slides, code, and additional resources will be posted below as the course progresses."
 sessions:
   - title: "Session 1: From text to signals"
@@ -39,8 +41,8 @@ sessions:
         url: ""
   - title: "Session 2: From signals to decisions"
     topics:
-      - "Fine-tuning and evaluation metrics"
-      - "Applications in political science and macroeconomics"
+      - "Fine-tuning and policy-oriented evaluation"
+      - "In-class assignment"
     materials:
       - label: "Slides"
         url: ""
@@ -58,12 +60,14 @@ sessions:
 assignment:
   title: "In-class assignment"
   weight: "20% of overall grade"
-  lead: "Apply a method from Sessions 1-2 to a chosen corpus."
+  lead: "Construct and evaluate text-based signals"
   date: "Wednesday 06 May"
   details:
-    - "Duration: 45-60 minutes, followed by a brief 5-minute presentation per group."
     - "Work in groups of up to 4 members."
+    - "Duration: 45-60 minutes, followed by a brief 5-minute presentation per group."
     - "You will have access to three text corpora."
-    - "Select one corpus and apply any method from Sessions 1-2."
+    - "Select one corpus, construct a text-based signal using methods from Sessions 1-2, and apply it to a specific task (event detection, classification, monitoring, or forecasting)."
+    #- Discussion of limitations, metrics, and extensions is encouraged.
+    #- High-quality questions or comments to other groups may receive bonus points.
 ---
 Students will learn how to transform unstructured text into usable signals, evaluate models in applied settings, and connect these tools to questions in the social sciences.
