@@ -876,6 +876,34 @@ a {
     gap: 10px;
 }
 
+.teaching-course-setup-intro {
+    margin: 0 0 12px;
+}
+
+.teaching-course-setup-intro p,
+.teaching-course-setup-repo {
+    margin: 0;
+    color: var(--academic-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.teaching-course-setup-repo {
+    margin-top: 6px;
+}
+
+.teaching-course-setup-repo span {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.teaching-course-setup-repo a {
+    margin-left: 8px;
+}
+
 .teaching-course-setup-item {
     display: grid;
     grid-template-columns: minmax(168px, 220px) minmax(0, 1fr);
@@ -951,6 +979,31 @@ a {
 
 .teaching-course-command-block:hover .copy-code {
     opacity: 1;
+}
+
+.teaching-course-setup-guide {
+    margin: 14px 0 0;
+}
+
+.teaching-course-setup-guide a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.teaching-course-setup-guide-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+}
+
+.teaching-course-setup-guide-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .teaching-course-schedule-grid {

@@ -17,6 +17,10 @@ office_hours: "Available by prior request."
 environment_setup:
   title: "Environment Setup"
   note: "Please complete this setup before Session 1."
+  intro: "We will use the materials in the GitHub repository below. Before class, please make sure you have Python 3.11, Git, and Visual Studio Code with the Python, Pylance, and Jupyter extensions installed."
+  repository:
+    label: "BSE-ForecastNLP"
+    url: "https://github.com/RenatoVassallo/BSE-ForecastNLP.git"
   steps:
     - title: "Verify Python 3.11"
       description: "Check that Python 3.11 is available on your machine."
@@ -38,6 +42,9 @@ environment_setup:
       commands:
         - "pip install -r requirements.txt"
       note: "We will share any Session 3-specific package guidance later."
+  guide:
+    label: "Detailed installation guide for macOS and Windows (PDF)"
+    url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Setup_Guide.pdf"
 class_schedule:
   - title: "Session 1"
     date: "Thursday 30 April"
