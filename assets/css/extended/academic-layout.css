@@ -867,6 +867,62 @@ a {
     height: 18px;
 }
 
+.teaching-course-setup-list {
+    display: grid;
+    gap: 0;
+}
+
+.teaching-course-setup-item {
+    display: grid;
+    grid-template-columns: minmax(96px, 120px) minmax(0, 1fr);
+    gap: 28px;
+    padding: 22px 0 24px;
+    border-top: 1px solid rgba(4, 25, 32, 0.1);
+}
+
+.teaching-course-setup-step {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.teaching-course-setup-main h3 {
+    margin: 0;
+    color: var(--primary);
+    font-family: var(--academic-serif);
+    font-size: clamp(20px, 2vw, 24px);
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.teaching-course-setup-description,
+.teaching-course-setup-note {
+    margin: 8px 0 0;
+    color: var(--academic-muted);
+    font-size: 15px;
+    line-height: 1.62;
+}
+
+.teaching-course-command-block {
+    margin: 14px 0 0;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(4, 25, 32, 0.08);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.teaching-course-command-block code {
+    color: var(--primary);
+    font-family: ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 .teaching-course-schedule-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1222,9 +1278,14 @@ a {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .teaching-course-setup-item,
     .teaching-course-material-item,
     .teaching-course-assignment-card {
         grid-template-columns: 1fr;
+    }
+
+    .teaching-course-setup-step {
+        margin-bottom: 6px;
     }
 
     .teaching-course-material-side {

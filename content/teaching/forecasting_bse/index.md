@@ -13,6 +13,30 @@ hero_title_main: "Forecasting & Nowcasting"
 hero_title_connector: "with"
 hero_title_accent: "Text as Data"
 office_hours: "Available by prior request."
+environment_setup:
+  title: "Environment Setup"
+  note: "Please complete this setup before Session 1."
+  steps:
+    - title: "Verify Python 3.11"
+      description: "Check that Python 3.11 is available on your machine."
+      commands:
+        - "python3.11 --version"
+      note: "If this command is not found, install Python 3.11 first and then continue."
+    - title: "Clone the course repository"
+      commands:
+        - "git clone https://github.com/RenatoVassallo/BSE-ForecastNLP.git"
+        - "cd BSE-ForecastNLP"
+    - title: "Create the virtual environment"
+      commands:
+        - "python3.11 -m venv .venv"
+    - title: "Activate the environment"
+      commands:
+        - "source .venv/bin/activate"
+      note: "On Windows: .\\.venv\\Scripts\\activate"
+    - title: "Install the main dependencies"
+      commands:
+        - "pip install -r requirements.txt"
+      note: "We will share any Session 3-specific package guidance later."
 class_schedule:
   - title: "Session 1"
     date: "Thursday 30 April"
