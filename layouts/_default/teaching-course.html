@@ -67,47 +67,10 @@
     </header>
 
     <div class="academic-section-stack teaching-course-detail">
-        {{- with .Params.environment_setup }}
-        <section class="academic-section-block teaching-course-block">
-            <header class="teaching-course-section-heading">
-                <span class="teaching-course-section-count">01</span>
-                <div class="teaching-course-section-heading-copy">
-                    <h2>{{ .title }}</h2>
-                    {{- with .note }}
-                    <p>{{ . }}</p>
-                    {{- end }}
-                </div>
-            </header>
-            {{- with .steps }}
-            <div class="teaching-course-setup-list">
-                {{- range $index, $step := . }}
-                <article class="teaching-course-setup-item">
-                    <div class="teaching-course-setup-side">
-                        <p class="teaching-course-setup-step">{{ printf "Step %02d" (add $index 1) }}</p>
-                    </div>
-                    <div class="teaching-course-setup-main">
-                        <h3>{{ $step.title }}</h3>
-                        {{- with $step.description }}
-                        <p class="teaching-course-setup-description">{{ . }}</p>
-                        {{- end }}
-                        {{- with $step.commands }}
-                        <pre class="teaching-course-command-block"><code>{{ delimit . "\n" }}</code></pre>
-                        {{- end }}
-                        {{- with $step.note }}
-                        <p class="teaching-course-setup-note">{{ . }}</p>
-                        {{- end }}
-                    </div>
-                </article>
-                {{- end }}
-            </div>
-            {{- end }}
-        </section>
-        {{- end }}
-
         {{- with .Params.class_schedule }}
         <section class="academic-section-block teaching-course-block">
             <header class="teaching-course-section-heading">
-                <span class="teaching-course-section-count">02</span>
+                <span class="teaching-course-section-count">01</span>
                 <div class="teaching-course-section-heading-copy">
                     <h2>Class Schedule</h2>
                     {{- with $.Params.office_hours }}
@@ -155,6 +118,43 @@
                 </article>
                 {{- end }}
             </div>
+        </section>
+        {{- end }}
+
+        {{- with .Params.environment_setup }}
+        <section class="academic-section-block teaching-course-block teaching-course-setup-block">
+            <header class="teaching-course-section-heading">
+                <span class="teaching-course-section-count">02</span>
+                <div class="teaching-course-section-heading-copy">
+                    <h2>{{ .title }}</h2>
+                    {{- with .note }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                </div>
+            </header>
+            {{- with .steps }}
+            <div class="teaching-course-setup-list">
+                {{- range $index, $step := . }}
+                <article class="teaching-course-setup-item">
+                    <div class="teaching-course-setup-meta">
+                        <p class="teaching-course-setup-step">{{ printf "Step %02d" (add $index 1) }}</p>
+                        <h3>{{ $step.title }}</h3>
+                        {{- with $step.description }}
+                        <p class="teaching-course-setup-description">{{ . }}</p>
+                        {{- end }}
+                    </div>
+                    <div class="teaching-course-setup-command-wrap">
+                        {{- with $step.commands }}
+                        <pre class="teaching-course-command-block"><code>{{ delimit . "\n" }}</code></pre>
+                        {{- end }}
+                        {{- with $step.note }}
+                        <p class="teaching-course-setup-note">{{ . }}</p>
+                        {{- end }}
+                    </div>
+                </article>
+                {{- end }}
+            </div>
+            {{- end }}
         </section>
         {{- end }}
 

@@ -1,6 +1,7 @@
 ---
 title: "Forecasting and Nowcasting with Text as Data"
 layout: "teaching-course"
+ShowCodeCopyButtons: true
 # description: "An applied introduction to turning unstructured language into measurable signals, and signals into decisions in macroeconomics and political science."
 program: "Master's in Data Science for Decision Making"
 institution: "Barcelona School of Economics"

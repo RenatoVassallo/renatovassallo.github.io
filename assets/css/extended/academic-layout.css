@@ -867,60 +867,90 @@ a {
     height: 18px;
 }
 
+.teaching-course-setup-block .teaching-course-section-heading {
+    margin-bottom: 14px;
+}
+
 .teaching-course-setup-list {
     display: grid;
-    gap: 0;
+    gap: 10px;
 }
 
 .teaching-course-setup-item {
     display: grid;
-    grid-template-columns: minmax(96px, 120px) minmax(0, 1fr);
-    gap: 28px;
-    padding: 22px 0 24px;
-    border-top: 1px solid rgba(4, 25, 32, 0.1);
+    grid-template-columns: minmax(168px, 220px) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    padding: 12px 0;
+    border-top: 1px solid rgba(4, 25, 32, 0.08);
 }
 
 .teaching-course-setup-step {
     margin: 0;
-    color: var(--secondary);
-    font-size: 11px;
+    color: var(--academic-link);
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     line-height: 1;
     text-transform: uppercase;
 }
 
-.teaching-course-setup-main h3 {
-    margin: 0;
+.teaching-course-setup-meta h3 {
+    margin: 6px 0 0;
     color: var(--primary);
-    font-family: var(--academic-serif);
-    font-size: clamp(20px, 2vw, 24px);
-    font-weight: 500;
-    line-height: 1.25;
+    font-family: var(--academic-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    text-transform: uppercase;
 }
 
 .teaching-course-setup-description,
 .teaching-course-setup-note {
-    margin: 8px 0 0;
+    margin: 6px 0 0;
     color: var(--academic-muted);
-    font-size: 15px;
-    line-height: 1.62;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.teaching-course-setup-command-wrap {
+    min-width: 0;
 }
 
 .teaching-course-command-block {
-    margin: 14px 0 0;
-    padding: 16px 18px;
-    background: rgba(255, 255, 255, 0.92);
+    margin: 0;
+    padding: 12px 48px 12px 14px;
+    background: rgba(248, 249, 251, 0.92);
     border: 1px solid rgba(4, 25, 32, 0.08);
-    border-radius: 8px;
+    border-radius: 6px;
     overflow-x: auto;
 }
 
 .teaching-course-command-block code {
     color: var(--primary);
     font-family: ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.teaching-course-command-block .copy-code {
+    display: block;
+    top: 8px;
+    right: 10px;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(4, 25, 32, 0.08);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0.82;
+    transition: opacity 0.18s ease;
+}
+
+.teaching-course-command-block:hover .copy-code {
+    opacity: 1;
 }
 
 .teaching-course-schedule-grid {
@@ -1286,6 +1316,10 @@ a {
 
     .teaching-course-setup-step {
         margin-bottom: 6px;
+    }
+
+    .teaching-course-setup-meta h3 {
+        margin-top: 0;
     }
 
     .teaching-course-material-side {
