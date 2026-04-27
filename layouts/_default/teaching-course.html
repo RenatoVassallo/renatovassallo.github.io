@@ -35,17 +35,8 @@
             {{- with .Params.period }}
             <p class="teaching-course-hero-period">{{ . }}</p>
             {{- end }}
-            {{- with .Description }}
-            <p class="teaching-course-hero-summary">{{ . }}</p>
-            {{- end }}
-            {{- if .Content }}
-            <div class="post-content teaching-course-intro">
-                {{- if not (.Param "disableAnchoredHeadings") }}
-                {{- partial "anchored_headings.html" .Content -}}
-                {{- else }}{{ .Content }}{{ end }}
-            </div>
-            {{- end }}
         </div>
+
         <div class="teaching-course-hero-art" aria-hidden="true">
             <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="12" y="18" width="256" height="144" rx="18" fill="rgba(255,255,255,0.7)"/>
@@ -59,6 +50,19 @@
                 <circle cx="162" cy="132" r="7" fill="currentColor"/>
                 <circle cx="233" cy="67" r="7" fill="currentColor"/>
             </svg>
+        </div>
+
+        <div class="teaching-course-hero-text">
+            {{- with .Description }}
+            <p class="teaching-course-hero-summary">{{ . }}</p>
+            {{- end }}
+            {{- if .Content }}
+            <div class="post-content teaching-course-intro">
+                {{- if not (.Param "disableAnchoredHeadings") }}
+                {{- partial "anchored_headings.html" .Content -}}
+                {{- else }}{{ .Content }}{{ end }}
+            </div>
+            {{- end }}
         </div>
     </header>
 
@@ -129,12 +133,18 @@
             </header>
             <div class="teaching-course-material-list">
                 {{- with .Params.introduction_material }}
-                <article class="teaching-course-material-item teaching-course-material-item-intro">
-                    <div class="teaching-course-material-header">
+                <article class="teaching-course-material-item">
+                    <div class="teaching-course-material-side">
+                        <span class="teaching-course-material-side-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 3H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V9z"></path>
+                                <path d="M14 3v6h6"></path>
+                            </svg>
+                        </span>
                         <p class="teaching-course-material-label">Introduction</p>
-                        <h3>{{ .title }}</h3>
                     </div>
-                    <div class="teaching-course-material-body">
+                    <div class="teaching-course-material-main">
+                        <h3>{{ .title }}</h3>
                         {{- with .description }}
                         <p class="teaching-course-material-description">{{ . }}</p>
                         {{- end }}
@@ -175,17 +185,35 @@
                 {{- with .Params.sessions }}
                 {{- range $index, $session := . }}
                 <article class="teaching-course-material-item">
-                    <div class="teaching-course-material-header">
-                        <p class="teaching-course-material-label">{{ printf "Session %02d" (add $index 1) }}</p>
-                        <h3>{{ $session.title }}</h3>
-                    </div>
-                    <div class="teaching-course-material-body">
-                        {{- with $session.topics }}
-                        <ul class="teaching-course-bullet-list">
-                            {{- range . }}
-                            <li>{{ . }}</li>
+                    <div class="teaching-course-material-side">
+                        <span class="teaching-course-material-side-icon" aria-hidden="true">
+                            {{- if eq $index 0 }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 18h8"></path>
+                                <path d="M10 12h8"></path>
+                                <path d="M10 6h8"></path>
+                                <path d="M4 6h.01"></path>
+                                <path d="M4 12h.01"></path>
+                                <path d="M4 18h.01"></path>
+                            </svg>
+                            {{- else if eq $index 1 }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19L10 13L14 17L20 9"></path>
+                                <path d="M15 9h5v5"></path>
+                            </svg>
+                            {{- else }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 15C6 11 8 11 11 15S16 19 21 11"></path>
+                                <path d="M3 9C6 5 8 5 11 9S16 13 21 5"></path>
+                            </svg>
                             {{- end }}
-                        </ul>
+                        </span>
+                        <p class="teaching-course-material-label">{{ printf "Session %02d" (add $index 1) }}</p>
+                    </div>
+                    <div class="teaching-course-material-main">
+                        <h3>{{ $session.title }}</h3>
+                        {{- with $session.topics }}
+                        <p class="teaching-course-material-description">{{ delimit . " · " }}</p>
                         {{- end }}
                         {{- with $session.materials }}
                         <div class="teaching-course-material-row">

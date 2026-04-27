@@ -696,12 +696,20 @@ a {
 
 .teaching-course-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(240px, 300px);
-    gap: clamp(28px, 6vw, 76px);
+    grid-template-columns: minmax(0, 1.65fr) minmax(240px, 300px);
+    grid-template-areas:
+        "copy art"
+        "text text";
+    gap: 18px clamp(28px, 6vw, 76px);
     align-items: start;
     margin-bottom: 48px;
     padding-bottom: 30px;
     border-bottom: 1px solid rgba(4, 25, 32, 0.1);
+}
+
+.teaching-course-hero-copy {
+    grid-area: copy;
+    min-width: 0;
 }
 
 .teaching-course-hero .academic-kicker {
@@ -741,6 +749,7 @@ a {
 .teaching-course-title-main,
 .teaching-course-title-accent-line {
     display: block;
+    white-space: nowrap;
 }
 
 .teaching-course-title-accent-line {
@@ -766,6 +775,7 @@ a {
 .teaching-course-hero-meta {
     font-size: 18px;
     line-height: 1.55;
+    white-space: nowrap;
 }
 
 .teaching-course-hero-period {
@@ -777,27 +787,34 @@ a {
 }
 
 .teaching-course-hero-summary {
-    max-width: 700px;
-    margin-top: 18px;
+    max-width: none;
+    margin-top: 0;
     font-size: 18px;
     line-height: 1.65;
 }
 
+.teaching-course-hero-text {
+    grid-area: text;
+    min-width: 0;
+    margin-top: 4px;
+}
+
 .teaching-course-intro {
-    margin-top: 16px;
+    margin-top: 14px;
 }
 
 .teaching-course-intro p {
-    max-width: 700px;
+    max-width: none;
     color: var(--academic-muted);
     font-size: 16px;
 }
 
 .teaching-course-hero-art {
+    grid-area: art;
     justify-self: end;
     width: 100%;
     max-width: 280px;
-    padding-top: clamp(54px, 8vw, 74px);
+    padding-top: clamp(10px, 2vw, 18px);
     color: rgba(123, 74, 50, 0.92);
 }
 
@@ -910,18 +927,21 @@ a {
 
 .teaching-course-material-list {
     display: grid;
-    gap: 18px;
+    gap: 0;
 }
 
 .teaching-course-material-item {
     display: grid;
-    grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
-    gap: 24px;
-    padding: 24px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 244, 245, 0.94) 100%);
-    border: 1px solid rgba(4, 25, 32, 0.08);
-    border-radius: 8px;
-    box-shadow: 0 18px 34px rgba(25, 28, 29, 0.05);
+    grid-template-columns: minmax(96px, 120px) minmax(0, 1fr);
+    gap: 28px;
+    padding: 22px 0 24px;
+    border-top: 1px solid rgba(4, 25, 32, 0.1);
+}
+
+.teaching-course-material-side {
+    display: grid;
+    gap: 12px;
+    justify-items: start;
 }
 
 .teaching-course-material-label {
@@ -934,8 +954,24 @@ a {
     text-transform: uppercase;
 }
 
-.teaching-course-material-header h3 {
-    margin: 14px 0 0;
+.teaching-course-material-side-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(123, 74, 50, 0.08);
+    color: var(--academic-link);
+}
+
+.teaching-course-material-side-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.teaching-course-material-main h3 {
+    margin: 0;
     color: var(--primary);
     font-family: var(--academic-serif);
     font-size: clamp(24px, 2.4vw, 29px);
@@ -1158,6 +1194,10 @@ a {
 
     .teaching-course-hero {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "copy"
+            "art"
+            "text";
     }
 
     .teaching-course-hero-art {
@@ -1173,6 +1213,13 @@ a {
     .teaching-course-material-item,
     .teaching-course-assignment-card {
         grid-template-columns: 1fr;
+    }
+
+    .teaching-course-material-side {
+        grid-auto-flow: column;
+        justify-content: start;
+        align-items: center;
+        gap: 12px;
     }
 
     .teaching-course-assignment-art {
@@ -1218,6 +1265,12 @@ a {
 
     .teaching-course-display-title {
         font-size: clamp(38px, 14vw, 52px);
+    }
+
+    .teaching-course-title-main,
+    .teaching-course-title-accent-line,
+    .teaching-course-hero-meta {
+        white-space: normal;
     }
 
     .teaching-course-badge-row {
