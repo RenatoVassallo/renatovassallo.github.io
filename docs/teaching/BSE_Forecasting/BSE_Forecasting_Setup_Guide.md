@@ -31,7 +31,9 @@ Before the first session, please install:
 
 As of April 27, 2026, Python 3.11 is already in a legacy maintenance phase. The most practical installer-based version for this course is **Python 3.11.9**, which is the last Python 3.11 bugfix release with macOS and Windows installers on python.org.
 
-- Official Python 3.11.9 release page: [python.org/downloads/release/python-3119](https://www.python.org/downloads/release/python-3119/)
+- Direct macOS installer: [python-3.11.9-macos11.pkg](https://www.python.org/ftp/python/3.11.9/python-3.11.9-macos11.pkg)
+- Direct Windows 64-bit installer: [python-3.11.9-amd64.exe](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
+- Archived Python 3.11.9 release notes (reference only): [python.org/downloads/release/python-3119](https://www.python.org/downloads/release/python-3119/)
 
 # Quick Checklist
 
@@ -58,13 +60,13 @@ cd BSE-ForecastNLP
 
 ## 1. Install Python 3.11.9
 
-Use the official Python 3.11.9 release page:
+Use the direct official installer:
 
-- [Python 3.11.9 release page](https://www.python.org/downloads/release/python-3119/)
+- [macOS universal installer for Python 3.11.9](https://www.python.org/ftp/python/3.11.9/python-3.11.9-macos11.pkg)
 
-On that page, download:
+If you want background details, the archived release notes are here:
 
-- **macOS 64-bit universal2 installer**
+- [Python 3.11.9 release notes](https://www.python.org/downloads/release/python-3119/)
 
 Then:
 
@@ -191,13 +193,13 @@ Typical path on macOS:
 
 ## 1. Install Python 3.11.9
 
-Use the official Python 3.11.9 release page:
+Use the direct official installer:
 
-- [Python 3.11.9 release page](https://www.python.org/downloads/release/python-3119/)
+- [Windows 64-bit installer for Python 3.11.9](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
 
-On that page, download:
+If you want background details, the archived release notes are here:
 
-- **Windows installer (64-bit)** if your machine is a standard 64-bit Windows computer
+- [Python 3.11.9 release notes](https://www.python.org/downloads/release/python-3119/)
 
 During installation:
 
@@ -346,7 +348,9 @@ If the error persists, copy the full error message and bring it to class or send
 # Official Links
 
 - Course repository: [github.com/RenatoVassallo/BSE-ForecastNLP](https://github.com/RenatoVassallo/BSE-ForecastNLP.git)
-- Python 3.11.9: [python.org/downloads/release/python-3119](https://www.python.org/downloads/release/python-3119/)
+- Python 3.11.9 macOS installer: [python-3.11.9-macos11.pkg](https://www.python.org/ftp/python/3.11.9/python-3.11.9-macos11.pkg)
+- Python 3.11.9 Windows installer: [python-3.11.9-amd64.exe](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
+- Python 3.11.9 archived release notes: [python.org/downloads/release/python-3119](https://www.python.org/downloads/release/python-3119/)
 - VS Code download: [code.visualstudio.com/download](https://code.visualstudio.com/download)
 - VS Code macOS setup: [code.visualstudio.com/docs/setup/osx](https://code.visualstudio.com/docs/setup/osx)
 - VS Code Windows setup: [code.visualstudio.com/docs/setup/windows](https://code.visualstudio.com/docs/setup/windows)
