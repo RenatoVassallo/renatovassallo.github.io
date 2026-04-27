@@ -1,7 +1,7 @@
 ---
 title: "Forecasting and Nowcasting with Text as Data"
 layout: "teaching-course"
-description: ""
+description: "An applied introduction to turning unstructured language into measurable signals, and signals into decisions in macroeconomics and political science."
 program: "Master's in Data Science for Decision Making"
 institution: "Barcelona School of Economics"
 period: "2025-2026"
@@ -27,18 +27,22 @@ class_schedule:
     time: "12:30-14:30"
     room: "24.009 (Ciutadella)"
 sessions_note: "Slides, code, and additional resources will be posted below as the course progresses."
+introduction_material:
+  title: "Introduction"
+  description: "Course framing, objectives, and workflow."
+  materials:
+    - label: "Slides"
+      url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Introduction.pdf"
 sessions:
-  - title: "Session 1: From text to signals"
+  - title: "From text to signals"
     topics:
       - "Learning with limited supervision: zero and few-shot learning"
     materials:
-      - label: "Introduction Slides"
-        url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Introduction.pdf"
       - label: "Slides"
         url: ""
       - label: "Data"
         url: ""
-  - title: "Session 2: From signals to decisions"
+  - title: "From signals to decisions"
     topics:
       - "Fine-tuning and policy-oriented evaluation"
     materials:
@@ -46,7 +50,7 @@ sessions:
         url: ""
       - label: "Data"
         url: ""
-  - title: "Session 3: Mixed-frequency methods"
+  - title: "Mixed-frequency methods"
     topics:
       - "Classic MIDAS and machine learning extensions"
     materials:

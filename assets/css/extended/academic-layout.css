@@ -696,9 +696,9 @@ a {
 
 .teaching-course-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(180px, 250px);
-    gap: clamp(24px, 5vw, 52px);
-    align-items: end;
+    grid-template-columns: minmax(0, 1.45fr) minmax(240px, 300px);
+    gap: clamp(28px, 6vw, 76px);
+    align-items: start;
     margin-bottom: 48px;
     padding-bottom: 30px;
     border-bottom: 1px solid rgba(4, 25, 32, 0.1);
@@ -796,7 +796,8 @@ a {
 .teaching-course-hero-art {
     justify-self: end;
     width: 100%;
-    max-width: 240px;
+    max-width: 280px;
+    padding-top: clamp(54px, 8vw, 74px);
     color: rgba(123, 74, 50, 0.92);
 }
 
@@ -816,7 +817,7 @@ a {
 
 .teaching-course-section-heading {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 16px;
     align-items: center;
     margin-bottom: 22px;
@@ -843,66 +844,36 @@ a {
     line-height: 1.6;
 }
 
-.teaching-course-section-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(123, 74, 50, 0.08);
-    color: var(--academic-link);
-}
-
-.teaching-course-section-icon svg,
 .teaching-course-meta-icon svg,
-.teaching-course-session-card-icon svg,
 .teaching-course-material-chip-icon svg {
     width: 18px;
     height: 18px;
 }
 
-.teaching-course-timeline {
+.teaching-course-schedule-grid {
     display: grid;
-    gap: 22px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 }
 
-.teaching-course-timeline-item {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(165px, 205px) minmax(0, 1fr);
-    gap: 28px;
-    padding: 0 0 22px 28px;
-    border-left: 1px solid rgba(4, 25, 32, 0.12);
+.teaching-course-schedule-card {
+    padding: 22px 22px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(4, 25, 32, 0.08);
+    border-radius: 8px;
 }
 
-.teaching-course-timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-.teaching-course-timeline-item::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: -6px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--academic-link);
-    box-shadow: 0 0 0 5px rgba(123, 74, 50, 0.09);
-}
-
-.teaching-course-timeline-session {
-    margin: 0 0 12px;
+.teaching-course-schedule-card-label {
+    margin: 0 0 14px;
     color: var(--secondary);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    line-height: 1.3;
+    line-height: 1;
     text-transform: uppercase;
 }
 
-.teaching-course-timeline-meta-line {
+.teaching-course-schedule-card-line {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -912,7 +883,7 @@ a {
     line-height: 1.45;
 }
 
-.teaching-course-timeline-meta-line + .teaching-course-timeline-meta-line {
+.teaching-course-schedule-card-line + .teaching-course-schedule-card-line {
     margin-top: 6px;
 }
 
@@ -925,54 +896,35 @@ a {
     color: var(--academic-link);
 }
 
-.teaching-course-timeline-copy h3 {
-    margin: 0 0 8px;
-    color: var(--primary);
-    font-family: var(--academic-serif);
-    font-size: clamp(22px, 2.2vw, 27px);
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-.teaching-course-timeline-copy p {
-    margin: 0;
+.teaching-course-bullet-list {
+    margin: 12px 0 0;
+    padding-left: 20px;
     color: var(--academic-muted);
     font-size: 15px;
     line-height: 1.6;
 }
 
-.teaching-course-bullet-list {
-    margin: 14px 0 0;
-    padding-left: 20px;
-    color: var(--academic-muted);
-}
-
 .teaching-course-bullet-list li + li {
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
-.teaching-course-session-grid {
+.teaching-course-material-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
 }
 
-.teaching-course-session-card {
+.teaching-course-material-item {
+    display: grid;
+    grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
+    gap: 24px;
     padding: 24px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 244, 245, 0.94) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 244, 245, 0.94) 100%);
     border: 1px solid rgba(4, 25, 32, 0.08);
     border-radius: 8px;
     box-shadow: 0 18px 34px rgba(25, 28, 29, 0.05);
 }
 
-.teaching-course-session-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-}
-
-.teaching-course-session-card-label {
+.teaching-course-material-label {
     margin: 0;
     color: var(--secondary);
     font-size: 11px;
@@ -982,36 +934,28 @@ a {
     text-transform: uppercase;
 }
 
-.teaching-course-session-card-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(123, 74, 50, 0.08);
-    color: var(--academic-link);
-}
-
-.teaching-course-session-card h3 {
-    margin: 18px 0 12px;
+.teaching-course-material-header h3 {
+    margin: 14px 0 0;
     color: var(--primary);
     font-family: var(--academic-serif);
-    font-size: clamp(23px, 2vw, 27px);
+    font-size: clamp(24px, 2.4vw, 29px);
     font-weight: 500;
     line-height: 1.2;
 }
 
-.teaching-course-session-card .teaching-course-bullet-list {
-    margin-top: 0;
+.teaching-course-material-description {
+    margin: 0;
+    color: var(--academic-muted);
+    font-size: 15px;
+    line-height: 1.62;
 }
 
 .teaching-course-material-row {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 20px;
-    padding-top: 16px;
+    margin-top: 18px;
+    padding-top: 14px;
     border-top: 1px solid rgba(4, 25, 32, 0.08);
 }
 
@@ -1021,7 +965,7 @@ a {
     gap: 8px;
     padding: 8px 12px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -1218,27 +1162,15 @@ a {
 
     .teaching-course-hero-art {
         justify-self: start;
-        max-width: 200px;
+        max-width: 240px;
+        padding-top: 8px;
     }
 
-    .teaching-course-section-heading {
-        grid-template-columns: auto minmax(0, 1fr);
-    }
-
-    .teaching-course-section-icon {
-        display: none;
-    }
-
-    .teaching-course-timeline-item {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        padding-left: 22px;
-    }
-
-    .teaching-course-session-grid {
+    .teaching-course-schedule-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .teaching-course-material-item,
     .teaching-course-assignment-card {
         grid-template-columns: 1fr;
     }
@@ -1296,7 +1228,11 @@ a {
         gap: 12px;
     }
 
-    .teaching-course-session-grid {
+    .teaching-course-schedule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teaching-course-material-item {
         grid-template-columns: 1fr;
     }
 }

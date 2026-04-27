@@ -148,6 +148,10 @@ Inside a dedicated course page, each `sessions` item can hold:
 - `topics`
 - `materials`
 
+You can also define:
+
+- `introduction_material` for a standalone introduction/resource block above the session materials
+
 Optional display fields for a more designed course page include:
 
 - `hero_badges`
