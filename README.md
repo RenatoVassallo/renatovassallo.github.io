@@ -148,6 +148,14 @@ Inside a dedicated course page, each `sessions` item can hold:
 - `topics`
 - `materials`
 
+Optional display fields for a more designed course page include:
+
+- `hero_badges`
+- `hero_title_main`
+- `hero_title_connector`
+- `hero_title_accent`
+- `assignment.lead`
+
 ## Adding Files
 
 - Images go in `static/images/`.

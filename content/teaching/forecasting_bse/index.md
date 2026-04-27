@@ -1,10 +1,17 @@
 ---
 title: "Forecasting and Nowcasting with Text as Data"
 layout: "teaching-course"
-description: "An applied course on text as data for forecasting and nowcasting in the Master's in Data Science for Decision Making at the Barcelona School of Economics."
+description: "An applied introduction to turning unstructured language into measurable signals, and signals into decisions in macroeconomics and political science."
 program: "Master's in Data Science for Decision Making"
 institution: "Barcelona School of Economics"
 period: "2025-2026"
+hero_badges:
+  - "Master's"
+  - "BSE"
+  - "2025-2026"
+hero_title_main: "Forecasting & Nowcasting"
+hero_title_connector: "with"
+hero_title_accent: "Text as Data"
 office_hours: "Available by prior request."
 class_schedule:
   - title: "Session 1"
@@ -51,6 +58,7 @@ sessions:
 assignment:
   title: "In-class assignment"
   weight: "20% of overall grade"
+  lead: "Apply a method from Sessions 1-2 to a chosen corpus."
   date: "Wednesday 06 May"
   details:
     - "Duration: 45-60 minutes, followed by a brief 5-minute presentation per group."
@@ -58,6 +66,4 @@ assignment:
     - "You will have access to three text corpora."
     - "Select one corpus and apply any method from Sessions 1-2."
 ---
-This course provides an applied introduction to text as data for forecasting and nowcasting, with a strong emphasis on practical decision-making workflows.
-
 Students will learn how to transform unstructured text into usable signals, evaluate models in applied settings, and connect these tools to questions in the social sciences.

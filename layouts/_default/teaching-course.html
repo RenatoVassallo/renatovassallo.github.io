@@ -1,49 +1,141 @@
 {{- define "main" }}
 <article class="post-single academic-text-page teaching-course-page">
     <header class="academic-section-header teaching-course-hero">
-        <p class="academic-kicker"><a class="teaching-course-backlink" href="{{ "/teaching/" | relURL }}">Teaching</a></p>
-        <h1>{{ .Title }}</h1>
-        {{- if or .Params.program .Params.institution }}
-        <p class="teaching-course-hero-meta">
-            {{- with .Params.program }}{{ . }}{{ end -}}
-            {{- if and .Params.program .Params.institution }} - {{ end -}}
-            {{- with .Params.institution }}{{ . }}{{ end -}}
-        </p>
-        {{- end }}
-        {{- with .Params.period }}
-        <p class="teaching-course-hero-period">{{ . }}</p>
-        {{- end }}
-        {{- if .Content }}
-        <div class="post-content teaching-course-intro">
-            {{- if not (.Param "disableAnchoredHeadings") }}
-            {{- partial "anchored_headings.html" .Content -}}
-            {{- else }}{{ .Content }}{{ end }}
+        <div class="teaching-course-hero-copy">
+            <p class="academic-kicker"><a class="teaching-course-backlink" href="{{ "/teaching/" | relURL }}">Teaching</a></p>
+            {{- with .Params.hero_badges }}
+            <div class="teaching-course-badge-row" aria-label="Course metadata">
+                {{- range . }}
+                <span class="teaching-course-badge">{{ . }}</span>
+                {{- end }}
+            </div>
+            {{- end }}
+            <h1 class="teaching-course-display-title">
+                {{- if .Params.hero_title_main }}
+                <span class="teaching-course-title-main">{{ .Params.hero_title_main }}</span>
+                <span class="teaching-course-title-accent-line">
+                    {{- with .Params.hero_title_connector }}
+                    <span class="teaching-course-title-connector">{{ . }}</span>
+                    {{- end }}
+                    {{- with .Params.hero_title_accent }}
+                    <em>{{ . }}</em>
+                    {{- end }}
+                </span>
+                {{- else }}
+                {{ .Title }}
+                {{- end }}
+            </h1>
+            {{- if or .Params.program .Params.institution }}
+            <p class="teaching-course-hero-meta">
+                {{- with .Params.program }}{{ . }}{{ end -}}
+                {{- if and .Params.program .Params.institution }} - {{ end -}}
+                {{- with .Params.institution }}{{ . }}{{ end -}}
+            </p>
+            {{- end }}
+            {{- with .Params.period }}
+            <p class="teaching-course-hero-period">{{ . }}</p>
+            {{- end }}
+            {{- with .Description }}
+            <p class="teaching-course-hero-summary">{{ . }}</p>
+            {{- end }}
+            {{- if .Content }}
+            <div class="post-content teaching-course-intro">
+                {{- if not (.Param "disableAnchoredHeadings") }}
+                {{- partial "anchored_headings.html" .Content -}}
+                {{- else }}{{ .Content }}{{ end }}
+            </div>
+            {{- end }}
         </div>
-        {{- end }}
+        <div class="teaching-course-hero-art" aria-hidden="true">
+            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="18" width="256" height="144" rx="18" fill="rgba(255,255,255,0.7)"/>
+                <path d="M36 126C62 101 79 95 101 104C119 111 137 136 162 132C189 128 206 74 233 67" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <path d="M36 96C64 107 83 69 112 74C138 79 154 122 178 119C206 116 221 85 246 91" stroke="currentColor" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
+                <path d="M36 112H246" stroke="currentColor" stroke-opacity="0.15" stroke-width="2"/>
+                <path d="M86 54V140" stroke="currentColor" stroke-opacity="0.12" stroke-width="2"/>
+                <path d="M152 54V140" stroke="currentColor" stroke-opacity="0.12" stroke-width="2"/>
+                <path d="M214 54V140" stroke="currentColor" stroke-opacity="0.12" stroke-width="2"/>
+                <circle cx="101" cy="104" r="7" fill="currentColor"/>
+                <circle cx="162" cy="132" r="7" fill="currentColor"/>
+                <circle cx="233" cy="67" r="7" fill="currentColor"/>
+            </svg>
+        </div>
     </header>
 
     <div class="academic-section-stack teaching-course-detail">
         {{- with .Params.class_schedule }}
-        <section class="academic-section-block">
-            <header class="academic-section-block-header">
-                <h2>Class Schedule</h2>
-                {{- with $.Params.office_hours }}
-                <p>Office hours: {{ . }}</p>
-                {{- end }}
+        <section class="academic-section-block teaching-course-block">
+            <header class="teaching-course-section-heading">
+                <span class="teaching-course-section-count">01</span>
+                <div class="teaching-course-section-heading-copy">
+                    <h2>Class Schedule</h2>
+                    {{- with $.Params.office_hours }}
+                    <p>Office hours: {{ . }}</p>
+                    {{- end }}
+                </div>
+                <span class="teaching-course-section-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="17" rx="3"></rect>
+                        <path d="M8 2v4M16 2v4M3 10h18"></path>
+                    </svg>
+                </span>
             </header>
-            <div class="academic-entry-list teaching-course-schedule-list">
-                {{- range . }}
-                <article class="academic-entry-card teaching-course-schedule-item">
-                    <h3>{{ .title }}</h3>
-                    {{- with .date }}
-                    <p>{{ . }}</p>
+            <div class="teaching-course-timeline">
+                {{- range $index, $item := . }}
+                {{- $sessionLabel := $item.title -}}
+                {{- $sessionName := $item.title -}}
+                {{- if lt $index (len $.Params.sessions) }}
+                    {{- with index $.Params.sessions $index }}
+                        {{- $sessionName = replaceRE "^Session [0-9]+: " "" .title -}}
                     {{- end }}
-                    {{- with .time }}
-                    <p>{{ . }}</p>
-                    {{- end }}
-                    {{- with .room }}
-                    <p>Room {{ . }}</p>
-                    {{- end }}
+                {{- end }}
+                <article class="teaching-course-timeline-item">
+                    <div class="teaching-course-timeline-meta">
+                        <p class="teaching-course-timeline-session">{{ $sessionLabel }}</p>
+                        {{- with $item.date }}
+                        <p class="teaching-course-timeline-meta-line">
+                            <span class="teaching-course-meta-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="17" rx="3"></rect>
+                                    <path d="M8 2v4M16 2v4M3 10h18"></path>
+                                </svg>
+                            </span>
+                            <span>{{ . }}</span>
+                        </p>
+                        {{- end }}
+                        {{- with $item.time }}
+                        <p class="teaching-course-timeline-meta-line">
+                            <span class="teaching-course-meta-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="8.5"></circle>
+                                    <path d="M12 7v5l3 2"></path>
+                                </svg>
+                            </span>
+                            <span>{{ . }}</span>
+                        </p>
+                        {{- end }}
+                        {{- with $item.room }}
+                        <p class="teaching-course-timeline-meta-line">
+                            <span class="teaching-course-meta-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 21s6-5.33 6-11a6 6 0 10-12 0c0 5.67 6 11 6 11z"></path>
+                                    <circle cx="12" cy="10" r="2.5"></circle>
+                                </svg>
+                            </span>
+                            <span>{{ . }}</span>
+                        </p>
+                        {{- end }}
+                    </div>
+                    <div class="teaching-course-timeline-copy">
+                        <h3>{{ $sessionName }}</h3>
+                        {{- if lt $index (len $.Params.sessions) }}
+                            {{- with index $.Params.sessions $index }}
+                                {{- with .topics }}
+                                <p>{{ index . 0 }}</p>
+                                {{- end }}
+                            {{- end }}
+                        {{- end }}
+                    </div>
                 </article>
                 {{- end }}
             </div>
@@ -51,17 +143,54 @@
         {{- end }}
 
         {{- with .Params.sessions }}
-        <section class="academic-section-block">
-            <header class="academic-section-block-header">
-                <h2>Sessions</h2>
-                {{- with $.Params.sessions_note }}
-                <p>{{ . }}</p>
-                {{- end }}
+        <section class="academic-section-block teaching-course-block">
+            <header class="teaching-course-section-heading">
+                <span class="teaching-course-section-count">02</span>
+                <div class="teaching-course-section-heading-copy">
+                    <h2>Sessions</h2>
+                    {{- with $.Params.sessions_note }}
+                    <p>{{ . }}</p>
+                    {{- end }}
+                </div>
+                <span class="teaching-course-section-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+                    </svg>
+                </span>
             </header>
-            <div class="academic-entry-list">
-                {{- range . }}
-                <article class="academic-entry-card teaching-course-session-item">
-                    <h3>{{ .title }}</h3>
+            <div class="teaching-course-session-grid">
+                {{- range $index, $session := . }}
+                {{- $sessionName := replaceRE "^Session [0-9]+: " "" $session.title -}}
+                <article class="teaching-course-session-card">
+                    <div class="teaching-course-session-card-top">
+                        <p class="teaching-course-session-card-label">{{ printf "Session %02d" (add $index 1) }}</p>
+                        <span class="teaching-course-session-card-icon" aria-hidden="true">
+                            {{- if eq $index 0 }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 18h8"></path>
+                                <path d="M10 12h8"></path>
+                                <path d="M10 6h8"></path>
+                                <path d="M4 6h.01"></path>
+                                <path d="M4 12h.01"></path>
+                                <path d="M4 18h.01"></path>
+                            </svg>
+                            {{- else if eq $index 1 }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19L10 13L14 17L20 9"></path>
+                                <path d="M15 9h5v5"></path>
+                            </svg>
+                            {{- else }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 15C6 11 8 11 11 15S16 19 21 11"></path>
+                                <path d="M3 9C6 5 8 5 11 9S16 13 21 5"></path>
+                            </svg>
+                            {{- end }}
+                        </span>
+                    </div>
+                    <h3>{{ $sessionName }}</h3>
                     {{- with .topics }}
                     <ul class="teaching-course-bullet-list">
                         {{- range . }}
@@ -70,20 +199,62 @@
                     </ul>
                     {{- end }}
                     {{- with .materials }}
-                    <div class="academic-entry-links">
+                    <div class="teaching-course-material-row">
                         {{- range . }}
                         {{- $label := .label -}}
                         {{- with .url }}
                             {{- $url := . -}}
                             {{- $parsed := urls.Parse $url -}}
-                            <a href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">{{ $label }}</a>
+                            <a class="teaching-course-material-chip teaching-course-material-chip-live" href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">
+                                <span class="teaching-course-material-chip-icon" aria-hidden="true">
+                                    {{- if in (lower $label) "slide" }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 3H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V9z"></path>
+                                        <path d="M14 3v6h6"></path>
+                                    </svg>
+                                    {{- else if in (lower $label) "data" }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="7" ry="3"></ellipse>
+                                        <path d="M5 5v14c0 1.66 3.13 3 7 3s7-1.34 7-3V5"></path>
+                                        <path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"></path>
+                                    </svg>
+                                    {{- else }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10 13a5 5 0 007.07 0l1.41-1.41a5 5 0 10-7.07-7.07L10.59 5"></path>
+                                        <path d="M14 11a5 5 0 01-7.07 0L5.51 9.59a5 5 0 017.07-7.07L13.41 3"></path>
+                                    </svg>
+                                    {{- end }}
+                                </span>
+                                <span>{{ $label }}</span>
+                            </a>
                         {{- else }}
-                            <span class="teaching-course-material-placeholder">{{ $label }}</span>
+                            <span class="teaching-course-material-chip teaching-course-material-chip-placeholder">
+                                <span class="teaching-course-material-chip-icon" aria-hidden="true">
+                                    {{- if in (lower $label) "slide" }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 3H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V9z"></path>
+                                        <path d="M14 3v6h6"></path>
+                                    </svg>
+                                    {{- else if in (lower $label) "data" }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="7" ry="3"></ellipse>
+                                        <path d="M5 5v14c0 1.66 3.13 3 7 3s7-1.34 7-3V5"></path>
+                                        <path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"></path>
+                                    </svg>
+                                    {{- else }}
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10 13a5 5 0 007.07 0l1.41-1.41a5 5 0 10-7.07-7.07L10.59 5"></path>
+                                        <path d="M14 11a5 5 0 01-7.07 0L5.51 9.59a5 5 0 017.07-7.07L13.41 3"></path>
+                                    </svg>
+                                    {{- end }}
+                                </span>
+                                <span>{{ $label }}</span>
+                            </span>
                         {{- end }}
                         {{- end }}
                     </div>
                     {{- else }}
-                    <div class="academic-entry-links">
+                    <div class="teaching-course-material-row">
                         <span class="teaching-course-material-pending">Materials coming soon</span>
                     </div>
                     {{- end }}
@@ -94,24 +265,56 @@
         {{- end }}
 
         {{- with .Params.assignment }}
-        <section class="academic-section-block">
-            <header class="academic-section-block-header">
-                <h2>{{ .title }}</h2>
-                {{- with .weight }}
-                <p>{{ . }}</p>
-                {{- end }}
-            </header>
-            <article class="academic-entry-card">
-                {{- with .date }}
-                <p class="academic-entry-meta">Date: {{ . }}</p>
-                {{- end }}
-                {{- with .details }}
-                <ul class="teaching-course-bullet-list">
-                    {{- range . }}
-                    <li>{{ . }}</li>
+        <section class="academic-section-block teaching-course-block">
+            <header class="teaching-course-section-heading">
+                <span class="teaching-course-section-count">03</span>
+                <div class="teaching-course-section-heading-copy">
+                    <h2>{{ .title }}</h2>
+                    {{- with .weight }}
+                    <p>{{ . }}</p>
                     {{- end }}
-                </ul>
-                {{- end }}
+                </div>
+                <span class="teaching-course-section-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z"></path>
+                        <path d="M12 8v8"></path>
+                        <path d="M8.5 10.5L12 8l3.5 2.5"></path>
+                    </svg>
+                </span>
+            </header>
+            <article class="teaching-course-assignment-card">
+                <div class="teaching-course-assignment-copy">
+                    {{- with .weight }}
+                    <p class="teaching-course-assignment-badge">{{ . }}</p>
+                    {{- end }}
+                    <h3>{{ or .lead .title }}</h3>
+                    {{- with .date }}
+                    <p class="teaching-course-assignment-date">{{ . }}</p>
+                    {{- end }}
+                    {{- with .details }}
+                    <ul class="teaching-course-bullet-list">
+                        {{- range . }}
+                        <li>{{ . }}</li>
+                        {{- end }}
+                    </ul>
+                    {{- end }}
+                </div>
+                <div class="teaching-course-assignment-art" aria-hidden="true">
+                    <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="110" cy="90" r="62" stroke="currentColor" stroke-opacity="0.2" stroke-width="2"/>
+                        <circle cx="110" cy="90" r="30" stroke="currentColor" stroke-opacity="0.35" stroke-width="2"/>
+                        <path d="M110 43V24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M110 156V137" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M157 90H176" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M44 90H63" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <rect x="98" y="78" width="24" height="24" rx="6" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="2"/>
+                        <path d="M105 90H115" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M110 85V95" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <rect x="95" y="22" width="30" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+                        <rect x="160" y="80" width="30" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+                        <rect x="30" y="80" width="30" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
             </article>
         </section>
         {{- end }}
