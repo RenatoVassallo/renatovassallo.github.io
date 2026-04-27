@@ -144,10 +144,12 @@
                         <p class="teaching-course-material-label">Introduction</p>
                     </div>
                     <div class="teaching-course-material-main">
-                        <h3>{{ .title }}</h3>
-                        {{- with .description }}
-                        <p class="teaching-course-material-description">{{ . }}</p>
-                        {{- end }}
+                        <div class="teaching-course-material-copy">
+                            <h3>{{ .title }}</h3>
+                            {{- with .description }}
+                            <p class="teaching-course-material-description">{{ . }}</p>
+                            {{- end }}
+                        </div>
                         {{- with .materials }}
                         <div class="teaching-course-material-row">
                             {{- range . }}
@@ -211,10 +213,12 @@
                         <p class="teaching-course-material-label">{{ printf "Session %02d" (add $index 1) }}</p>
                     </div>
                     <div class="teaching-course-material-main">
-                        <h3>{{ $session.title }}</h3>
-                        {{- with $session.topics }}
-                        <p class="teaching-course-material-description">{{ delimit . " · " }}</p>
-                        {{- end }}
+                        <div class="teaching-course-material-copy">
+                            <h3>{{ $session.title }}</h3>
+                            {{- with $session.topics }}
+                            <p class="teaching-course-material-description">{{ delimit . " · " }}</p>
+                            {{- end }}
+                        </div>
                         {{- with $session.materials }}
                         <div class="teaching-course-material-row">
                             {{- range . }}

@@ -944,6 +944,17 @@ a {
     justify-items: start;
 }
 
+.teaching-course-material-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px 28px;
+    align-items: start;
+}
+
+.teaching-course-material-copy {
+    min-width: 0;
+}
+
 .teaching-course-material-label {
     margin: 0;
     color: var(--secondary);
@@ -974,13 +985,13 @@ a {
     margin: 0;
     color: var(--primary);
     font-family: var(--academic-serif);
-    font-size: clamp(24px, 2.4vw, 29px);
+    font-size: clamp(20px, 2vw, 24px);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .teaching-course-material-description {
-    margin: 0;
+    margin: 8px 0 0;
     color: var(--academic-muted);
     font-size: 15px;
     line-height: 1.62;
@@ -989,10 +1000,11 @@ a {
 .teaching-course-material-row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
     gap: 10px;
-    margin-top: 18px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(4, 25, 32, 0.08);
+    margin-top: 0;
+    padding-top: 2px;
 }
 
 .teaching-course-material-chip {
@@ -1220,6 +1232,16 @@ a {
         justify-content: start;
         align-items: center;
         gap: 12px;
+    }
+
+    .teaching-course-material-main {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .teaching-course-material-row {
+        justify-content: flex-start;
+        padding-top: 0;
     }
 
     .teaching-course-assignment-art {
