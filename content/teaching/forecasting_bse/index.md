@@ -47,7 +47,10 @@ environment_setup:
         - "pip install -r requirements.txt"
       note: "This step may take a few minutes depending on your system."
     - title: "Select the environment in VS Code"
-      description: "Open a notebook in VS Code and select the `.venv` environment as the kernel."
+      description: |
+        Open a notebook in VS Code and select the `.venv` environment as the kernel.
+
+        You can then open `session1/test.ipynb` and run it to confirm that the installation was successful.
     - title: "uv setup"
       optional: true
       description: "If you are already familiar with `uv`, you can use it instead."

@@ -908,6 +908,20 @@ a {
     margin-left: 8px;
 }
 
+.teaching-course-setup-block a,
+.teaching-course-setup-description a,
+.teaching-course-setup-note a,
+.teaching-course-setup-guide a {
+    color: #2f669c;
+}
+
+.teaching-course-setup-block a:hover,
+.teaching-course-setup-description a:hover,
+.teaching-course-setup-note a:hover,
+.teaching-course-setup-guide a:hover {
+    color: #1f4f7f;
+}
+
 .teaching-course-setup-item {
     display: grid;
     grid-template-columns: minmax(186px, 236px) minmax(0, 1fr);
