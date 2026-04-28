@@ -17,7 +17,7 @@ office_hours: "Available by prior request."
 environment_setup:
   title: "Environment Setup"
   note: "Please complete this setup before Session 1."
-  intro: "We will use the materials in the GitHub repository below. Before class, please make sure you have Python 3.11, Git, and Visual Studio Code with the Python, Pylance, and Jupyter extensions installed."
+  intro: "We will use the materials in the GitHub repository below. Before class, please make sure you have Python 3.11, Git, and Visual Studio Code with the `Python`, `Pylance`, and `Jupyter` extensions installed."
   repository:
     label: "BSE-ForecastNLP"
     url: "https://github.com/RenatoVassallo/BSE-ForecastNLP.git"
@@ -26,22 +26,32 @@ environment_setup:
       description: "Check that Python 3.11 is available on your machine."
       commands:
         - "python3.11 --version"
-      note: "If this command is not found, install Python 3.11 first and then continue."
+      note: "If Python 3.11 is not installed, download it from the [official Python website](https://www.python.org/downloads/)."
     - title: "Clone the course repository"
       commands:
         - "git clone https://github.com/RenatoVassallo/BSE-ForecastNLP.git"
         - "cd BSE-ForecastNLP"
-    - title: "Create the virtual environment"
+    - title: "Create and activate the virtual environment"
+      command_groups:
+        - label: "macOS / Linux"
+          commands:
+            - "python3.11 -m venv .venv"
+            - "source .venv/bin/activate"
+        - label: "Windows"
+          commands:
+            - "python -m venv .venv"
+            - ".venv\\Scripts\\activate"
+    - title: "Install dependencies"
       commands:
-        - "python3.11 -m venv .venv"
-    - title: "Activate the environment"
-      commands:
-        - "source .venv/bin/activate"
-      note: "On Windows: .\\.venv\\Scripts\\activate"
-    - title: "Install the main dependencies"
-      commands:
+        - "pip install --upgrade pip"
         - "pip install -r requirements.txt"
-      note: "We will share any Session 3-specific package guidance later."
+      note: "This step may take a few minutes depending on your system."
+    - title: "Select the environment in VS Code"
+      description: "Open a notebook in VS Code and select the `.venv` environment as the kernel."
+    - title: "Optional: uv setup"
+      description: "If you are already familiar with `uv`, you can use it instead."
+      commands:
+        - "uv sync"
   guide:
     label: "Detailed installation guide for macOS and Windows (PDF)"
     url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Setup_Guide.pdf"

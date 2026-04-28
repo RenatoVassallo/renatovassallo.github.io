@@ -135,7 +135,7 @@
             {{- if or .intro .repository }}
             <div class="teaching-course-setup-intro">
                 {{- with .intro }}
-                <p>{{ . }}</p>
+                <div class="teaching-course-setup-intro-copy">{{ . | markdownify }}</div>
                 {{- end }}
                 {{- with .repository }}
                 <p class="teaching-course-setup-repo">
@@ -153,15 +153,24 @@
                         <p class="teaching-course-setup-step">{{ printf "Step %02d" (add $index 1) }}</p>
                         <h3>{{ $step.title }}</h3>
                         {{- with $step.description }}
-                        <p class="teaching-course-setup-description">{{ . }}</p>
+                        <div class="teaching-course-setup-description">{{ . | markdownify }}</div>
                         {{- end }}
                     </div>
                     <div class="teaching-course-setup-command-wrap">
-                        {{- with $step.commands }}
+                        {{- with $step.command_groups }}
+                        {{- range . }}
+                        {{- with .label }}
+                        <p class="teaching-course-command-label">{{ . }}</p>
+                        {{- end }}
+                        {{- with .commands }}
+                        <pre class="teaching-course-command-block"><code>{{ delimit . "\n" }}</code></pre>
+                        {{- end }}
+                        {{- end }}
+                        {{- else with $step.commands }}
                         <pre class="teaching-course-command-block"><code>{{ delimit . "\n" }}</code></pre>
                         {{- end }}
                         {{- with $step.note }}
-                        <p class="teaching-course-setup-note">{{ . }}</p>
+                        <div class="teaching-course-setup-note">{{ . | markdownify }}</div>
                         {{- end }}
                     </div>
                 </article>

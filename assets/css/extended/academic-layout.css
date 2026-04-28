@@ -880,12 +880,16 @@ a {
     margin: 0 0 12px;
 }
 
-.teaching-course-setup-intro p,
+.teaching-course-setup-intro-copy p,
 .teaching-course-setup-repo {
     margin: 0;
     color: var(--academic-muted);
     font-size: 14px;
     line-height: 1.6;
+}
+
+.teaching-course-setup-intro-copy p + p {
+    margin-top: 6px;
 }
 
 .teaching-course-setup-repo {
@@ -936,14 +940,37 @@ a {
 
 .teaching-course-setup-description,
 .teaching-course-setup-note {
-    margin: 6px 0 0;
     color: var(--academic-muted);
     font-size: 13px;
     line-height: 1.5;
 }
 
+.teaching-course-setup-description {
+    margin: 6px 0 0;
+}
+
+.teaching-course-setup-description p,
+.teaching-course-setup-note p {
+    margin: 0;
+}
+
+.teaching-course-setup-description p + p,
+.teaching-course-setup-note p + p {
+    margin-top: 6px;
+}
+
 .teaching-course-setup-command-wrap {
     min-width: 0;
+}
+
+.teaching-course-command-label {
+    margin: 0 0 6px;
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
 }
 
 .teaching-course-command-block {
@@ -979,6 +1006,12 @@ a {
 
 .teaching-course-command-block:hover .copy-code {
     opacity: 1;
+}
+
+.teaching-course-command-label + .teaching-course-command-block,
+.teaching-course-command-block + .teaching-course-command-label,
+.teaching-course-command-block + .teaching-course-setup-note {
+    margin-top: 8px;
 }
 
 .teaching-course-setup-guide {
