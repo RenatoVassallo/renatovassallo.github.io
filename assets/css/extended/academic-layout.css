@@ -910,7 +910,7 @@ a {
 
 .teaching-course-setup-item {
     display: grid;
-    grid-template-columns: minmax(168px, 220px) minmax(0, 1fr);
+    grid-template-columns: minmax(186px, 236px) minmax(0, 1fr);
     gap: 18px;
     align-items: start;
     padding: 12px 0;
@@ -957,6 +957,10 @@ a {
 .teaching-course-setup-description p + p,
 .teaching-course-setup-note p + p {
     margin-top: 6px;
+}
+
+.teaching-course-setup-note-inline {
+    margin-top: 0;
 }
 
 .teaching-course-setup-command-wrap {

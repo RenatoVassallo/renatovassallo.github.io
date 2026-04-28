@@ -48,7 +48,8 @@ environment_setup:
       note: "This step may take a few minutes depending on your system."
     - title: "Select the environment in VS Code"
       description: "Open a notebook in VS Code and select the `.venv` environment as the kernel."
-    - title: "Optional: uv setup"
+    - title: "uv setup"
+      optional: true
       description: "If you are already familiar with `uv`, you can use it instead."
       commands:
         - "uv sync"

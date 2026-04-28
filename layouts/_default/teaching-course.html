@@ -148,15 +148,25 @@
             {{- with .steps }}
             <div class="teaching-course-setup-list">
                 {{- range $index, $step := . }}
+                {{- $hasCommands := or $step.command_groups $step.commands }}
                 <article class="teaching-course-setup-item">
                     <div class="teaching-course-setup-meta">
-                        <p class="teaching-course-setup-step">{{ printf "Step %02d" (add $index 1) }}</p>
+                        <p class="teaching-course-setup-step">
+                            {{- if $step.optional -}}
+                            Optional
+                            {{- else -}}
+                            {{ printf "Step %02d" (add $index 1) }}
+                            {{- end -}}
+                        </p>
                         <h3>{{ $step.title }}</h3>
-                        {{- with $step.description }}
-                        <div class="teaching-course-setup-description">{{ . | markdownify }}</div>
+                        {{- if and $hasCommands $step.description }}
+                        <div class="teaching-course-setup-description">{{ $step.description | markdownify }}</div>
                         {{- end }}
                     </div>
                     <div class="teaching-course-setup-command-wrap">
+                        {{- if and (not $hasCommands) $step.description }}
+                        <div class="teaching-course-setup-note teaching-course-setup-note-inline">{{ $step.description | markdownify }}</div>
+                        {{- end }}
                         {{- with $step.command_groups }}
                         {{- range . }}
                         {{- with .label }}
