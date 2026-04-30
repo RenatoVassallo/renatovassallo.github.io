@@ -75,19 +75,19 @@ class_schedule:
 sessions_note: "Slides, code, and additional resources will be posted below as the course progresses."
 introduction_material:
   title: "Introduction"
-  description: "Course framing, objectives, and workflow."
+  description: "Course framing, objectives, and workflow"
   materials:
     - label: "Slides"
       url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Introduction.pdf"
 sessions:
   - title: "From text to signals"
     topics:
-      - "Learning with limited supervision: zero and few-shot learning"
+      - "Dictionaries, model-based approaches and LLMs"
     materials:
       - label: "Slides"
-        url: ""
+        url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Session1.pdf"
       - label: "Data"
-        url: ""
+        url: "datasets/datasets_session1.zip"
   - title: "From signals to decisions"
     topics:
       - "Fine-tuning and policy-oriented evaluation"
