@@ -109,6 +109,11 @@ assignment:
   weight: "20% of overall grade"
   lead: "Construct and evaluate text-based signals"
   date: "Wednesday 06 May"
+  materials:
+    - label: "Slides"
+      url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_In_Class_Assignment.pdf"
+    - label: "Data"
+      url: "datasets/datasets_assignment.zip"
   details:
     - "Work in groups of up to 4 members."
     - "Duration: 45-60 minutes, followed by a brief 5-minute presentation per group."

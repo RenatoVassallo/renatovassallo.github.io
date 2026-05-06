@@ -394,6 +394,26 @@
                         {{- end }}
                     </ul>
                     {{- end }}
+                    {{- with .materials }}
+                    <div class="teaching-course-assignment-row">
+                        {{- range . }}
+                        {{- $label := .label -}}
+                        {{- with .url }}
+                        {{- $url := . -}}
+                        {{- $parsed := urls.Parse $url -}}
+                        <a class="teaching-course-assignment-chip" href="{{ cond $parsed.IsAbs $url ($url | relURL) }}">
+                            <span class="teaching-course-assignment-chip-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 3H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V9z"></path>
+                                    <path d="M14 3v6h6"></path>
+                                </svg>
+                            </span>
+                            <span>{{ $label }}</span>
+                        </a>
+                        {{- end }}
+                        {{- end }}
+                    </div>
+                    {{- end }}
                 </div>
                 <div class="teaching-course-assignment-art" aria-hidden="true">
                     <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">

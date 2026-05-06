@@ -1304,6 +1304,47 @@ a {
     color: rgba(255, 255, 255, 0.86);
 }
 
+.teaching-course-assignment-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.teaching-course-assignment-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border-radius: 999px;
+    color: #ffd9c8;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 217, 200, 0.18);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.teaching-course-assignment-chip:hover {
+    color: #fff1ea;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.teaching-course-assignment-chip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.teaching-course-assignment-chip-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
 .teaching-course-assignment-art {
     position: relative;
     z-index: 1;
