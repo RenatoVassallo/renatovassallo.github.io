@@ -93,9 +93,9 @@ sessions:
       - "Fine-tuning and policy-oriented evaluation"
     materials:
       - label: "Slides"
-        url: ""
+        url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Session2.pdf"
       - label: "Data"
-        url: ""
+        url: "datasets/datasets_session2.zip"
   - title: "Mixed-frequency methods"
     topics:
       - "Classic MIDAS and machine learning extensions"
