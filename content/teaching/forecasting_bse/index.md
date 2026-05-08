@@ -101,7 +101,7 @@ sessions:
       - "Classic MIDAS and machine learning extensions"
     materials:
       - label: "Slides"
-        url: ""
+        url: "pdf/teaching/BSE_Forecasting/BSE_Forecasting_Session3.pdf"
       - label: "Data"
         url: ""
 assignment:
