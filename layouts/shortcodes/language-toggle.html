@@ -1,0 +1,137 @@
+{{- $default := .Get "default" | default "en" -}}
+{{- $label := .Get "label" | default "Read in" -}}
+<div class="bilingual-toggle" data-bilingual-toggle data-default-language="{{ $default }}">
+  <span class="bilingual-toggle__label">{{ $label }}</span>
+  <div class="bilingual-toggle__buttons" role="group" aria-label="Language selector">
+    <button type="button" data-language-button="en" aria-pressed="{{ eq $default "en" }}" class="{{ if eq $default "en" }}is-active{{ end }}">English</button>
+    <button type="button" data-language-button="es" aria-pressed="{{ eq $default "es" }}" class="{{ if eq $default "es" }}is-active{{ end }}">Español</button>
+  </div>
+</div>
+
+<style>
+  .bilingual-toggle {
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    margin: 1.5rem 0 2rem;
+    padding: 0.75rem;
+  }
+
+  .bilingual-toggle__label {
+    color: var(--secondary);
+    font-size: 0.9rem;
+  }
+
+  .bilingual-toggle__buttons {
+    display: inline-flex;
+    gap: 0.25rem;
+  }
+
+  .bilingual-toggle button {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--primary);
+    cursor: pointer;
+    font: inherit;
+    line-height: 1.2;
+    min-height: 2.25rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .bilingual-toggle button.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--theme);
+  }
+
+  .bilingual-panel {
+    display: none;
+  }
+
+  .bilingual-panel.is-active {
+    display: block;
+  }
+</style>
+
+<script>
+  (() => {
+    const storageKey = "rv-post-language";
+
+    function getStoredLanguage(defaultLanguage) {
+      try {
+        return localStorage.getItem(storageKey) || defaultLanguage;
+      } catch {
+        return defaultLanguage;
+      }
+    }
+
+    function storeLanguage(language) {
+      try {
+        localStorage.setItem(storageKey, language);
+      } catch {
+        /* Ignore storage restrictions. */
+      }
+    }
+
+    function setLanguage(root, language) {
+      root.querySelectorAll("[data-language-button]").forEach((button) => {
+        const isActive = button.dataset.languageButton === language;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      root.querySelectorAll("[data-language-panel]").forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.languagePanel === language);
+      });
+
+      storeLanguage(language);
+    }
+
+    function initRoot(root) {
+      if (root.dataset.bilingualReady === "true") {
+        return;
+      }
+
+      root.dataset.bilingualReady = "true";
+      const toggle = root.querySelector("[data-bilingual-toggle]");
+      const defaultLanguage = toggle?.dataset.defaultLanguage || "en";
+      const language = getStoredLanguage(defaultLanguage);
+
+      setLanguage(root, language);
+    }
+
+    function bindClicks() {
+      if (window.__rvBilingualToggleBound) {
+        return;
+      }
+
+      window.__rvBilingualToggleBound = true;
+      document.addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+        const button = target?.closest("[data-language-button]");
+        const root = button?.closest(".post-content");
+        if (!button || !root) {
+          return;
+        }
+
+        setLanguage(root, button.dataset.languageButton);
+      });
+    }
+
+    function init() {
+      document.querySelectorAll(".post-content").forEach(initRoot);
+      bindClicks();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+</script>
