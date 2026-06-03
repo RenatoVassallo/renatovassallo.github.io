@@ -1,0 +1,5 @@
+{{- $code := .Get "code" | default (.Get "lang") | default "en" -}}
+{{- $active := .Get "active" | default "false" -}}
+<section class="bilingual-panel{{ if or (eq $active true) (eq $active "true") }} is-active{{ end }}" data-language-panel="{{ $code }}" lang="{{ $code }}">
+{{ .Inner | .Page.RenderString }}
+</section>
