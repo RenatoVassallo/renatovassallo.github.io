@@ -1,0 +1,9 @@
+- date: "Jan 2026"
+  new: true
+  text: "New working paper: *Semantic Similarity Measures in Newspaper Text for Detecting and Predicting Disruptive Institutional Events*, with L. Mayoral, H. Mueller, C. Rauh, and M. Phillip. [Working Paper](https://bse.eu/research/working-papers/semantic-similarity-measures-in-newspaper-text-for-detecting-and-predicting-disruptive-institutional-events)."
+- date: "2025"
+  new: false
+  text: "Released a pre-publication version of [MacroPy](https://github.com/RenatoVassallo/MacroPy), a toolbox for macroeconometric analysis in Python. Install via .whl [here](https://github.com/RenatoVassallo/MacroPy/releases)."
+- date: "2025"
+  new: false
+  text: "New blog post: [Bayesian VARs in Python](/posts/bvar_tutorial/), a step-by-step tutorial from scratch and with `MacroPy`."

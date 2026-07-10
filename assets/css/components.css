@@ -1,0 +1,302 @@
+/* ==========================================================================
+   components.css — component library (spec §4). Token-only.
+   ========================================================================== */
+
+/* ---- 4.1 Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-sans); font-weight: 500; font-size: var(--fs-small);
+  line-height: 1; padding: var(--space-3) var(--space-5);
+  border-radius: var(--r-md); border: 1px solid transparent; cursor: pointer;
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn[disabled], .btn.is-disabled { opacity: 0.5; pointer-events: none; }
+.btn--primary { background: var(--color-accent); color: #fff; }
+.btn--primary:hover { background: var(--color-accent-hover); color: #fff; }
+.btn--ghost {
+  background: transparent; color: var(--color-ink);
+  border-color: var(--color-border-strong);
+}
+.btn--ghost:hover { background: var(--color-surface-2); color: var(--color-ink); border-color: var(--color-faint); }
+.btn--text {
+  padding: 0; background: none; color: var(--color-accent); border: 0;
+  border-radius: 0;
+}
+.btn--text:hover { color: var(--color-accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+.btn .btn__arrow { transition: transform var(--dur) var(--ease); }
+.btn:hover .btn__arrow { transform: translateX(2px); }
+
+/* ---- 4.2 Kicker ---- */
+.kicker {
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--fs-kicker);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent);
+  margin: 0 0 var(--space-3);
+}
+.kicker--muted { color: var(--color-faint); }
+
+/* ---- 4.3 Chips / badges / tags ---- */
+.tag {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1;
+  padding: 5px 9px; border-radius: var(--r-sm);
+  background: var(--color-surface-2); color: var(--color-muted);
+  border: 0; cursor: default;
+}
+button.tag { cursor: pointer; transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease); }
+button.tag:hover { background: var(--color-border-strong); }
+.tag.is-active { background: var(--color-accent); color: #fff; }
+.badge {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; line-height: 1; padding: 4px 8px;
+  border-radius: var(--r-sm); border: 1px solid var(--color-accent-tint);
+  color: var(--color-accent);
+}
+.badge--award { border-color: var(--color-gold); color: var(--color-gold); }
+.badge--new { background: var(--color-accent); color: #fff; border-color: transparent; }
+.status {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--color-muted);
+}
+.status::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--color-faint);
+}
+.status--live::before, .status--maintained::before { background: var(--color-success); }
+.status--pending::before { background: var(--color-pending); }
+
+/* ---- 4.4 Cards ---- */
+.card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--r-lg); padding: var(--space-5);
+}
+@media (min-width: 768px) { .card { padding: var(--space-6); } }
+a.card, .card--link {
+  display: block; color: inherit;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+a.card:hover, .card--link:hover {
+  border-color: var(--color-border-strong); box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  a.card:hover, .card--link:hover { transform: none; }
+}
+
+/* ---- 4.5 Feature / callout card ---- */
+.callout {
+  background: var(--color-code-bg); color: var(--color-code-fg);
+  border-radius: var(--r-lg); padding: var(--space-6);
+}
+.callout .kicker { color: var(--color-accent); }
+.callout h2, .callout h3 { color: #fff; }
+.callout--accent { background: var(--color-accent); color: #fff; }
+.callout--accent .kicker { color: rgba(255, 255, 255, 0.8); }
+
+/* ---- 4.6 Copyable command ---- */
+.cmd {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  background: var(--color-code-bg); color: var(--color-code-fg);
+  border-radius: var(--r-md); padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono); font-size: var(--fs-code); overflow-x: auto;
+}
+.cmd code { background: none; color: inherit; padding: 0; }
+.cmd code::before { content: "$ "; color: var(--color-faint); }
+.cmd__copy {
+  flex: 0 0 auto; font-family: var(--font-mono); font-size: 11px;
+  color: var(--color-code-fg); background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--r-sm);
+  padding: 4px 8px; cursor: pointer; transition: background-color var(--dur) var(--ease);
+}
+.cmd__copy:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* ---- 4.7 Numbered / fan section header ---- */
+.section-head { margin-bottom: var(--space-5); }
+.section-head__top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.section-head__title { margin: var(--space-1) 0 0; }
+.section-head__divider { display: block; width: 100%; max-width: 260px; height: 12px; margin-top: var(--space-3); color: var(--color-accent); }
+.section-head__divider svg { display: block; width: 100%; height: 100%; }
+
+/* ---- 4.8 Schedule / meta ---- */
+.schedule { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 768px) { .schedule { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .schedule { grid-template-columns: repeat(3, 1fr); } }
+.schedule__item { padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-md); }
+.schedule__date { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--color-accent); }
+
+/* ---- 4.9 Portrait / profile ---- */
+.portrait { width: 100%; max-width: 220px; aspect-ratio: 1; object-fit: cover; }
+.profile { display: flex; flex-direction: column; gap: var(--space-3); }
+.profile__name { font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h2); }
+.profile__role { color: var(--color-muted); font-size: var(--fs-small); }
+
+/* ---- 4.10 Social links ---- */
+.social { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.social a { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-muted); font-size: var(--fs-small); }
+.social a:hover { color: var(--color-accent); }
+.social svg { width: 20px; height: 20px; }
+
+/* ---- 4.11 Affiliations strip ---- */
+.affiliations-section { text-align: center; border-block: 1px solid var(--color-border); padding-block: var(--space-7); }
+.affiliations .kicker { margin-bottom: var(--space-5); }
+.affiliations__grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-5) var(--space-7); }
+.affiliations__logo { display: inline-flex; align-items: center; }
+.affiliations__logo img { max-height: 51px; width: auto; filter: grayscale(1); opacity: 0.72; transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+.affiliations__logo:hover img { filter: grayscale(0); opacity: 1; }
+@media (max-width: 640px) {
+  .affiliations__grid { gap: var(--space-5) var(--space-6); }
+  .affiliations__logo img { max-height: 42px; }
+}
+
+/* ---- 4.12 News / updates timeline ---- */
+.updates { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--color-border); }
+.update { position: relative; padding: 0 0 var(--space-5) var(--space-6); }
+.update:last-child { padding-bottom: 0; }
+.update::before {
+  content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--color-bg); border: 2px solid var(--color-border-strong);
+}
+.update--new::before { background: var(--color-accent); border-color: var(--color-accent); }
+.update__date { font-family: var(--font-mono); font-size: 12px; color: var(--color-faint); display: inline-block; margin-bottom: var(--space-1); }
+.update__text { color: var(--color-ink); }
+.update__text .badge { margin-right: var(--space-2); vertical-align: middle; }
+
+/* ---- 4.13 Pagination / breadcrumb / footer ---- */
+.breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); margin-bottom: var(--space-4); }
+.breadcrumb a { color: var(--color-muted); }
+.breadcrumb a:hover { color: var(--color-accent); }
+.breadcrumb [aria-current] { color: var(--color-ink); }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-7); }
+.pagination__count { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--color-muted); }
+
+/* ==========================================================================
+   Header / nav
+   ========================================================================== */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.site-header.is-stuck { box-shadow: var(--shadow-sm); background: color-mix(in srgb, var(--color-bg) 92%, transparent); }
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--color-ink); }
+.brand__mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border: 1px solid var(--color-border-strong);
+  border-radius: var(--r-md); font-family: var(--font-serif); font-weight: 600; font-size: 15px;
+  color: var(--color-accent);
+}
+.brand__name { font-family: var(--font-serif); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+.nav { display: flex; align-items: center; gap: var(--space-5); }
+.nav__list { display: none; align-items: center; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
+.nav__link {
+  font-family: var(--font-sans); font-weight: 500; font-size: var(--fs-small);
+  color: var(--color-muted); padding-bottom: 3px; border-bottom: 2px solid transparent;
+}
+.nav__link:hover { color: var(--color-ink); }
+.nav__link.is-active { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+.nav__cv { display: none; }
+.nav__toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; background: none; border: 1px solid var(--color-border);
+  border-radius: var(--r-md); color: var(--color-ink); cursor: pointer;
+}
+.nav__toggle svg { width: 20px; height: 20px; }
+@media (min-width: 768px) {
+  .nav__list { display: flex; }
+  .nav__cv { display: inline-flex; }
+  .nav__toggle { display: none; }
+}
+/* Mobile disclosure panel */
+.nav__panel {
+  position: fixed; inset: 64px 0 auto 0; z-index: var(--z-overlay);
+  background: var(--color-bg); border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg); padding: var(--space-4) var(--gutter) var(--space-6);
+  display: none;
+}
+.nav__panel.is-open { display: block; }
+.nav__panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.nav__panel a { display: block; padding: var(--space-3) 0; font-family: var(--font-sans); font-weight: 500; color: var(--color-ink); border-bottom: 1px solid var(--color-border); }
+@media (min-width: 768px) { .nav__panel { display: none !important; } }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: var(--space-9);
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+}
+.site-footer__inner { display: grid; gap: var(--space-6); padding-block: var(--space-7); }
+@media (min-width: 768px) { .site-footer__inner { grid-template-columns: 2fr 1fr 1fr; gap: var(--space-7); } }
+.site-footer__bio { color: var(--color-muted); font-size: var(--fs-small); max-width: 34ch; margin-top: var(--space-3); }
+.site-footer__title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-faint); margin-bottom: var(--space-3); }
+.site-footer__links { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.site-footer__links a { color: var(--color-muted); font-size: var(--fs-small); }
+.site-footer__links a:hover { color: var(--color-accent); }
+.site-footer__legal { grid-column: 1 / -1; padding-top: var(--space-4); border-top: 1px solid var(--color-border); font-family: var(--font-mono); font-size: 11px; color: var(--color-faint); }
+
+/* ==========================================================================
+   Home hero (6A fan)
+   ========================================================================== */
+.hero { overflow: hidden; padding-block: var(--space-8) var(--space-3); }
+.hero__stage { position: relative; display: flex; align-items: center; min-height: 320px; }
+.hero__fan {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 72%; max-width: 720px; pointer-events: none; z-index: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.22) 20%, rgba(0,0,0,0.58) 40%, rgba(0,0,0,0.88) 56%, #000 66%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.22) 20%, rgba(0,0,0,0.58) 40%, rgba(0,0,0,0.88) 56%, #000 66%, #000 100%);
+}
+.hero__fan .fan { width: 100%; transform: scaleY(0.85); transform-origin: center; }
+.hero__inner { position: relative; z-index: 1; max-width: 40rem; }
+.hero__name { font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-display); line-height: 1.0; letter-spacing: -0.01em; margin: 0 0 var(--space-4); }
+.hero__tagline { font-size: var(--fs-body-lg); color: var(--color-muted); margin: 0 0 var(--space-6); max-width: 30ch; }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+
+/* Home vertical rhythm */
+.home-body { padding-top: var(--space-3); padding-bottom: var(--space-9); }
+.home-intro { max-width: var(--measure); font-size: var(--fs-body-lg); }
+.home-section { margin-top: var(--space-8); }
+
+@media (max-width: 767px) {
+  .hero { padding-block: var(--space-7) var(--space-5); }
+  .hero__stage { display: block; min-height: 0; }
+  .hero__fan { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: none; margin-top: var(--space-6); -webkit-mask-image: none; mask-image: none; }
+  .hero__inner { max-width: none; }
+}
+
+/* ==========================================================================
+   Fan motif (§4.14, §9.1)
+   ========================================================================== */
+.fan { display: block; width: 100%; height: auto; color: var(--color-accent); }
+.fan svg { display: block; width: 100%; height: auto; overflow: hidden; }
+.fan__band { fill: currentColor; }
+.fan__history { fill: none; stroke: var(--color-ink); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.fan__marker { stroke: var(--color-faint); stroke-width: 1; stroke-dasharray: 5 4; opacity: 1; }
+.fan__region { fill: var(--color-ink); opacity: 0.05; }
+.fan__bands { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: no-preference) {
+  .fan__bands { animation: fanWipe var(--dur-fan) var(--ease) 200ms backwards; }
+  .fan__history { animation: fanDraw 1000ms var(--ease) 150ms backwards; }
+  .fan__marker { animation: fanFade var(--dur-slow) var(--ease) 950ms backwards; }
+}
+@keyframes fanWipe { from { clip-path: inset(0 100% 0 0); } }
+@keyframes fanDraw { from { stroke-dashoffset: 1; } }
+@keyframes fanFade { from { opacity: 0; } }
+
+/* ==========================================================================
+   Quick routes grid (home)
+   ========================================================================== */
+.routes { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .routes { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .routes { grid-template-columns: repeat(4, 1fr); } }
+.route__title { font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h3); margin: var(--space-2) 0 var(--space-2); }
+.route__desc { color: var(--color-muted); font-size: var(--fs-small); margin: 0; }
+.route__count { font-family: var(--font-mono); font-size: 11px; color: var(--color-accent); margin-top: var(--space-3); display: inline-block; }
+
+/* Generic section band on tinted surface */
+.band { background: var(--color-surface-2); border-block: 1px solid var(--color-border); }

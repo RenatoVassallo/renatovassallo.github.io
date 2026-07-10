@@ -1,40 +1,33 @@
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            {{- $labelText := site.Params.label.text | default site.Title -}}
-            {{- if site.Title }}
-            <a href="{{ "/" | relLangURL }}" accesskey="h" title="{{ $labelText }} (Alt + H)">
-                {{- $labelText -}}
-            </a>
-            {{- end }}
-        </div>
-
-        {{- $currentPage := . -}}
-        <ul id="menu">
-            {{- range site.Menus.main }}
-            {{- $rawURL := .URL -}}
-            {{- $parsedURL := urls.Parse $rawURL -}}
-            {{- $isExternal := $parsedURL.IsAbs -}}
-            {{- $urlLower := lower $rawURL -}}
-            {{- $isPDF := strings.HasSuffix $urlLower ".pdf" -}}
-            {{- $newTab := or (or .Params.newTab .Params.targetBlank) $isPDF -}}
-            {{- $href := cond $isExternal $rawURL ($rawURL | relLangURL) -}}
-            {{- $menuItemURL := "" -}}
-            {{- if not $isExternal -}}
-                {{- $menuItemURL = (cond (or (strings.HasSuffix $rawURL "/") $isPDF) $rawURL (printf "%s/" $rawURL)) | relLangURL -}}
-            {{- end -}}
-            {{- $pageURL := $currentPage.RelPermalink -}}
-            <li>
-                <a href="{{ $href }}" title="{{ .Title | default .Name }}"
-                    {{- if $newTab }} target="_blank" rel="noopener noreferrer"{{- end }}>
-                    <span {{- if and (not $isExternal) (eq $menuItemURL $pageURL) }} class="active" {{- end }}>
-                        {{- .Pre -}}
-                        {{- .Name -}}
-                        {{- .Post -}}
-                    </span>
-                </a>
-            </li>
-            {{- end }}
-        </ul>
+{{- $cur := .RelPermalink -}}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }}, home">
+      <span class="brand__mark" aria-hidden="true">RV</span>
+      <span class="brand__name">{{ site.Title }}</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        {{- range site.Menus.main }}
+        {{- $active := or (eq $cur (.URL | relLangURL)) (and (ne .URL "/") (hasPrefix $cur (.URL | relLangURL))) -}}
+        <li><a class="nav__link{{ if $active }} is-active{{ end }}" href="{{ .URL | relLangURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+      {{- with site.Params.cvURL }}
+      <a class="btn btn--ghost nav__cv" href="{{ . | relURL }}" target="_blank" rel="noopener">CV <span class="btn__arrow" aria-hidden="true">↗</span></a>
+      {{- end }}
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+        {{- partial "icons.html" (dict "name" "menu") -}}
+      </button>
     </nav>
+  </div>
+  <div class="nav__panel" id="nav-panel">
+    <ul>
+      {{- range site.Menus.main }}
+      <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+      {{- end }}
+      {{- with site.Params.cvURL }}
+      <li><a href="{{ . | relURL }}" target="_blank" rel="noopener">CV ↗</a></li>
+      {{- end }}
+    </ul>
+  </div>
 </header>

@@ -1,22 +1,67 @@
-{{- define "main" }}
-{{- $home := site.GetPage "/home" -}}
-<article class="post-single academic-home-page">
-    <div class="post-content academic-home-content">
-        {{- with $home }}
-            {{- if not (.Param "disableAnchoredHeadings") }}
-                {{- partial "anchored_headings.html" .Content -}}
-            {{- else }}
-                {{- .Content -}}
-            {{- end }}
-        {{- else }}
-            {{- if .Content }}
-                {{- if not (.Param "disableAnchoredHeadings") }}
-                    {{- partial "anchored_headings.html" .Content -}}
-                {{- else }}
-                    {{- .Content -}}
-                {{- end }}
-            {{- end }}
-        {{- end }}
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <div class="hero__stage">
+      <div class="hero__fan" aria-hidden="true">{{ partial "fan.html" (dict "variant" "hero") }}</div>
+      <div class="hero__inner">
+        {{- with .Params.kicker }}<p class="kicker">{{ . }}</p>{{ end }}
+        <h1 class="hero__name">{{ .Params.heroName | default site.Title }}</h1>
+        {{- with .Params.tagline }}<p class="hero__tagline">{{ . }}</p>{{ end }}
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="{{ "/research/" | relURL }}">View research <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+          {{- with site.Params.cvURL }}<a class="btn btn--text" href="{{ . | relURL }}" target="_blank" rel="noopener">CV <span aria-hidden="true">&#8599;</span></a>{{ end }}
+        </div>
+      </div>
     </div>
-</article>
-{{- end }}
+  </div>
+</section>
+
+<div class="container home-body">
+  {{- with .Content }}
+  <div class="home-intro prose measure rich-text">{{ . }}</div>
+  {{- end }}
+
+  <section class="home-section">
+    <header class="section-head">
+      <p class="kicker">Recent updates</p>
+      <h2 class="section-head__title">What I&rsquo;m up to</h2>
+      {{ partial "fan-divider.html" . }}
+    </header>
+    {{ partial "updates.html" . }}
+  </section>
+
+  <section class="home-section affiliations-section">
+    {{ partial "affiliations.html" . }}
+  </section>
+
+  <section class="home-section">
+    <header class="section-head">
+      <p class="kicker">Explore</p>
+      <h2 class="section-head__title">Around the site</h2>
+      {{ partial "fan-divider.html" . }}
+    </header>
+    <div class="routes">
+      <a class="card card--link route" href="{{ "/research/" | relURL }}">
+        <p class="kicker">Research</p>
+        <h3 class="route__title">Papers &amp; publications</h3>
+        <p class="route__desc">Macroeconometrics, forecasting, and text as data.</p>
+      </a>
+      <a class="card card--link route" href="{{ "/software/" | relURL }}">
+        <p class="kicker">Software</p>
+        <h3 class="route__title">Open-source tools</h3>
+        <p class="route__desc">Python packages for applied macro and NLP.</p>
+      </a>
+      <a class="card card--link route" href="{{ "/teaching/" | relURL }}">
+        <p class="kicker">Teaching</p>
+        <h3 class="route__title">Courses &amp; materials</h3>
+        <p class="route__desc">NLP, econometrics, and forecasting.</p>
+      </a>
+      <a class="card card--link route" href="{{ "/posts/" | relURL }}">
+        <p class="kicker">Writing</p>
+        <h3 class="route__title">Notes &amp; tutorials</h3>
+        <p class="route__desc">Methods explained clearly and visually.</p>
+      </a>
+    </div>
+  </section>
+</div>
+{{ end }}

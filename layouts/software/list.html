@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page">
+    <header class="section-head">
+      <p class="kicker">Software</p>
+      <h1 class="section-head__title">{{ .Title }}</h1>
+      {{ partial "fan-divider.html" . }}
+      {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="project-grid">
+      {{- range sort .Pages "Weight" }}
+      {{ partial "project.html" . }}
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}

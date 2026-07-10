@@ -1,0 +1,11 @@
+{{- $page := . -}}
+{{- with site.Data.updates -}}
+<ul class="updates">
+  {{- range . }}
+  <li class="update{{ if .new }} update--new{{ end }}">
+    <span class="update__date">{{ .date }}</span>
+    <span class="update__text">{{ if .new }}<span class="badge badge--new">New</span> {{ end }}{{ $page.RenderString (dict "display" "inline") .text }}</span>
+  </li>
+  {{- end }}
+</ul>
+{{- end -}}

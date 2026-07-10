@@ -1,7 +1,10 @@
 ---
 title: "Forecasting and Nowcasting with Text as Data"
-layout: "teaching-course"
 ShowCodeCopyButtons: true
+weight: 10
+role: "Instructor"
+term: "2025-2026"
+summary: "Turning unstructured text into forecasting and nowcasting signals, from dictionaries to LLMs."
 # description: "An applied introduction to turning unstructured language into measurable signals, and signals into decisions in macroeconomics and political science."
 program: "Master's in Data Science for Decision Making"
 institution: "Barcelona School of Economics"

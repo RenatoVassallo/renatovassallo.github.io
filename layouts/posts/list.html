@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page">
+    <header class="section-head">
+      <p class="kicker">Writing</p>
+      <h1 class="section-head__title">{{ .Title }}</h1>
+      {{ partial "fan-divider.html" . }}
+      {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </header>
+
+    {{- $posts := .Pages.ByDate.Reverse }}
+    {{- if gt (len $posts) 2 }}
+    <div class="post-tools">
+      <input type="search" id="post-search" class="post-search" placeholder="Search writing…" aria-label="Search writing">
+    </div>
+    {{- end }}
+
+    <div class="post-grid" id="post-list">
+      {{- range $posts }}
+      <article class="card card--link post" data-title="{{ .Title | lower }}" data-tags="{{ delimit (.Params.tags | default slice) " " | lower }}">
+        <a class="post__link" href="{{ .RelPermalink }}">
+          <h3 class="post__title">{{ .Title }}</h3>
+          {{- with .Description }}<p class="post__desc">{{ . }}</p>{{ end }}
+          <p class="post__meta">{{ .Date.Format "Jan 2006" }} &middot; {{ .ReadingTime }} min read</p>
+          {{- with .Params.tags }}<div class="post__tags">{{ range first 4 . }}<span class="tag">{{ . }}</span>{{ end }}</div>{{ end }}
+        </a>
+      </article>
+      {{- end }}
+    </div>
+    <p class="post-empty" id="post-empty" hidden>No writing matches your search.</p>
+  </div>
+</div>
+{{ end }}

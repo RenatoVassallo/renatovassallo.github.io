@@ -1,80 +1,60 @@
 baseURL = "https://renatovassallo.github.io/"
 languageCode = "en-us"
 title = "Renato Vassallo"
-theme = "PaperMod"
 copyright = "&copy; 2026 Renato Vassallo"
+enableRobotsTXT = true
 
 [services]
   [services.googleAnalytics]
     ID = "G-LL0E6SK2D7"
 
 [params]
-  math = true
-  env = "production"
-  ShowReadingTime = true
-  defaultTheme = "light"
-  disableThemeToggle = true
+  math = false
+  author = "Renato Vassallo"
+  description = "Economist working at the frontier of causal inference, machine learning, and macroeconometric forecasting."
+  footerBio = "Economist at IAE-CSIC and PhD-track researcher in the IDEA program (UAB / Barcelona School of Economics)."
+  affiliationsTitle = "Affiliations & collaborations"
+  cvURL = "/pdf/cv/cv_apr26.pdf"
 
-  [params.profileMode]
-  enabled = true
-  title = "Renato Vassallo"
-  subtitle = """I am an economist at the Institute for Economic Analysis (IAE-CSIC) and an MRes student in the International Doctorate in Economic Analysis (IDEA) program. My work uses econometrics and machine learning to study economic dynamics and inform policy discussions."""
-    imageUrl = "images/photo_bse.png"  # relative to /static
-    imageTitle = "Renato Vassallo"
-    imageWidth = 150
-
-    [[params.profileMode.buttons]]
-      name = "Email"
-      url = "mailto:renato.vassallo@bse.eu"
-      icon = "email"
-
-    [[params.profileMode.buttons]]
-      name = "GitHub"
-      url = "https://github.com/renatovassallo"
-      icon = "github"
-
-    [[params.profileMode.buttons]]
-      name = "LinkedIn"
-      url = "https://linkedin.com/in/renatovassallo"
-      icon = "linkedin"
-
-  [params.academic]
-    sidebarBio = ["Economics", "Econometrics", "Machine Learning"]
-
+  [params.social]
+    github = "https://github.com/renatovassallo"
+    linkedin = "https://linkedin.com/in/renatovassallo"
+    email = "renato.vassallo@bse.eu"
+    # scholar = ""
+    # orcid = ""
 
 [menu]
   [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "research"
     name = "Research"
     url = "/research/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "teaching"
-    name = "Teaching"
-    url = "/teaching/"
-    weight = 3
-
-  [[menu.main]]
-    name = "CV"
-    url = "pdf/cv/cv_apr26.pdf"
-    weight = 4
-    [menu.main.params]
-      newTab = true
-
+    weight = 1
   [[menu.main]]
     name = "Software"
     url = "/software/"
+    weight = 2
+  [[menu.main]]
+    name = "Teaching"
+    url = "/teaching/"
+    weight = 3
+  [[menu.main]]
+    name = "Writing"
+    url = "/posts/"
+    weight = 4
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
     weight = 5
 
-  [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
-    weight = 6
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block = [['\[', '\]'], ['$$', '$$']]
+      inline = [['\(', '\)']]
+  [markup.highlight]
+    noClasses = false
+    style = "github"
+    lineNos = false
+    tabWidth = 4

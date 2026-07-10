@@ -1,0 +1,10 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page page-404">
+    <div class="page-404__fan" aria-hidden="true">{{ partial "fan.html" . }}</div>
+    <h1 class="page-404__title">This path wasn&rsquo;t forecast.</h1>
+    <p class="lead">The page you&rsquo;re looking for doesn&rsquo;t exist, or it may have moved.</p>
+    <p><a class="btn btn--primary" href="{{ "/" | relURL }}">Back home <span class="btn__arrow" aria-hidden="true">&rarr;</span></a></p>
+  </div>
+</div>
+{{ end }}

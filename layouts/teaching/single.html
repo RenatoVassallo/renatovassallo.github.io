@@ -1,0 +1,120 @@
+{{ define "main" }}
+<div class="container">
+  <article class="page course">
+    <nav class="breadcrumb"><a href="{{ "/teaching/" | relURL }}">Teaching</a> / <span aria-current="page">{{ .Title }}</span></nav>
+
+    <header class="course-hero">
+      {{- with .Params.hero_badges }}<div class="badge-row">{{ range . }}<span class="badge">{{ . }}</span>{{ end }}</div>{{ end }}
+      <h1 class="course-hero__title">{{ .Title }}</h1>
+      {{- if or .Params.program .Params.institution }}
+      <p class="course-hero__meta">{{ with .Params.program }}{{ . }}{{ end }}{{ if and .Params.program .Params.institution }} &middot; {{ end }}{{ with .Params.institution }}{{ . }}{{ end }}</p>
+      {{- end }}
+      {{- with .Params.period }}<p class="course-hero__period">{{ . }}</p>{{ end }}
+      {{- with .Content }}<div class="prose rich-text course-hero__intro">{{ . }}</div>{{ end }}
+    </header>
+
+    <div class="course-sections">
+      {{- with .Params.class_schedule }}
+      <section class="course-block">
+        <header class="section-head section-head--sub">
+          <span class="section-head__count">01</span>
+          <h2 class="section-head__title">Class Schedule</h2>
+          {{- with $.Params.office_hours }}<p class="section-head__note">Office hours: {{ . }}</p>{{ end }}
+        </header>
+        <div class="schedule">
+          {{- range . }}
+          <article class="schedule__item">
+            <p class="schedule__date">{{ .title }}</p>
+            {{- with .date }}<p class="schedule__line">{{ . }}</p>{{ end }}
+            {{- with .time }}<p class="schedule__line">{{ . }}</p>{{ end }}
+            {{- with .room }}<p class="schedule__line">{{ . }}</p>{{ end }}
+          </article>
+          {{- end }}
+        </div>
+      </section>
+      {{- end }}
+
+      {{- with .Params.environment_setup }}
+      <section class="course-block">
+        <header class="section-head section-head--sub">
+          <span class="section-head__count">02</span>
+          <h2 class="section-head__title">{{ .title }}</h2>
+          {{- with .note }}<p class="section-head__note">{{ . }}</p>{{ end }}
+        </header>
+        {{- with .intro }}<div class="prose rich-text course-setup__intro">{{ . | markdownify }}</div>{{ end }}
+        {{- with .repository }}<p class="course-setup__repo"><span class="kicker">Repository</span> <a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a></p>{{ end }}
+        {{- with .steps }}
+        <ol class="course-steps">
+          {{- range $i, $s := . }}
+          <li class="course-step">
+            <p class="course-step__label">{{ if $s.optional }}Optional{{ else }}Step {{ printf "%02d" (add $i 1) }}{{ end }}</p>
+            <h3 class="course-step__title">{{ $s.title }}</h3>
+            {{- with $s.description }}<div class="prose rich-text course-step__desc">{{ . | markdownify }}</div>{{ end }}
+            {{- with $s.command_groups }}
+              {{- range . }}
+              {{- with .label }}<p class="cmd-label">{{ . }}</p>{{ end }}
+              {{- with .commands }}<div class="cmd cmd--block"><code>{{ delimit . "\n" }}</code><button class="cmd__copy" type="button" aria-label="Copy commands">copy</button></div>{{ end }}
+              {{- end }}
+            {{- else with $s.commands }}
+            <div class="cmd cmd--block"><code>{{ delimit . "\n" }}</code><button class="cmd__copy" type="button" aria-label="Copy commands">copy</button></div>
+            {{- end }}
+            {{- with $s.note }}<div class="prose rich-text course-step__note">{{ . | markdownify }}</div>{{ end }}
+          </li>
+          {{- end }}
+        </ol>
+        {{- end }}
+        {{- with .guide }}<p class="course-setup__guide"><a class="btn btn--text" href="{{ .url | relURL }}" target="_blank" rel="noopener">{{ .label }} <span aria-hidden="true">&#8599;</span></a></p>{{ end }}
+      </section>
+      {{- end }}
+
+      {{- if or .Params.introduction_material .Params.sessions }}
+      <section class="course-block">
+        <header class="section-head section-head--sub">
+          <span class="section-head__count">03</span>
+          <h2 class="section-head__title">Course Materials</h2>
+          {{- with .Params.sessions_note }}<p class="section-head__note">{{ . }}</p>{{ end }}
+        </header>
+        <div class="materials">
+          {{- with .Params.introduction_material }}
+          <article class="material">
+            <div class="material__side"><span class="material__label">Introduction</span></div>
+            <div class="material__main">
+              <h3 class="material__title">{{ .title }}</h3>
+              {{- with .description }}<p class="material__desc">{{ . }}</p>{{ end }}
+              {{- with .materials }}<div class="material__chips">{{ range . }}{{ if .url }}<a class="chip" href="{{ cond (urls.Parse .url).IsAbs .url (.url | relURL) }}">{{ .label }}</a>{{ else }}<span class="chip chip--muted">{{ .label }}</span>{{ end }}{{ end }}</div>{{ end }}
+            </div>
+          </article>
+          {{- end }}
+          {{- range $i, $s := .Params.sessions }}
+          <article class="material">
+            <div class="material__side"><span class="material__label">Session {{ printf "%02d" (add $i 1) }}</span></div>
+            <div class="material__main">
+              <h3 class="material__title">{{ $s.title }}</h3>
+              {{- with $s.topics }}<p class="material__desc">{{ delimit . " · " }}</p>{{ end }}
+              {{- with $s.materials }}<div class="material__chips">{{ range . }}{{ if .url }}<a class="chip" href="{{ cond (urls.Parse .url).IsAbs .url (.url | relURL) }}">{{ .label }}</a>{{ else }}<span class="chip chip--muted">{{ .label }}</span>{{ end }}{{ end }}</div>{{ end }}
+            </div>
+          </article>
+          {{- end }}
+        </div>
+      </section>
+      {{- end }}
+
+      {{- with .Params.assignment }}
+      <section class="course-block">
+        <header class="section-head section-head--sub">
+          <span class="section-head__count">04</span>
+          <h2 class="section-head__title">{{ .title }}</h2>
+        </header>
+        <article class="callout course-assignment">
+          {{- with .weight }}<p class="kicker">{{ . }}</p>{{ end }}
+          <h3>{{ or .lead .title }}</h3>
+          {{- with .date }}<p class="course-assignment__date">{{ . }}</p>{{ end }}
+          {{- with .details }}<ul class="course-assignment__list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+          {{- with .materials }}<div class="material__chips">{{ range . }}{{ if .url }}<a class="chip chip--on-dark" href="{{ cond (urls.Parse .url).IsAbs .url (.url | relURL) }}">{{ .label }}</a>{{ end }}{{ end }}</div>{{ end }}
+        </article>
+      </section>
+      {{- end }}
+    </div>
+  </article>
+</div>
+{{ end }}

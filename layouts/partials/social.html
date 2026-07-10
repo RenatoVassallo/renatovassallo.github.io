@@ -1,0 +1,9 @@
+{{- with site.Params.social -}}
+<ul class="social">
+  {{- with .scholar }}<li><a href="{{ . }}" target="_blank" rel="noopener" aria-label="Google Scholar">{{ partial "icons.html" (dict "name" "scholar") }}<span>Scholar</span></a></li>{{ end }}
+  {{- with .github }}<li><a href="{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "icons.html" (dict "name" "github") }}<span>GitHub</span></a></li>{{ end }}
+  {{- with .orcid }}<li><a href="{{ . }}" target="_blank" rel="noopener" aria-label="ORCID">{{ partial "icons.html" (dict "name" "orcid") }}<span>ORCID</span></a></li>{{ end }}
+  {{- with .linkedin }}<li><a href="{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "icons.html" (dict "name" "linkedin") }}<span>LinkedIn</span></a></li>{{ end }}
+  {{- with .email }}<li><a href="mailto:{{ . }}" aria-label="Email">{{ partial "icons.html" (dict "name" "email") }}<span>Email</span></a></li>{{ end }}
+</ul>
+{{- end -}}

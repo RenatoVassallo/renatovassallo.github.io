@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page">
+    <header class="section-head">
+      <p class="kicker">Research</p>
+      <h1 class="section-head__title">{{ .Title }}</h1>
+      {{ partial "fan-divider.html" . }}
+      {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </header>
+
+    {{- $papers := where .Pages "Params.pubtype" "working_paper" }}
+    {{- $pubs := where .Pages "Params.pubtype" "publication" }}
+
+    {{- with $pubs }}
+    <section class="pub-group">
+      <header class="section-head section-head--sub">
+        <span class="section-head__count">01</span>
+        <h2 class="section-head__title">Publications</h2>
+      </header>
+      <div class="pub-list">
+        {{- range sort . "Params.year" "desc" }}{{ partial "pub.html" . }}{{ end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with $papers }}
+    <section class="pub-group">
+      <header class="section-head section-head--sub">
+        <span class="section-head__count">{{ if $pubs }}02{{ else }}01{{ end }}</span>
+        <h2 class="section-head__title">Working Papers</h2>
+      </header>
+      <div class="pub-list">
+        {{- range sort . "Params.year" "desc" }}{{ partial "pub.html" . }}{{ end }}
+      </div>
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

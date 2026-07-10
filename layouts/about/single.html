@@ -1,0 +1,65 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page about">
+    <header class="section-head">
+      <p class="kicker">About</p>
+      <h1 class="section-head__title">{{ .Title }}</h1>
+      {{ partial "fan-divider.html" . }}
+    </header>
+
+    <section class="about-intro">
+      <aside class="about-intro__media">
+        {{- with .Params.portrait }}<img class="portrait img-portrait" src="{{ . | relURL }}" alt="{{ $.Title }}" width="220" height="220">{{ end }}
+        {{ partial "social.html" . }}
+        {{- with .Params.cv_pdf }}<a class="btn btn--primary about-cv" href="{{ . | relURL }}" target="_blank" rel="noopener">Download CV (PDF) <span aria-hidden="true">&#8599;</span></a>{{ end }}
+      </aside>
+      <div class="about-intro__bio prose rich-text">
+        {{- with .Params.role }}<p class="about-role kicker">{{ . }}</p>{{ end }}
+        {{ .Content }}
+      </div>
+    </section>
+
+    {{- with .Params.interests }}
+    <section class="tsection">
+      <header class="section-head section-head--sub"><h2 class="section-head__title">Research interests</h2></header>
+      <div class="tag-cluster">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+    </section>
+    {{- end }}
+
+    {{- if or .Params.positions .Params.education }}
+    <section class="tsection">
+      <div class="timeline-wrap">
+        {{- with .Params.positions }}
+        <div class="timeline-col">
+          <header class="section-head section-head--sub"><h2 class="section-head__title">Positions</h2></header>
+          <ul class="timeline">
+            {{- range . }}<li class="timeline__item"><span class="timeline__year">{{ .year }}</span><span class="timeline__what">{{ .what }}</span></li>{{ end }}
+          </ul>
+        </div>
+        {{- end }}
+        {{- with .Params.education }}
+        <div class="timeline-col">
+          <header class="section-head section-head--sub"><h2 class="section-head__title">Education</h2></header>
+          <ul class="timeline">
+            {{- range . }}<li class="timeline__item"><span class="timeline__year">{{ .year }}</span><span class="timeline__what">{{ .what }}</span></li>{{ end }}
+          </ul>
+        </div>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with site.GetPage "/research" }}
+    <section class="tsection">
+      <header class="section-head section-head--sub">
+        <h2 class="section-head__title">Selected publications</h2>
+        <a class="section-head__action btn btn--text" href="{{ .RelPermalink }}">All research <span aria-hidden="true">&rarr;</span></a>
+      </header>
+      <div class="pub-list">
+        {{- range first 4 (sort .Pages "Params.year" "desc") }}{{ partial "pub.html" . }}{{ end }}
+      </div>
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

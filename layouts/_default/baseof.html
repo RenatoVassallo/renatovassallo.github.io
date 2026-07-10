@@ -1,35 +1,16 @@
-{{- if lt hugo.Version "0.146.0" }}
-{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
-{{- end -}}
-
 <!DOCTYPE html>
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
-
+<html lang="{{ site.Language.LanguageCode | default "en" }}" dir="ltr">
 <head>
-  {{- partial "head.html" . }}
+  {{- partial "head.html" . -}}
 </head>
-
-<body class="academic-site
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print " list" -}}
-{{- end -}}
-{{- if eq site.Params.defaultTheme `dark` -}}
-{{- print " dark" }}
-{{- end -}}
-{{- with .Layout -}}
-{{- print " layout-" . -}}
-{{- end -}}
-" id="top">
-    {{- partialCached "header.html" . .Page -}}
-    <main class="main academic-layout">
-        {{- if ne .Layout `teaching-course` }}
-        {{- partial "academic_sidebar.html" . -}}
-        {{- end }}
-        <div class="academic-primary">
-            {{- block "main" . }}{{ end }}
-        </div>
-    </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{- partial "header.html" . -}}
+  <main id="main">
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+  {{- $js := resources.Get "js/main.js" | minify | fingerprint -}}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 </body>
-
 </html>

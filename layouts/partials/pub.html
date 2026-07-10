@@ -1,0 +1,25 @@
+<article class="pub">
+  <div class="pub__year">{{ .Params.year }}</div>
+  <div class="pub__body">
+    <div class="pub__badges">
+      {{- if eq .Params.pubtype "publication" }}<span class="badge">Publication</span>{{ else }}<span class="badge">Working Paper</span>{{ end }}
+      {{- with .Params.award }}<span class="badge badge--award">{{ . }}</span>{{ end }}
+      {{- with .Params.status }}<span class="status">{{ . }}</span>{{ end }}
+    </div>
+    <h3 class="pub__title">
+      {{- $links := .Params.links }}
+      {{- if $links }}{{ $primary := index $links 0 }}<a href="{{ $primary.url }}" target="_blank" rel="noopener">{{ .Title }}</a>
+      {{- else }}{{ .Title }}{{ end }}
+    </h3>
+    {{- with .Params.authors }}<p class="pub__authors">{{ . }}</p>{{ end }}
+    {{- with .Params.venue }}<p class="pub__venue">{{ . }}{{ with $.Params.year }} &middot; {{ . }}{{ end }}</p>{{ end }}
+    {{- with .Params.topics }}<div class="pub__topics">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>{{ end }}
+    {{- with .Params.links }}
+    <div class="pub__links">
+      {{- range . }}<a class="btn btn--text" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} <span aria-hidden="true">&#8599;</span></a>{{ end }}
+    </div>
+    {{- end }}
+    {{- with .Params.abstract }}<details class="disclosure"><summary>Abstract</summary><p>{{ . }}</p></details>{{ end }}
+    {{- with .Params.bibtex }}<details class="disclosure"><summary>BibTeX</summary><pre>{{ . }}</pre></details>{{ end }}
+  </div>
+</article>

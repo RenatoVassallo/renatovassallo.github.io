@@ -1,0 +1,97 @@
+/* ==========================================================================
+   tokens.css — design tokens (Phase 2 spec §2). Imported first.
+   Warm Editorial direction. All component CSS consumes these; no literal
+   colors or ad-hoc px elsewhere.
+   ========================================================================== */
+:root {
+  /* 2.1 Color (light, default) */
+  --color-ink: #2a231d;
+  --color-muted: #6b5f52;
+  --color-faint: #8c7f6f;
+  --color-bg: #f6f0e6;
+  --color-surface: #fbf7f0;
+  --color-surface-2: #efe7d8;
+  --color-border: #e6dcca;
+  --color-border-strong: #d3bba9;
+  --color-accent: #b0472a;
+  --color-accent-hover: #97371f;
+  --color-accent-tint: #f0e0d6;
+  --color-gold: #9a7b2e;
+  --color-code-bg: #2c2620;
+  --color-code-fg: #f0e6d8;
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+  --color-focus: var(--color-accent);
+  --color-success: #5a7d43;
+  --color-pending: #a8917c;
+
+  /* 2.2 Type */
+  --font-serif: "Spectral", Georgia, "Times New Roman", serif;
+  --font-sans: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display: clamp(42px, 3.2vw + 1rem, 64px);
+  --fs-h1: clamp(32px, 2vw + 1rem, 46px);
+  --fs-h2: clamp(24px, 1vw + 1rem, 30px);
+  --fs-h3: 20px;
+  --fs-h4: 17px;
+  --fs-body-lg: 18px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-kicker: 12px;
+  --fs-code: 14px;
+
+  /* 2.3 Spacing (4-based) & layout */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --measure: 68ch;
+  --container: 1080px;
+  --gutter: 24px;
+
+  /* 2.4 Radii · borders · elevation */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+  --r-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(42, 35, 29, 0.05);
+  --shadow-md: 0 8px 24px rgba(42, 35, 29, 0.08);
+  --shadow-lg: 0 16px 48px rgba(42, 35, 29, 0.10);
+
+  /* 2.6 Motion · transitions · z-index */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur: 180ms;
+  --dur-slow: 400ms;
+  --dur-fan: 1400ms;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-toast: 400;
+}
+
+@media (min-width: 1024px) {
+  :root { --gutter: 40px; }
+}
+
+/* 2.7 Dark set (optional, default OFF — activated by [data-theme="dark"]) */
+:root[data-theme="dark"] {
+  --color-ink: #ece3d5;
+  --color-muted: #b3a894;
+  --color-faint: #8c7f6f;
+  --color-bg: #1c1814;
+  --color-surface: #241f19;
+  --color-surface-2: #2c2620;
+  --color-border: #3a3229;
+  --color-border-strong: #4a3f34;
+  --color-accent: #d0764f;
+  --color-accent-hover: #e08a63;
+  --color-accent-tint: #3a2b22;
+  --color-code-bg: #120f0c;
+  --color-code-fg: #f0e6d8;
+}

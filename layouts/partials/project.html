@@ -1,0 +1,21 @@
+<article class="card project">
+  <div class="project__head">
+    <h3 class="project__name">{{ .Title }}</h3>
+    {{- with .Params.status }}<span class="status status--{{ . }}">{{ . }}</span>{{ end }}
+  </div>
+  {{- with .Params.summary }}<p class="project__summary">{{ . }}</p>{{ end }}
+  {{- with .Params.description }}<p class="project__desc">{{ . }}</p>{{ end }}
+  {{- with .Params.topics }}
+  <div class="project__topics">
+    {{- range . }}<span class="tag">{{ . }}</span>{{ end }}
+  </div>
+  {{- end }}
+  {{- with .Params.install }}
+  <div class="cmd"><code>{{ . }}</code><button class="cmd__copy" type="button" aria-label="Copy command">copy</button></div>
+  {{- end }}
+  {{- with .Params.links }}
+  <div class="project__links">
+    {{- range . }}<a class="btn btn--text" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} <span aria-hidden="true">&#8599;</span></a>{{ end }}
+  </div>
+  {{- end }}
+</article>

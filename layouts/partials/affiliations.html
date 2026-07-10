@@ -1,0 +1,12 @@
+{{- with site.Data.affiliations -}}
+<div class="affiliations">
+  <p class="kicker kicker--muted">{{ site.Params.affiliationsTitle | default "Affiliations &amp; collaborations" }}</p>
+  <div class="affiliations__grid">
+    {{- range . }}
+    <a class="affiliations__logo" href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}">
+      <img src="{{ .logo | relURL }}" alt="{{ .name }}" loading="lazy">
+    </a>
+    {{- end }}
+  </div>
+</div>
+{{- end -}}

@@ -1,0 +1,58 @@
+{{ define "main" }}
+<div class="container">
+  <div class="page">
+    <header class="section-head">
+      <p class="kicker">Teaching</p>
+      <h1 class="section-head__title">{{ .Title }}</h1>
+      {{ partial "fan-divider.html" . }}
+      {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </header>
+
+    {{- with .Params.teaching_experience }}
+    <section class="tsection">
+      <header class="section-head section-head--sub">
+        <span class="section-head__count">01</span>
+        <h2 class="section-head__title">Recent Teaching Experience</h2>
+      </header>
+      <div class="exp-groups">
+        {{- range . }}
+        <div class="exp-group">
+          <p class="kicker">{{ .title }}</p>
+          <div class="exp-list">
+            {{- range .entries }}
+            <article class="exp-item">
+              <h3 class="exp-item__title">{{ .course }}</h3>
+              {{- with .faculty }}<p class="exp-item__meta">Faculty: {{ . }}</p>{{ end }}
+              {{- with .program }}<p class="exp-item__meta">{{ . }}</p>{{ end }}
+              {{- with .periods }}<p class="exp-item__periods">{{ delimit . " · " }}</p>{{ end }}
+            </article>
+            {{- end }}
+          </div>
+        </div>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
+    {{- with .Pages }}
+    <section class="tsection">
+      <header class="section-head section-head--sub">
+        <span class="section-head__count">02</span>
+        <h2 class="section-head__title">Teaching Material</h2>
+      </header>
+      <div class="project-grid">
+        {{- range sort . "Weight" }}
+        <a class="card card--link course-card" href="{{ .RelPermalink }}">
+          <p class="kicker">{{ with .Params.institution }}{{ . }}{{ end }}{{ with .Params.term }} &middot; {{ . }}{{ end }}</p>
+          <h3 class="course-card__title">{{ .Title }}</h3>
+          {{- with .Params.role }}<p class="course-card__role">{{ . }}</p>{{ end }}
+          {{- with .Params.summary }}<p class="course-card__summary">{{ . }}</p>{{ end }}
+          <span class="btn btn--text">Open course <span aria-hidden="true">&rarr;</span></span>
+        </a>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{ end }}
