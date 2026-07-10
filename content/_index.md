@@ -2,8 +2,8 @@
 title: "Renato Vassallo"
 kicker: "Economist · IDEA / BSE · IAE-CSIC"
 heroName: "Renato Vassallo"
-tagline: "Density forecasts that map plausible paths under uncertainty."
+tagline: "Research at the intersection of economics, AI and policy."
 description: "Economist working at the frontier of causal inference, machine learning, and macroeconometric forecasting."
 ---
 
-I work at the frontier of causal inference, machine learning, and macroeconometric forecasting, building early-warning systems for institutions like the IMF, UNHCR, and the German Foreign Office, and writing about turning hard methods into clear, visual explanations.
+I build forecasting and causal inference tools to study macroeconomic dynamics, humanitarian crises, and conflict risk, with an emphasis on transparent, reproducible, and visually clear research.
