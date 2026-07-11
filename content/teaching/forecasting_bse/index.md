@@ -2,6 +2,7 @@
 title: "Forecasting and Nowcasting with Text as Data"
 ShowCodeCopyButtons: true
 weight: 10
+open: true   # set to false to hide the "Open course" link on the Teaching page
 role: "Instructor"
 term: "2025-2026"
 summary: "Turning unstructured text into forecasting and nowcasting signals, from dictionaries to LLMs."

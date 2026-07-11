@@ -44,6 +44,7 @@
       </header>
       <div class="project-grid">
         {{- range sort . "Weight" }}
+        {{- if ne .Params.open false }}
         <a class="card card--link course-card" href="{{ .RelPermalink }}">
           <p class="kicker">{{ with .Params.institution }}{{ . }}{{ end }}{{ with .Params.term }} &middot; {{ . }}{{ end }}</p>
           <h3 class="course-card__title">{{ .Title }}</h3>
@@ -51,6 +52,14 @@
           {{- with .Params.summary }}<p class="course-card__summary">{{ . }}</p>{{ end }}
           <span class="btn btn--text">Open course <span aria-hidden="true">&rarr;</span></span>
         </a>
+        {{- else }}
+        <div class="card course-card">
+          <p class="kicker">{{ with .Params.institution }}{{ . }}{{ end }}{{ with .Params.term }} &middot; {{ . }}{{ end }}</p>
+          <h3 class="course-card__title">{{ .Title }}</h3>
+          {{- with .Params.role }}<p class="course-card__role">{{ . }}</p>{{ end }}
+          {{- with .Params.summary }}<p class="course-card__summary">{{ . }}</p>{{ end }}
+        </div>
+        {{- end }}
         {{- end }}
       </div>
     </section>

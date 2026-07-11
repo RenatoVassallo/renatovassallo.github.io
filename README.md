@@ -2,6 +2,12 @@
 
 Source for the live site at **https://renatovassallo.github.io/**. A static site built with Hugo (extended); the theme is bespoke (in `layouts/` and `assets/`), with no external theme dependency.
 
+## Preview
+
+```sh
+hugo server        # live local preview at http://localhost:1313
+```
+
 ## Branches and workflow
 
 Work on **`develop`**, then publish by merging into **`main`**. Pushing `main` deploys the live site through GitHub Actions.
@@ -42,9 +48,3 @@ The live site updates about a minute after the `main` deploy finishes. `public/`
   {{< lang code="en" active="true" >}} … English … {{< /lang >}}
   {{< lang code="es" >}} … Español … {{< /lang >}}
   ```
-
-## Preview
-
-```sh
-hugo server        # live local preview at http://localhost:1313
-```
