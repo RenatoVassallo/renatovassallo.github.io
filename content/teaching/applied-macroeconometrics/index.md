@@ -4,7 +4,7 @@ institution: "Lambda Group Peru"
 term: "2026"
 role: "Instructor"
 weight: 20
-open: true   # set to false to hide the "Open course" link on the Teaching page
+open: false   # set to false to hide the "Open course" link on the Teaching page
 summary: "A hands-on course on macroeconometric tools for empirical research, forecasting, and policy analysis."
 program: "Professional workshop"
 period: "2026"
