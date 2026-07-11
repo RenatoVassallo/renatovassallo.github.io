@@ -10,128 +10,85 @@
 
 <style>
   .bilingual-toggle {
-    align-items: center;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: space-between;
-    margin: 1.5rem 0 2rem;
-    padding: 0.75rem;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: var(--space-3);
+    margin: var(--space-5) 0 var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
   }
-
   .bilingual-toggle__label {
-    color: var(--secondary);
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--color-faint);
   }
-
-  .bilingual-toggle__buttons {
-    display: inline-flex;
-    gap: 0.25rem;
-  }
-
+  .bilingual-toggle__buttons { display: inline-flex; gap: var(--space-2); }
   .bilingual-toggle button {
+    font-family: var(--font-mono); font-size: 12px; line-height: 1;
+    color: var(--color-muted);
     background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--primary);
-    cursor: pointer;
-    font: inherit;
-    line-height: 1.2;
-    min-height: 2.25rem;
-    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--r-sm);
+    padding: 7px 12px; cursor: pointer;
+    transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
-
+  .bilingual-toggle button:hover { color: var(--color-ink); border-color: var(--color-faint); }
   .bilingual-toggle button.is-active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: var(--theme);
+    color: #fff; background: var(--color-accent); border-color: var(--color-accent);
   }
-
-  .bilingual-panel {
-    display: none;
-  }
-
-  .bilingual-panel.is-active {
-    display: block;
-  }
+  .bilingual-panel { display: none; }
+  .bilingual-panel.is-active { display: block; }
 </style>
 
 <script>
   (() => {
     const storageKey = "rv-post-language";
+    const rootSelector = ".post-body";
 
     function getStoredLanguage(defaultLanguage) {
-      try {
-        return localStorage.getItem(storageKey) || defaultLanguage;
-      } catch {
-        return defaultLanguage;
-      }
+      try { return localStorage.getItem(storageKey) || defaultLanguage; }
+      catch { return defaultLanguage; }
     }
-
     function storeLanguage(language) {
-      try {
-        localStorage.setItem(storageKey, language);
-      } catch {
-        /* Ignore storage restrictions. */
-      }
+      try { localStorage.setItem(storageKey, language); } catch { /* ignore */ }
     }
-
     function setLanguage(root, language) {
       root.querySelectorAll("[data-language-button]").forEach((button) => {
         const isActive = button.dataset.languageButton === language;
         button.classList.toggle("is-active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
       });
-
       root.querySelectorAll("[data-language-panel]").forEach((panel) => {
         panel.classList.toggle("is-active", panel.dataset.languagePanel === language);
       });
-
       storeLanguage(language);
     }
-
     function initRoot(root) {
-      if (root.dataset.bilingualReady === "true") {
-        return;
-      }
-
+      if (root.dataset.bilingualReady === "true") return;
       root.dataset.bilingualReady = "true";
       const toggle = root.querySelector("[data-bilingual-toggle]");
-      const defaultLanguage = toggle?.dataset.defaultLanguage || "en";
-      const language = getStoredLanguage(defaultLanguage);
-
-      setLanguage(root, language);
+      if (!toggle) return;
+      const defaultLanguage = toggle.dataset.defaultLanguage || "en";
+      setLanguage(root, getStoredLanguage(defaultLanguage));
     }
-
     function bindClicks() {
-      if (window.__rvBilingualToggleBound) {
-        return;
-      }
-
+      if (window.__rvBilingualToggleBound) return;
       window.__rvBilingualToggleBound = true;
       document.addEventListener("click", (event) => {
         const target = event.target instanceof Element ? event.target : event.target?.parentElement;
         const button = target?.closest("[data-language-button]");
-        const root = button?.closest(".post-content");
-        if (!button || !root) {
-          return;
-        }
-
+        const root = button?.closest(rootSelector);
+        if (!button || !root) return;
         setLanguage(root, button.dataset.languageButton);
       });
     }
-
     function init() {
-      document.querySelectorAll(".post-content").forEach(initRoot);
+      document.querySelectorAll(rootSelector).forEach(initRoot);
       bindClicks();
     }
-
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);
-    } else {
-      init();
-    }
+    } else { init(); }
   })();
 </script>

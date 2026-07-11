@@ -1,5 +1,5 @@
 <article class="pub">
-  <div class="pub__year">{{ .Params.year }}</div>
+  <div class="pub__year">{{ .Date.Format "2006" }}</div>
   <div class="pub__body">
     <div class="pub__badges">
       {{- if eq .Params.pubtype "publication" }}<span class="badge">Publication</span>{{ else }}<span class="badge">Working Paper</span>{{ end }}
@@ -12,7 +12,7 @@
       {{- else }}{{ .Title }}{{ end }}
     </h3>
     {{- with .Params.authors }}<p class="pub__authors">{{ . }}</p>{{ end }}
-    {{- with .Params.venue }}<p class="pub__venue">{{ . }}{{ with $.Params.year }} &middot; {{ . }}{{ end }}</p>{{ end }}
+    {{- with .Params.venue }}<p class="pub__venue">{{ . }} &middot; {{ $.Date.Format "January 2006" }}</p>{{ end }}
     {{- with .Params.topics }}<div class="pub__topics">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>{{ end }}
     {{- with .Params.links }}
     <div class="pub__links">

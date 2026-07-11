@@ -80,4 +80,13 @@
     pre.style.position = "relative";
     pre.appendChild(btn);
   });
+
+  // --- Dark Modern: color function-call identifiers (a name immediately
+  //     before "(") yellow, which the token-based highlighter can't infer ---
+  document.querySelectorAll("pre.chroma code span.n").forEach(function (name) {
+    var next = name.nextElementSibling;
+    if (next && next.classList.contains("p") && next.textContent.trim().charAt(0) === "(") {
+      name.classList.add("nf-call");
+    }
+  });
 })();

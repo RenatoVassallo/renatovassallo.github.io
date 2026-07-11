@@ -14,20 +14,22 @@
         <span class="section-head__count">01</span>
         <h2 class="section-head__title">Recent Teaching Experience</h2>
       </header>
-      <div class="exp-groups">
+      <div class="exp">
         {{- range . }}
         <div class="exp-group">
-          <p class="kicker">{{ .title }}</p>
-          <div class="exp-list">
+          <p class="exp-group__label kicker">{{ .title }}</p>
+          <ul class="exp-list">
             {{- range .entries }}
-            <article class="exp-item">
-              <h3 class="exp-item__title">{{ .course }}</h3>
-              {{- with .faculty }}<p class="exp-item__meta">Faculty: {{ . }}</p>{{ end }}
-              {{- with .program }}<p class="exp-item__meta">{{ . }}</p>{{ end }}
+            <li class="exp-item">
+              <div class="exp-item__main">
+                <h3 class="exp-item__title">{{ .course }}</h3>
+                {{- with .program }}<p class="exp-item__meta">{{ . }}</p>{{ end }}
+                {{- with .faculty }}<p class="exp-item__faculty">Faculty: {{ . }}</p>{{ end }}
+              </div>
               {{- with .periods }}<p class="exp-item__periods">{{ delimit . " · " }}</p>{{ end }}
-            </article>
+            </li>
             {{- end }}
-          </div>
+          </ul>
         </div>
         {{- end }}
       </div>

@@ -22,7 +22,8 @@
 {{- $base := resources.Get "css/base.css" -}}
 {{- $components := resources.Get "css/components.css" -}}
 {{- $sections := resources.Get "css/sections.css" -}}
-{{- $css := slice $tokens $base $components $sections | resources.Concat "css/site.css" | minify | fingerprint -}}
+{{- $chroma := resources.Get "css/chroma.css" -}}
+{{- $css := slice $tokens $base $components $sections $chroma | resources.Concat "css/site.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 
 {{- if or .Params.math site.Params.math }}

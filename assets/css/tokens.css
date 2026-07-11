@@ -19,6 +19,8 @@
   --color-gold: #9a7b2e;
   --color-code-bg: #2c2620;
   --color-code-fg: #f0e6d8;
+  --color-editor-bg: #1f1f1f;   /* VS Code "Dark Modern" editor background */
+  --color-editor-fg: #d4d4d4;
   --color-link: var(--color-accent);
   --color-link-hover: var(--color-accent-hover);
   --color-focus: var(--color-accent);

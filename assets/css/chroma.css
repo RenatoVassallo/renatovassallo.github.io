@@ -1,0 +1,44 @@
+/* Syntax highlighting — VS Code "Dark Modern" palette, adapted for Chroma.
+   Chroma is token-based (not semantic), so function calls are recovered with a
+   small JS pass in main.js that adds .nf-call to identifiers before "(". */
+
+.chroma { color: var(--color-editor-fg); background-color: var(--color-editor-bg); }
+.chroma .err { color: #f14c4c; }
+.chroma .hl { background-color: #2a2d2e; display: block; width: 100%; }
+.chroma .ln, .chroma .lnt { color: #6e7681; }
+
+/* Comments */
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs { color: #6a9955; font-style: italic; }
+.chroma .cp, .chroma .cpf { color: #6a9955; }
+
+/* Keywords */
+.chroma .k, .chroma .kn, .chroma .kp, .chroma .kr { color: #c586c0; }
+.chroma .kc, .chroma .kd, .chroma .no { color: #569cd6; }
+.chroma .kt { color: #4ec9b0; }
+.chroma .ow { color: #569cd6; }
+
+/* Names */
+.chroma .n, .chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm, .chroma .na, .chroma .py, .chroma .nl, .chroma .nx { color: #9cdcfe; }
+.chroma .nn, .chroma .nc, .chroma .ne, .chroma .nt { color: #4ec9b0; }
+.chroma .nf, .chroma .fm, .chroma .nb, .chroma .nd { color: #dcdcaa; }
+.chroma .bp { color: #569cd6; }
+.chroma .n.nf-call { color: #dcdcaa; }   /* function calls, marked by JS */
+
+/* Strings */
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl, .chroma .sd, .chroma .s2, .chroma .sh, .chroma .si, .chroma .sx, .chroma .s1, .chroma .ss { color: #ce9178; }
+.chroma .se { color: #d7ba7d; }
+.chroma .sr { color: #d16969; }
+
+/* Numbers */
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .il, .chroma .mo { color: #b5cea8; }
+
+/* Operators & punctuation */
+.chroma .o { color: #d4d4d4; }
+.chroma .p { color: #d4d4d4; }
+
+/* Generic (diffs) */
+.chroma .gd { color: #f14c4c; }
+.chroma .gi { color: #6a9955; }
+.chroma .gh, .chroma .gu { color: #569cd6; }
+.chroma .ge { font-style: italic; }
+.chroma .gs { font-weight: bold; }

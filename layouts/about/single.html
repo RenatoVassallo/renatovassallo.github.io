@@ -26,38 +26,10 @@
     </section>
     {{- end }}
 
-    {{- if or .Params.positions .Params.education }}
+    {{- if site.Data.affiliations }}
     <section class="tsection">
-      <div class="timeline-wrap">
-        {{- with .Params.positions }}
-        <div class="timeline-col">
-          <header class="section-head section-head--sub"><h2 class="section-head__title">Positions</h2></header>
-          <ul class="timeline">
-            {{- range . }}<li class="timeline__item"><span class="timeline__year">{{ .year }}</span><span class="timeline__what">{{ .what }}</span></li>{{ end }}
-          </ul>
-        </div>
-        {{- end }}
-        {{- with .Params.education }}
-        <div class="timeline-col">
-          <header class="section-head section-head--sub"><h2 class="section-head__title">Education</h2></header>
-          <ul class="timeline">
-            {{- range . }}<li class="timeline__item"><span class="timeline__year">{{ .year }}</span><span class="timeline__what">{{ .what }}</span></li>{{ end }}
-          </ul>
-        </div>
-        {{- end }}
-      </div>
-    </section>
-    {{- end }}
-
-    {{- with site.GetPage "/research" }}
-    <section class="tsection">
-      <header class="section-head section-head--sub">
-        <h2 class="section-head__title">Selected publications</h2>
-        <a class="section-head__action btn btn--text" href="{{ .RelPermalink }}">All research <span aria-hidden="true">&rarr;</span></a>
-      </header>
-      <div class="pub-list">
-        {{- range first 4 (sort .Pages "Params.year" "desc") }}{{ partial "pub.html" . }}{{ end }}
-      </div>
+      <header class="section-head section-head--sub"><h2 class="section-head__title">Affiliations &amp; Collaborations</h2></header>
+      {{ partial "affiliations.html" . }}
     </section>
     {{- end }}
   </div>

@@ -1,6 +1,7 @@
 ---
 title: "Business Confidence and Private Investment in Peru: A Nonlinear Analysis for the Period 2003-2019"
 pubtype: working_paper
+date: 2023-03-15
 year: 2023
 venue: "Fiscal Council of Peru"
 authors: "With William Sánchez."

@@ -1,6 +1,7 @@
 ---
 title: "Semantic Similarity Measures in Newspaper Text for Detecting and Predicting Disruptive Institutional Events"
 pubtype: working_paper
+date: 2026-01-15
 year: 2026
 venue: "BSE Working Paper"
 authors: "With Laura Mayoral, Hannes Mueller, Christopher Rauh, and Margherita Phillip."

@@ -1,6 +1,7 @@
 ---
 title: "Measuring Potential Output after COVID-19: An Extended Multivariate Filter"
 pubtype: working_paper
+date: 2023-08-01
 year: 2023
 venue: "Fiscal Council of Peru"
 authors: "With William Sánchez."

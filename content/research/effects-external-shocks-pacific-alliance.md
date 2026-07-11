@@ -1,6 +1,7 @@
 ---
 title: "Effects of External Shocks on Macroeconomic Fluctuations in Pacific Alliance Countries"
 pubtype: publication
+date: 2023-07-15
 year: 2023
 venue: "Economic Modelling"
 authors: "With Gabriel Rodríguez and Paul Castillo."
