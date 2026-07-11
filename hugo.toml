@@ -14,7 +14,7 @@ enableRobotsTXT = true
   description = "Economist working at the frontier of causal inference, machine learning, and macroeconometric forecasting."
   footerBio = "Economist at IAE-CSIC and PhD-track researcher in the IDEA program (UAB / Barcelona School of Economics)."
   affiliationsTitle = "Affiliations & collaborations"
-  cvURL = "/pdf/cv/cv_apr26.pdf"
+  cvURL = "/pdf/cv/cv_jul26.pdf"
 
   [params.social]
     github = "https://github.com/renatovassallo"

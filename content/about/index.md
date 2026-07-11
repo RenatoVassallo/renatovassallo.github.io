@@ -3,7 +3,7 @@ title: "About"
 description: "Economist working at the frontier of causal inference, machine learning, and macroeconometric forecasting."
 portrait: "/images/photo_bse.png"
 role: "Economist · IDEA / BSE · IAE-CSIC"
-cv_pdf: "/pdf/cv/cv_apr26.pdf"
+cv_pdf: "/pdf/cv/cv_jul26.pdf"
 interests:
   - "causal inference"
   - "machine learning"
