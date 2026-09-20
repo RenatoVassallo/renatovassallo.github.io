@@ -1,0 +1,85 @@
+{{- /* Bilingual book page (layout: "book").
+       Content comes from front matter, where every translatable field is a map
+       keyed by language code, e.g.  title: { en: "...", es: "..." }.
+       Each language is rendered into its own panel and switched client side by
+       the language-toggle partial. */ -}}
+{{ define "main" }}
+{{- $default := .Params.lang_default | default "en" -}}
+{{- $langs := .Params.languages | default (slice "en" "es") -}}
+{{- $b := .Params.book -}}
+{{- $readit := .Params.read_it -}}
+{{- $chapters := .Params.chapters -}}
+<div class="container">
+  <article class="page course book" data-bilingual-root>
+    <nav class="breadcrumb"><a href="{{ "/teaching/" | relURL }}">Teaching</a> / <span aria-current="page">{{ .Title }}</span></nav>
+
+    {{ partial "language-toggle.html" (dict "default" $default "label" "Read in / Leer en") }}
+
+    {{- range $code := $langs }}
+    <section class="bilingual-panel{{ if eq $code $default }} is-active{{ end }}" data-language-panel="{{ $code }}" lang="{{ $code }}">
+
+      <header class="course-hero">
+        {{- with index $b.badges $code }}
+        <div class="badge-row">{{ range . }}<span class="badge">{{ . }}</span>{{ end }}</div>
+        {{- end }}
+        <h1 class="course-hero__title">{{ index $b.heading $code }}</h1>
+        {{- with index $b.meta $code }}<p class="course-hero__meta">{{ . }}</p>{{ end }}
+        {{- with index $b.period $code }}<p class="course-hero__period">{{ . }}</p>{{ end }}
+        {{- with index $b.intro $code }}<div class="prose rich-text course-hero__intro">{{ . | markdownify }}</div>{{ end }}
+      </header>
+
+      <div class="course-sections">
+        <section class="course-block">
+          <header class="section-head section-head--sub">
+            <span class="section-head__count">01</span>
+            <h2 class="section-head__title">{{ index $b.contents_title $code }}</h2>
+            {{- with index $b.contents_note $code }}<p class="section-head__note">{{ . }}</p>{{ end }}
+          </header>
+
+          <div class="materials">
+            {{- with $readit }}
+            <article class="material">
+              <div class="material__side"><span class="material__label">{{ index $b.read_label $code }}</span></div>
+              <div class="material__main">
+                <h3 class="material__title">{{ .title }}</h3>
+                {{- with index .description $code }}<p class="material__desc">{{ . }}</p>{{ end }}
+                {{- with .materials }}
+                <div class="material__chips">
+                  {{- range . }}
+                  {{- $label := index .label $code }}
+                  {{- if .url }}<a class="chip" href="{{ .url }}" target="_blank" rel="noopener">{{ $label }}</a>
+                  {{- else }}<span class="chip chip--muted">{{ $label }}</span>{{ end }}
+                  {{- end }}
+                </div>
+                {{- end }}
+              </div>
+            </article>
+            {{- end }}
+
+            {{- range $i, $ch := $chapters }}
+            <article class="material">
+              <div class="material__side"><span class="material__label">{{ index $b.chapter_label $code }} {{ printf "%02d" (add $i 1) }}</span></div>
+              <div class="material__main">
+                <h3 class="material__title">{{ index $ch.title $code }}</h3>
+                {{- with index $ch.topics $code }}<p class="material__desc">{{ delimit . " · " }}</p>{{ end }}
+                {{- with $ch.materials }}
+                <div class="material__chips">
+                  {{- range . }}
+                  {{- $label := index .label $code }}
+                  {{- if .url }}<a class="chip" href="{{ .url }}" target="_blank" rel="noopener">{{ $label }}</a>
+                  {{- else }}<span class="chip chip--muted">{{ $label }}</span>{{ end }}
+                  {{- end }}
+                </div>
+                {{- end }}
+              </div>
+            </article>
+            {{- end }}
+          </div>
+        </section>
+      </div>
+
+    </section>
+    {{- end }}
+  </article>
+</div>
+{{ end }}

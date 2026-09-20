@@ -65,13 +65,15 @@
 
 /* ---- Course detail ---- */
 .course { max-width: none; }
-.course-hero { padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-border); margin-bottom: var(--space-7); }
+.course-hero { padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); margin-bottom: var(--space-6); }
 .badge-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
 .course-hero__title { font-size: var(--fs-display); line-height: 1.02; margin: 0 0 var(--space-3); }
 .course-hero__meta { font-size: var(--fs-body-lg); color: var(--color-muted); margin: 0; }
 .course-hero__period { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-faint); margin: var(--space-2) 0 0; }
 .course-hero__intro { margin-top: var(--space-4); max-width: var(--measure); }
 .course-sections { display: grid; gap: var(--space-8); }
+/* the hero already provides the separation, so the first block starts flush */
+.course-sections > .course-block:first-child .section-head--sub { margin-top: 0; }
 .schedule__date { text-transform: uppercase; letter-spacing: 0.08em; }
 .schedule__line { display: flex; align-items: center; gap: var(--space-2); color: var(--color-muted); font-size: var(--fs-small); margin: var(--space-1) 0 0; }
 .course-setup__intro { max-width: var(--measure); margin-bottom: var(--space-4); }
@@ -91,7 +93,7 @@
 .cmd--block code::before { content: none; }
 .cmd--block .cmd__copy { position: absolute; top: var(--space-2); right: var(--space-2); }
 .materials { display: grid; gap: 0; }
-.material { display: grid; grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-5) 0; border-top: 1px solid var(--color-border); }
+.material { display: grid; grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-4) 0; border-top: 1px solid var(--color-border); }
 .material:first-child { border-top: 0; padding-top: 0; }
 @media (min-width: 640px) { .material { grid-template-columns: 120px 1fr; gap: var(--space-5); } }
 .material__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-faint); }
