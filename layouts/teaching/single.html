@@ -70,14 +70,14 @@
       {{- if or .Params.introduction_material .Params.sessions }}
       <section class="course-block">
         <header class="section-head section-head--sub">
-          <span class="section-head__count">03</span>
-          <h2 class="section-head__title">Course Materials</h2>
+          <span class="section-head__count">{{ with .Params.materials_count }}{{ . }}{{ else }}03{{ end }}</span>
+          <h2 class="section-head__title">{{ with .Params.materials_title }}{{ . }}{{ else }}Course Materials{{ end }}</h2>
           {{- with .Params.sessions_note }}<p class="section-head__note">{{ . }}</p>{{ end }}
         </header>
         <div class="materials">
           {{- with .Params.introduction_material }}
           <article class="material">
-            <div class="material__side"><span class="material__label">Introduction</span></div>
+            <div class="material__side"><span class="material__label">{{ with $.Params.introduction_label }}{{ . }}{{ else }}Introduction{{ end }}</span></div>
             <div class="material__main">
               <h3 class="material__title">{{ .title }}</h3>
               {{- with .description }}<p class="material__desc">{{ . }}</p>{{ end }}
@@ -87,7 +87,7 @@
           {{- end }}
           {{- range $i, $s := .Params.sessions }}
           <article class="material">
-            <div class="material__side"><span class="material__label">Session {{ printf "%02d" (add $i 1) }}</span></div>
+            <div class="material__side"><span class="material__label">{{ with $.Params.session_label }}{{ . }}{{ else }}Session{{ end }} {{ printf "%02d" (add $i 1) }}</span></div>
             <div class="material__main">
               <h3 class="material__title">{{ $s.title }}</h3>
               {{- with $s.topics }}<p class="material__desc">{{ delimit . " · " }}</p>{{ end }}

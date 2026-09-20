@@ -50,7 +50,7 @@
           <h3 class="course-card__title">{{ .Title }}</h3>
           {{- with .Params.role }}<p class="course-card__role">{{ . }}</p>{{ end }}
           {{- with .Params.summary }}<p class="course-card__summary">{{ . }}</p>{{ end }}
-          <span class="btn btn--text">Open course <span aria-hidden="true">&rarr;</span></span>
+          <span class="btn btn--text">{{ with .Params.cta_label }}{{ . }}{{ else }}Open course{{ end }} <span aria-hidden="true">&rarr;</span></span>
         </a>
         {{- else }}
         <div class="card course-card">
