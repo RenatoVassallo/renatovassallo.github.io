@@ -74,8 +74,8 @@ read_it:
 chapters:
   - title: { en: "Python, linear algebra and probability", es: "Python, álgebra y probabilidad" }
     topics:
-      en: ["NumPy, pandas, matplotlib", "Eigenvalues, Cholesky, Kronecker", "Distributions", "Monte Carlo, bootstrap and Gibbs"]
-      es: ["NumPy, pandas, matplotlib", "Autovalores, Cholesky, Kronecker", "Distribuciones", "Monte Carlo, bootstrap y Gibbs"]
+      en: ["NumPy, pandas, matplotlib", "Eigenvalues, Cholesky, Kronecker", "Distributions", "Monte Carlo and bootstrap"]
+      es: ["NumPy, pandas, matplotlib", "Autovalores, Cholesky, Kronecker", "Distribuciones", "Monte Carlo y bootstrap"]
     materials:
       - label: { en: "Read", es: "Leer" }
         url: "https://renatovassallo.github.io/MacroeconometricsBook/chapters/00-preliminares.html"
@@ -90,8 +90,8 @@ chapters:
 
   - title: { en: "Univariate models", es: "Modelos univariados" }
     topics:
-      en: ["Memory and stationarity", "Benchmark models"]
-      es: ["Memoria y estacionariedad", "Modelos de referencia"]
+      en: ["Memory and stationarity", "Benchmark models", "Bayesian estimation and Gibbs sampling"]
+      es: ["Memoria y estacionariedad", "Modelos de referencia", "Estimación bayesiana y muestreo de Gibbs"]
     materials:
       - label: { en: "In preparation", es: "En preparación" }
 
