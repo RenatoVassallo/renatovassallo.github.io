@@ -9,6 +9,10 @@
 {{- $b := .Params.book -}}
 {{- $readit := .Params.read_it -}}
 {{- $chapters := .Params.chapters -}}
+{{- /* First chapter number; 1 unless the front matter says otherwise.
+       isset, not default: Hugo's default treats 0 as unset. */ -}}
+{{- $start := 1 -}}
+{{- if isset .Params "chapter_start" }}{{ $start = .Params.chapter_start }}{{ end -}}
 <div class="container">
   <article class="page course book" data-bilingual-root>
     <nav class="breadcrumb"><a href="{{ "/teaching/" | relURL }}">Teaching</a> / <span aria-current="page">{{ .Title }}</span></nav>
@@ -58,7 +62,7 @@
 
             {{- range $i, $ch := $chapters }}
             <article class="material">
-              <div class="material__side"><span class="material__label">{{ index $b.chapter_label $code }} {{ printf "%02d" (add $i 1) }}</span></div>
+              <div class="material__side"><span class="material__label">{{ index $b.chapter_label $code }} {{ printf "%02d" (add $i $start) }}</span></div>
               <div class="material__main">
                 <h3 class="material__title">{{ index $ch.title $code }}</h3>
                 {{- with index $ch.topics $code }}<p class="material__desc">{{ delimit . " · " }}</p>{{ end }}
