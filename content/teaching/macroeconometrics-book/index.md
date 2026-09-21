@@ -82,8 +82,8 @@ chapters:
 
   - title: { en: "Macroeconomic data", es: "Datos macroeconómicos" }
     topics:
-      en: ["Measurement and conventions", "Time-series decomposition", "Seasonal adjustment", "Transformations"]
-      es: ["Medición y convenciones", "Descomposición de series", "Ajuste estacional", "Transformaciones"]
+      en: ["Shapes of a macro series", "Time-series decomposition", "Seasonal adjustment", "Logs and growth rates"]
+      es: ["Formas de una serie macro", "Descomposición de series", "Ajuste estacional", "Logaritmos y tasas de crecimiento"]
     materials:
       - label: { en: "Read", es: "Leer" }
         url: "https://renatovassallo.github.io/MacroeconometricsBook/chapters/01-macro-data.html"
